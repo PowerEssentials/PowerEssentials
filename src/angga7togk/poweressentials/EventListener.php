@@ -39,9 +39,11 @@ class EventListener implements Listener{
 
 	public function antiNamespaceJoin(PlayerJoinEvent $event):void{
 		$player = $event->getPlayer();
-		if (ConfigUtils::isAntiNamespace()){
-			if(strpos($player->getName(), " ")){
-				$player->kick(Message::getMessage()['general']['no-namespace']);
+		if(!$player->hasPermission("poweressentials.antinamespace.bypass")){
+			if (ConfigUtils::isAntiNamespace()){
+				if(strpos($player->getName(), " ")){
+					$player->kick(Message::getMessage()['general']['no-namespace']);
+				}
 			}
 		}
 	}

@@ -23,3 +23,4 @@ anti-namespace: false
 commands:
   lobby: true
   fly: true
+  gamemode: true

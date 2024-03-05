@@ -1,9 +1,13 @@
 general:
+  prefix: "§6[PowerEssentials] "
   cmd-console: "§cPlease run command in game!"
   world-null: "§cWorld is null."
   no-perm: "§cYou dont have permission."
   player-null: "§cPlayer not found."
   no-namespace: "§cYour name uses spaces, please change your name first to enter the server."
+gamemode:
+  prefix: "§6[Gamemode] "
+  change: "§6Success {player} change the gamemode to {gamemode}."
 lobby:
   prefix: "§6[Lobby] "
   noset: "§cLobby position is null."

@@ -2,6 +2,8 @@
 PowerEssentials plugin for Pocketmine-MP
 ## Commands
 - [x] /hub, /lobby, /setlobby
+- [x] /gmc, /gms, /gmspc, /gma and set other player
+- [x] /fly and set other player
 - [ ] /tpa, /tpaccept /tpahere /tpacancel
 - [ ] /rtp, /randomteleport
 - [ ] /home, /sethome, /delhome
@@ -9,11 +11,9 @@ PowerEssentials plugin for Pocketmine-MP
 - [ ] /heal, /feed
 - [ ] /vanish
 - [ ] /nickname, /nick
-- [ ] /fly
 - [ ] /tp, /tptoggle (anti tp)
 - [ ] /pvptoggle, /pvpt
 - [ ] /xp
-- [ ] /gmc, /gms, /gmspc, /gma
 
 ## Feature
 - [x] custom language

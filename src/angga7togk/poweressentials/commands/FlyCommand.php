@@ -21,17 +21,13 @@ class FlyCommand extends PECommand {
 		$msg = $message['fly'];
 		$prefix = $msg['prefix'];
 		if (!$this->testPermission($sender)) return;
-		if(!$sender instanceof Player){
-			$sender->sendMessage($prefix . $message['general']['cmd-console']);
-			return;
-		}
 
 		if(isset($args[0])){
 			if(!$sender->hasPermission(self::PREFIX_PERMISSION . "fly.other")){
 				$sender->sendMessage($prefix . $message['general']['no-perm']);
 				return;
 			}
-			$target = Server::getInstance()->getPlayerExact($args[0]);
+			$target = Server::getInstance()->getPlayerByPrefix($args[0]);
 			if($target == null){
 				$sender->sendMessage($prefix . $message['general']['player-null']);
 				return;
@@ -51,6 +47,10 @@ class FlyCommand extends PECommand {
 				$target->setAllowFlight(true);
 			}
 		}else{
+			if(!$sender instanceof Player){
+				$sender->sendMessage($prefix . $message['general']['cmd-console']);
+				return;
+			}
 			if(in_array($sender->getName(), $this->flying)){
 				if (($key = array_search($sender->getName(), $this->flying)) !== false) {
 					unset($this->flying[$key]);
