@@ -3,3 +3,9 @@ main: angga7togk\poweressentials\PowerEssentials
 api: 5.0.0
 version: 1.0.0
 author: Angga7Togk
+
+permissions:
+  poweressentials.command.setlobby:
+    default: op
+  poweressentials.command.lobby:
+    default: true

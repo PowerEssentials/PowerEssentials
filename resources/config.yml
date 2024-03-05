@@ -1,0 +1,14 @@
+##################################
+#         PowerEssentials        #
+##################################
+
+# You can customize your own language via the language folder, just create it
+# example = id.yml
+# then change here to 'id'
+language: en
+
+# commands option disable and enabled
+# set false to disable
+# set true to enable
+commands:
+  lobby: true

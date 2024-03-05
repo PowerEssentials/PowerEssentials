@@ -1,0 +1,9 @@
+general:
+  cmd-console: "§cPlease run command in game!"
+  world-null: "§cWorld is null."
+lobby:
+  prefix: "§6[Lobby] "
+  noset: "§cLobby position is null."
+  set: "§6The lobby spawn has been successfully positioned."
+  unset: "§cLobby spawn locations have been removed."
+  teleported: "§6Teleported to lobby."
