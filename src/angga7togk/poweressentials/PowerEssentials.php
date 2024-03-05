@@ -2,6 +2,7 @@
 
 namespace angga7togk\poweressentials;
 
+use angga7togk\poweressentials\commands\FlyCommand;
 use angga7togk\poweressentials\commands\lobby\LobbyCommand;
 use angga7togk\poweressentials\commands\lobby\SetLobbyCommand;
 use pocketmine\plugin\PluginBase;
@@ -11,20 +12,35 @@ class PowerEssentials extends PluginBase {
 
     public static Config $config, $lobby;
     public static array $messages;
-    public function onEnable(): void
-    {
-        $this->saveDefaultConfig();
-		$this->saveResource("lobby.yml");
-        self::$config = $this->getConfig();
-		self::$lobby = new Config($this->getDataFolder() . "lobby.yml", Config::YAML, []);
+	public static self $instance;
+	protected function onLoad(): void
+	{
+		self::$instance = $this;
+	}
 
+	public function onEnable(): void
+    {
+		$this->loadConfigs();
         $this->loadLanguage();
         $this->loadCommands();
+		$this->loadListeners();
     }
+
+	private function loadConfigs():void{
+		$this->saveDefaultConfig();
+		$this->saveResource("lobby.yml");
+		self::$config = $this->getConfig();
+		self::$lobby = new Config($this->getDataFolder() . "lobby.yml", Config::YAML, []);
+	}
+
+	private function loadListeners():void{
+		$this->getServer()->getPluginManager()->registerEvents(new EventListener(), $this);
+	}
 
     private function loadCommands():void{
 		$commands = [
-			'lobby' => [new LobbyCommand(), new SetLobbyCommand()]
+			'lobby' => [new LobbyCommand(), new SetLobbyCommand()],
+			'fly' => [new FlyCommand()]
 		];
 
 		foreach($commands as $keyCmd => $valueCmd){
@@ -40,5 +56,9 @@ class PowerEssentials extends PluginBase {
         $this->saveResource("language/$lang.yml");
         self::$messages = (new Config($this->getDataFolder() . "/language/$lang.yml"))->getAll();
     }
+
+	public static function getInstance(): self{
+		return self::$instance;
+	}
 
 }

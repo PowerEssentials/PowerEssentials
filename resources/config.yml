@@ -7,8 +7,19 @@
 # then change here to 'id'
 language: en
 
+# on join force set gamemode
+gamemode-join-enable: true
+gamemode-join: SURVIVAL
+
+# on join force spawn to lobby position
+spawn-lobby-join: true
+
+# Players with space names are prohibited from entering
+anti-namespace: false
+
 # commands option disable and enabled
 # set false to disable
 # set true to enable
 commands:
   lobby: true
+  fly: true

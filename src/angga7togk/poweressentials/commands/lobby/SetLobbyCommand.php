@@ -22,14 +22,15 @@ class SetLobbyCommand extends PECommand
     public function run(CommandSender $sender, array $message, array $args): void
     {
         $msg = $message['lobby'];
+		$prefix = $msg['prefix'];
         if (!$this->testPermission($sender)) return;
         if(!$sender instanceof Player){
-            $sender->sendMessage($msg['prefix'] . $message['general']['cmd-console']);
+            $sender->sendMessage($prefix . $message['general']['cmd-console']);
             return;
         }
         $pos = $sender->getPosition();
         PowerEssentials::$lobby->setNested("position", [(int)$pos->x, (int)$pos->y, (int)$pos->z, (string)$pos->getWorld()->getFolderName()]);
         PowerEssentials::$lobby->save();
-        $sender->sendMessage($msg['prefix'] . $msg['set']);
+        $sender->sendMessage($prefix . $msg['set']);
     }
 }

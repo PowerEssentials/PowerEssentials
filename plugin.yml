@@ -5,7 +5,13 @@ version: 1.0.0
 author: Angga7Togk
 
 permissions:
-  poweressentials.command.setlobby:
+  poweressentials.setlobby:
     default: op
-  poweressentials.command.lobby:
+  poweressentials.lobby:
     default: true
+  poweressentials.fly:
+    default: op
+  poweressentials.fly.other:
+    default: op
+  poweressentials.antinamespace.bypass:
+    default: op
