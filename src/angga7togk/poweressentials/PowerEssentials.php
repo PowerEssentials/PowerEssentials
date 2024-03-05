@@ -9,6 +9,7 @@ use angga7togk\poweressentials\commands\gamemode\SpectatorCommand;
 use angga7togk\poweressentials\commands\gamemode\SurvivalCommand;
 use angga7togk\poweressentials\commands\lobby\LobbyCommand;
 use angga7togk\poweressentials\commands\lobby\SetLobbyCommand;
+use angga7togk\poweressentials\commands\NicknameCommand;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
 
@@ -50,7 +51,8 @@ class PowerEssentials extends PluginBase
 		$commands = [
 			'lobby' => [new LobbyCommand(), new SetLobbyCommand()],
 			'fly' => [new FlyCommand()],
-			'gamemode' => [new AdvantureCommand(), new CreativeCommand(), new SpectatorCommand(), new SurvivalCommand()]
+			'gamemode' => [new AdvantureCommand(), new CreativeCommand(), new SpectatorCommand(), new SurvivalCommand()],
+			'nickname' => [new NicknameCommand()]
 		];
 
 		foreach ($commands as $keyCmd => $valueCmd) {

@@ -20,3 +20,9 @@ fly:
   disable: "§cFlying mode disabled."
   enable-other: "§6{player} Flying mode enable."
   disable-other: "§c{player} Flying mode disabled."
+nickname:
+  prefix: "§6[Nickname] "
+  change: "§6Success {player} change nickname to {name}."
+  reset: "§c{player} nickname has been reset."
+  blacklist: "§c{name} is blacklist."
+  max-char: "§cMaximum characters is {max}."

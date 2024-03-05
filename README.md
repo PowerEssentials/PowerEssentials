@@ -14,10 +14,12 @@ PowerEssentials plugin for Pocketmine-MP
 - [ ] /tp, /tptoggle (anti tp)
 - [ ] /pvptoggle, /pvpt
 - [ ] /xp
+- [ ] /kits
+- [ ] /sudo
 
 ## Feature
 - [x] custom language
 - [x] disable and enable commands
-- [ ] kits
+- [ ] kits on join
 - [x] gamemode set on join
 - [x] anti namespace

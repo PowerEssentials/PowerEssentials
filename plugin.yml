@@ -27,3 +27,7 @@ permissions:
     default: op
   poweressentials.gmspc:
     default: op
+  poweressentials.nickname:
+    default: op
+  poweressentials.nickname.other:
+    default: op

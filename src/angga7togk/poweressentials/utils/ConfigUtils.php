@@ -22,4 +22,15 @@ class ConfigUtils{
 	public static function isAntiNamespace():bool{
 		return PowerEssentials::$config->get("anti-namespace");
 	}
+
+	public static function isBlacklistNickname(string $nick):bool{
+		foreach (PowerEssentials::$config->get("blacklist-nicknames") as $nickBL){
+			if (strpos($nick, $nickBL)) return true;
+		}
+		return false;
+	}
+
+	public static function getMaxCharNickname():int{
+		return (int) PowerEssentials::$config->get("nickname-max-char");
+	}
 }

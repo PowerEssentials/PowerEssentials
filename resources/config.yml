@@ -1,7 +1,6 @@
 ##################################
 #         PowerEssentials        #
 ##################################
-
 # You can customize your own language via the language folder, just create it
 # example = id.yml
 # then change here to 'id'
@@ -17,6 +16,22 @@ spawn-lobby-join: true
 # Players with space names are prohibited from entering
 anti-namespace: false
 
+##################################
+#            Nicknames           #
+##################################
+# maximum number of characters
+nickname-max-char: 15
+
+# blacklist nickname
+# This feature only works for /nickname
+blacklist-nicknames:
+  - admin
+  - owner
+  - staff
+
+##################################
+#            Commands            #
+##################################
 # commands option disable and enabled
 # set false to disable
 # set true to enable
@@ -24,3 +39,4 @@ commands:
   lobby: true
   fly: true
   gamemode: true
+  nickname: true
