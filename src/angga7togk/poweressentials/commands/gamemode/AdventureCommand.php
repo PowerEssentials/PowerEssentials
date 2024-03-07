@@ -10,50 +10,50 @@ use pocketmine\player\GameMode;
 use pocketmine\player\Player;
 use pocketmine\Server;
 
-class SpectatorCommand extends Command {
+class AdventureCommand extends Command {
 
-    public function __construct()
-    {
-        parent::__construct("gmspc", "change spectator mode");
-        $this->setPermission(PermissionConstant::ESSENTIALS_COMMAND_GMSPC);
-    }
+	public function __construct()
+	{
+		parent::__construct("gma", "change adventure mode");
+		$this->setPermission(PermissionConstant::ESSENTIALS_COMMAND_GMA);
+	}
 
-    public function execute(CommandSender $sender, string $commandLabel, array $args): void
-    {
-        if (!$sender->hasPermission(PermissionConstant::ESSENTIALS_COMMAND_GMSPC)){
+	public function execute(CommandSender $sender, string $commandLabel, array $args): void
+	{
+        if (!$sender->hasPermission(PermissionConstant::ESSENTIALS_COMMAND_GMA)){
             $sender->sendMessage(LanguageManager::getTranslator()->translate($sender, "general.no.permission"));
             return;
         }
 
-        if (isset($args[0])){
-            if (!$sender->hasPermission(PermissionConstant::ESSENTIALS_COMMAND_GMSPC_OTHER)){
+		if (isset($args[0])){
+			if (!$sender->hasPermission(PermissionConstant::ESSENTIALS_COMMAND_GMA_OTHER)){
                 $sender->sendMessage(LanguageManager::getTranslator()->translate($sender, "general.no.permission"));
-                return;
-            }
+				return;
+			}
             $target = Server::getInstance()->getPlayerExact($args[0]) ?? Server::getInstance()->getPlayerByPrefix($args[0]);
-            if($target == null){
+			if($target == null){
                 $sender->sendMessage(LanguageManager::getTranslator()->translate($sender, "general.player.null"));
-                return;
-            }
-            $target->setGamemode(GameMode::ADVENTURE());
+				return;
+			}
+			$target->setGamemode(GameMode::ADVENTURE());
             $target->sendMessage(LanguageManager::getTranslator()->translate($target, "gamemode.change", [
                 "{%player}" => "Your",
-                "{%gamemode}" => "Spectator"
+                "{%gamemode}" => "Adventure"
             ]));
             $sender->sendMessage(LanguageManager::getTranslator()->translate($sender, "gamemode.change", [
                 "{%player}" => $target->getName(),
-                "{%gamemode}" => "Spectator"
+                "{%gamemode}" => "Adventure"
             ]));
-        }else{
-            if(!$sender instanceof Player){
+		}else{
+			if(!$sender instanceof Player){
                 $sender->sendMessage(LanguageManager::getTranslator()->translate($sender, "general.cmd.console"));
-                return;
-            }
-            $sender->setGamemode(GameMode::SPECTATOR());
+				return;
+			}
+			$sender->setGamemode(GameMode::ADVENTURE());
             $sender->sendMessage(LanguageManager::getTranslator()->translate($sender, "gamemode.change", [
                 "{%player}" => "Your",
-                "{%gamemode}" => "Spectator"
+                "{%gamemode}" => "Adventure"
             ]));
-        }
-    }
+		}
+	}
 }

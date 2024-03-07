@@ -2,35 +2,35 @@
 
 namespace angga7togk\poweressentials\commands\lobby;
 
-use angga7togk\poweressentials\commands\PECommand;
+use angga7togk\poweressentials\language\LanguageManager;
+use angga7togk\poweressentials\permission\PermissionConstant;
 use angga7togk\poweressentials\PowerEssentials;
 use JsonException;
+use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 
-class SetLobbyCommand extends PECommand
+class SetLobbyCommand extends Command
 {
     public function __construct()
     {
         parent::__construct("setlobby", "set lobby spawn position", "/setlobby", ["sethub"]);
-        $this->setPermission("setlobby");
+        $this->setPermission(PermissionConstant::ESSENTIALS_COMMAND_SETLOBBY);
     }
 
     /**
      * @throws JsonException
      */
-    public function run(CommandSender $sender, array $message, array $args): void
+    public function execute(CommandSender $sender, string $commandLabel, array $args): void
     {
-        $msg = $message['lobby'];
-		$prefix = $msg['prefix'];
         if (!$this->testPermission($sender)) return;
         if(!$sender instanceof Player){
-            $sender->sendMessage($prefix . $message['general']['cmd-console']);
+            $sender->sendMessage(LanguageManager::getTranslator()->translate($sender, "general.cmd.console"));
             return;
         }
         $pos = $sender->getPosition();
         PowerEssentials::$lobby->setNested("position", [(int)$pos->x, (int)$pos->y, (int)$pos->z, (string)$pos->getWorld()->getFolderName()]);
         PowerEssentials::$lobby->save();
-        $sender->sendMessage($prefix . $msg['set']);
+        $sender->sendMessage(LanguageManager::getTranslator()->translate($sender, "lobby.set"));
     }
 }

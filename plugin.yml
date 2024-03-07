@@ -3,31 +3,3 @@ main: angga7togk\poweressentials\PowerEssentials
 api: 5.0.0
 version: 1.0.0
 author: Angga7Togk
-
-permissions:
-  poweressentials.setlobby:
-    default: op
-  poweressentials.lobby:
-    default: true
-  poweressentials.fly:
-    default: op
-  poweressentials.fly.other:
-    default: op
-  poweressentials.antinamespace.bypass:
-    default: op
-  poweressentials.gamemode:
-    default: op
-  poweressentials.gamemode.other:
-    default: op
-  poweressentials.gmc:
-    default: op
-  poweressentials.gms:
-    default: op
-  poweressentials.gma:
-    default: op
-  poweressentials.gmspc:
-    default: op
-  poweressentials.nickname:
-    default: op
-  poweressentials.nickname.other:
-    default: op
