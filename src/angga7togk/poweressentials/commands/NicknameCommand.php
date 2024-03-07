@@ -63,10 +63,8 @@ class NicknameCommand extends Command
 			if (($key = array_search($target->getName(), $this->nicknames)) !== false) {
 				unset($this->nicknames[$key]);
 			}
-            $target->sendMessage(LanguageManager::getTranslator()->translate($target, "nickname.reset", [
-                "{%player}" => $targetIsSelf ? "Your" : $target->getName()
-            ]));
-			if (!$targetIsSelf) $sender->sendMessage(LanguageManager::getTranslator()->translate($sender, "nickname.reset", [
+            $target->sendMessage(LanguageManager::getTranslator()->translate($target, "nickname.reset.self"));
+			if (!$targetIsSelf) $sender->sendMessage(LanguageManager::getTranslator()->translate($sender, "nickname.reset.other", [
                 "{%player}" => $target->getName()
             ]));
 		}elseif($nickname == 'help'){

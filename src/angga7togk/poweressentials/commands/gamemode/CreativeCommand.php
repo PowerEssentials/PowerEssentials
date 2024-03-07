@@ -35,12 +35,11 @@ class CreativeCommand extends Command {
                 $sender->sendMessage(LanguageManager::getTranslator()->translate($sender, "general.player.null"));
                 return;
             }
-            $target->setGamemode(GameMode::ADVENTURE());
-            $target->sendMessage(LanguageManager::getTranslator()->translate($target, "gamemode.change", [
-                "{%player}" => "Your",
+            $target->setGamemode(GameMode::CREATIVE());
+            $target->sendMessage(LanguageManager::getTranslator()->translate($target, "gamemode.change.self", [
                 "{%gamemode}" => "Creative"
             ]));
-            $sender->sendMessage(LanguageManager::getTranslator()->translate($sender, "gamemode.change", [
+            $sender->sendMessage(LanguageManager::getTranslator()->translate($sender, "gamemode.change.other", [
                 "{%player}" => $target->getName(),
                 "{%gamemode}" => "Creative"
             ]));
@@ -50,8 +49,7 @@ class CreativeCommand extends Command {
                 return;
             }
             $sender->setGamemode(GameMode::CREATIVE());
-            $sender->sendMessage(LanguageManager::getTranslator()->translate($sender, "gamemode.change", [
-                "{%player}" => "Your",
+            $sender->sendMessage(LanguageManager::getTranslator()->translate($sender, "gamemode.change.self", [
                 "{%gamemode}" => "Creative"
             ]));
         }

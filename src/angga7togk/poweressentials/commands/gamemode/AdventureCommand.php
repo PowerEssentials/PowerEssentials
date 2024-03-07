@@ -36,11 +36,10 @@ class AdventureCommand extends Command {
 				return;
 			}
 			$target->setGamemode(GameMode::ADVENTURE());
-            $target->sendMessage(LanguageManager::getTranslator()->translate($target, "gamemode.change", [
-                "{%player}" => "Your",
+            $target->sendMessage(LanguageManager::getTranslator()->translate($target, "gamemode.change.self", [
                 "{%gamemode}" => "Adventure"
             ]));
-            $sender->sendMessage(LanguageManager::getTranslator()->translate($sender, "gamemode.change", [
+            $sender->sendMessage(LanguageManager::getTranslator()->translate($sender, "gamemode.change.other", [
                 "{%player}" => $target->getName(),
                 "{%gamemode}" => "Adventure"
             ]));
@@ -50,8 +49,7 @@ class AdventureCommand extends Command {
 				return;
 			}
 			$sender->setGamemode(GameMode::ADVENTURE());
-            $sender->sendMessage(LanguageManager::getTranslator()->translate($sender, "gamemode.change", [
-                "{%player}" => "Your",
+            $sender->sendMessage(LanguageManager::getTranslator()->translate($sender, "gamemode.change.self", [
                 "{%gamemode}" => "Adventure"
             ]));
 		}

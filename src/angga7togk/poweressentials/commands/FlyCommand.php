@@ -44,7 +44,7 @@ class FlyCommand extends Command {
                 ]));
 				if (($key = array_search($target->getName(), $this->flying)) !== false) {
 					unset($this->flying[$key]);
-                    $target->sendMessage(LanguageManager::getTranslator()->translate($target, "fly.disable"));
+                    $target->sendMessage(LanguageManager::getTranslator()->translate($target, "fly.disable.self"));
 				}
 				$target->setAllowFlight(false);
 			}else{
@@ -52,7 +52,7 @@ class FlyCommand extends Command {
                     "{%player}" => $target->getName()
                 ]));
 				$this->flying[] = $target->getName();
-                $target->sendMessage(LanguageManager::getTranslator()->translate($target, "fly.enable"));
+                $target->sendMessage(LanguageManager::getTranslator()->translate($target, "fly.enable.self"));
                 $target->setAllowFlight(true);
 			}
 		}else{
@@ -64,11 +64,11 @@ class FlyCommand extends Command {
 				if (($key = array_search($sender->getName(), $this->flying)) !== false) {
 					unset($this->flying[$key]);
 				}
-                $sender->sendMessage(LanguageManager::getTranslator()->translate($sender, "fly.disable"));
+                $sender->sendMessage(LanguageManager::getTranslator()->translate($sender, "fly.disable.self"));
 				$sender->setAllowFlight(false);
 			}else{
 				$this->flying[] = $sender->getName();
-                $sender->sendMessage(LanguageManager::getTranslator()->translate($sender, "fly.enable"));
+                $sender->sendMessage(LanguageManager::getTranslator()->translate($sender, "fly.enable.self"));
 				$sender->setAllowFlight(true);
 			}
 		}

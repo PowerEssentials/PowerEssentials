@@ -35,12 +35,11 @@ class SpectatorCommand extends Command {
                 $sender->sendMessage(LanguageManager::getTranslator()->translate($sender, "general.player.null"));
                 return;
             }
-            $target->setGamemode(GameMode::ADVENTURE());
-            $target->sendMessage(LanguageManager::getTranslator()->translate($target, "gamemode.change", [
-                "{%player}" => "Your",
+            $target->setGamemode(GameMode::SPECTATOR());
+            $target->sendMessage(LanguageManager::getTranslator()->translate($target, "gamemode.change.self", [
                 "{%gamemode}" => "Spectator"
             ]));
-            $sender->sendMessage(LanguageManager::getTranslator()->translate($sender, "gamemode.change", [
+            $sender->sendMessage(LanguageManager::getTranslator()->translate($sender, "gamemode.change.other", [
                 "{%player}" => $target->getName(),
                 "{%gamemode}" => "Spectator"
             ]));
@@ -50,8 +49,7 @@ class SpectatorCommand extends Command {
                 return;
             }
             $sender->setGamemode(GameMode::SPECTATOR());
-            $sender->sendMessage(LanguageManager::getTranslator()->translate($sender, "gamemode.change", [
-                "{%player}" => "Your",
+            $sender->sendMessage(LanguageManager::getTranslator()->translate($sender, "gamemode.change.self", [
                 "{%gamemode}" => "Spectator"
             ]));
         }

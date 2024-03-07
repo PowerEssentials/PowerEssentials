@@ -36,11 +36,10 @@ class SurvivalCommand extends Command {
                 return;
             }
             $target->setGamemode(GameMode::SURVIVAL());
-            $target->sendMessage(LanguageManager::getTranslator()->translate($target, "gamemode.change", [
-                "{%player}" => "Your",
+            $target->sendMessage(LanguageManager::getTranslator()->translate($target, "gamemode.change.self", [
                 "{%gamemode}" => "Survival"
             ]));
-            $sender->sendMessage(LanguageManager::getTranslator()->translate($sender, "gamemode.change", [
+            $sender->sendMessage(LanguageManager::getTranslator()->translate($sender, "gamemode.change.other", [
                 "{%player}" => $target->getName(),
                 "{%gamemode}" => "Survival"
             ]));
@@ -49,9 +48,8 @@ class SurvivalCommand extends Command {
                 $sender->sendMessage(LanguageManager::getTranslator()->translate($sender, "general.cmd.console"));
                 return;
             }
-            $sender->setGamemode(GameMode::ADVENTURE());
-            $sender->sendMessage(LanguageManager::getTranslator()->translate($sender, "gamemode.change", [
-                "{%player}" => "Your",
+            $sender->setGamemode(GameMode::SURVIVAL());
+            $sender->sendMessage(LanguageManager::getTranslator()->translate($sender, "gamemode.change.self", [
                 "{%gamemode}" => "Survival"
             ]));
         }
