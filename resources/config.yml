@@ -1,10 +1,8 @@
 ##################################
 #         PowerEssentials        #
 ##################################
-# You can customize your own language via the language folder, just create it
-# example = id.yml
-# then change here to 'id'
-language: en
+# You can customize your own languages via the languages folder, just create it
+language: en_US
 
 # on join force set gamemode
 gamemode-join-enable: true
@@ -33,10 +31,14 @@ blacklist-nicknames:
 #            Commands            #
 ##################################
 # commands option disable and enabled
-# set false to disable
-# set true to enable
+# leave the command inside the list if you
+# want to keep the command registered
 commands:
-  lobby: true
-  fly: true
-  gamemode: true
-  nickname: true
+  - "lobby"
+  - "setlobby"
+  - "fly"
+  - "gmc"
+  - "gms"
+  - "gma"
+  - "gmspc"
+  - "nickname"

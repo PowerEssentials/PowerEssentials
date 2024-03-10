@@ -3,22 +3,25 @@
 namespace angga7togk\poweressentials;
 
 use angga7togk\poweressentials\commands\FlyCommand;
-use angga7togk\poweressentials\commands\gamemode\AdvantureCommand;
+use angga7togk\poweressentials\commands\gamemode\AdventureCommand;
 use angga7togk\poweressentials\commands\gamemode\CreativeCommand;
 use angga7togk\poweressentials\commands\gamemode\SpectatorCommand;
 use angga7togk\poweressentials\commands\gamemode\SurvivalCommand;
 use angga7togk\poweressentials\commands\lobby\LobbyCommand;
 use angga7togk\poweressentials\commands\lobby\SetLobbyCommand;
 use angga7togk\poweressentials\commands\NicknameCommand;
+use angga7togk\poweressentials\language\LanguageManager;
+use angga7togk\poweressentials\permission\PermissionsManager;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
+use pocketmine\utils\SingletonTrait;
 
 class PowerEssentials extends PluginBase
 {
+    use SingletonTrait;
 
-	public static Config $config, $lobby;
-	public static array $messages;
-	public static self $instance;
+    /** @var Config $lobby */
+	public static Config $lobby;
 
 	protected function onLoad(): void
 	{
@@ -27,8 +30,10 @@ class PowerEssentials extends PluginBase
 
 	public function onEnable(): void
 	{
+        PermissionsManager::init();
+        $this->initResources();
+//        LanguageManager::init();
 		$this->loadConfigs();
-		$this->loadLanguage();
 		$this->loadCommands();
 		$this->loadListeners();
 	}
@@ -37,7 +42,6 @@ class PowerEssentials extends PluginBase
 	{
 		$this->saveDefaultConfig();
 		$this->saveResource("lobby.yml");
-		self::$config = $this->getConfig();
 		self::$lobby = new Config($this->getDataFolder() . "lobby.yml", Config::YAML, []);
 	}
 
@@ -48,31 +52,31 @@ class PowerEssentials extends PluginBase
 
 	private function loadCommands(): void
 	{
-		$commands = [
-			'lobby' => [new LobbyCommand(), new SetLobbyCommand()],
-			'fly' => [new FlyCommand()],
-			'gamemode' => [new AdvantureCommand(), new CreativeCommand(), new SpectatorCommand(), new SurvivalCommand()],
-			'nickname' => [new NicknameCommand()]
-		];
+        $commandPrefixes = [
+            "lobby" => new LobbyCommand(),
+            "setlobby" => new SetLobbyCommand(),
+            "gmc" => new CreativeCommand(),
+            "gms" => new SurvivalCommand(),
+            "gma" => new AdventureCommand(),
+            "gmspc" => new SpectatorCommand(),
+            "nickname" => new NicknameCommand(),
+            "fly" => new FlyCommand()
+        ];
 
-		foreach ($commands as $keyCmd => $valueCmd) {
-			if (self::$config->get("commands")[$keyCmd]) {
-				$this->getServer()->getCommandMap()->registerAll($this->getName(), $valueCmd);
-			}
-		}
+        foreach ($commandPrefixes as $k => $v) {
+            if (in_array($k, $this->getConfig()->get("commands"))) {
+                $this->getServer()->getCommandMap()->register($k, $v);
+            }
+        }
 
 	}
 
-	private function loadLanguage(): void
-	{
-		$lang = self::$config->get("language", "en");
-		$this->saveResource("language/$lang.yml");
-		self::$messages = (new Config($this->getDataFolder() . "/language/$lang.yml"))->getAll();
-	}
-
-	public static function getInstance(): self
-	{
-		return self::$instance;
-	}
+    private function initResources(): void {
+        if (!is_dir($this->getDataFolder() . "languages")) {
+            @mkdir($this->getDataFolder() . "languages");
+        }
+        $this->saveResource("languages/en_US.ini");
+        LanguageManager::init();
+    }
 
 }

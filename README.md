@@ -21,7 +21,7 @@ PowerEssentials plugin for Pocketmine-MP
 - [ ] /size <size> [player]
 - [ ] /afk [player]
 - [ ] /coordinates /coord (display coordinate)
-- [ ] /good (good mode)
+- [ ] /god (god mode)
 - [ ] /mute [player]
 - [ ] /repair
 - [ ] /world <world-name> (teleport to another world)
@@ -40,4 +40,3 @@ PowerEssentials plugin for Pocketmine-MP
 - [x] anti namespace
 - [ ] kits on join
 - [ ] join and leave message
-- [ ]
