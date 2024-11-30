@@ -31,3 +31,9 @@ permissions:
     default: op
   poweressentials.nickname.other:
     default: op
+  poweressentials.home:
+    default: true
+  poweressentials.sethome:
+    default: true
+  poweressentials.delhome:
+    default: true

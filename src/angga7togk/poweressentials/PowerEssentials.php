@@ -7,18 +7,21 @@ use angga7togk\poweressentials\commands\gamemode\AdvantureCommand;
 use angga7togk\poweressentials\commands\gamemode\CreativeCommand;
 use angga7togk\poweressentials\commands\gamemode\SpectatorCommand;
 use angga7togk\poweressentials\commands\gamemode\SurvivalCommand;
+use angga7togk\poweressentials\commands\home\DelHomeCommand;
+use angga7togk\poweressentials\commands\home\HomeCommand;
+use angga7togk\poweressentials\commands\home\SetHomeCommand;
 use angga7togk\poweressentials\commands\lobby\LobbyCommand;
 use angga7togk\poweressentials\commands\lobby\SetLobbyCommand;
 use angga7togk\poweressentials\commands\NicknameCommand;
+use angga7togk\poweressentials\config\PEConfig;
+use angga7togk\poweressentials\manager\DataManager;
+use angga7togk\poweressentials\message\Message;
 use pocketmine\plugin\PluginBase;
-use pocketmine\utils\Config;
 
 class PowerEssentials extends PluginBase
 {
-
-	public static Config $config, $lobby;
-	public static array $messages;
-	public static self $instance;
+	private static PowerEssentials $instance;
+	private DataManager $dataManager;
 
 	protected function onLoad(): void
 	{
@@ -27,23 +30,21 @@ class PowerEssentials extends PluginBase
 
 	public function onEnable(): void
 	{
-		$this->loadConfigs();
-		$this->loadLanguage();
+		PEConfig::init();
+		Message::init();
 		$this->loadCommands();
 		$this->loadListeners();
+		$this->dataManager = new DataManager($this);
 	}
 
-	private function loadConfigs(): void
+	public function getDataManager(): DataManager
 	{
-		$this->saveDefaultConfig();
-		$this->saveResource("lobby.yml");
-		self::$config = $this->getConfig();
-		self::$lobby = new Config($this->getDataFolder() . "lobby.yml", Config::YAML, []);
+		return $this->dataManager;
 	}
 
 	private function loadListeners(): void
 	{
-		$this->getServer()->getPluginManager()->registerEvents(new EventListener(), $this);
+		$this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
 	}
 
 	private function loadCommands(): void
@@ -52,27 +53,19 @@ class PowerEssentials extends PluginBase
 			'lobby' => [new LobbyCommand(), new SetLobbyCommand()],
 			'fly' => [new FlyCommand()],
 			'gamemode' => [new AdvantureCommand(), new CreativeCommand(), new SpectatorCommand(), new SurvivalCommand()],
-			'nickname' => [new NicknameCommand()]
+			'nickname' => [new NicknameCommand()],
+			'home' => [new HomeCommand(), new DelHomeCommand, new SetHomeCommand()]
 		];
 
 		foreach ($commands as $keyCmd => $valueCmd) {
-			if (self::$config->get("commands")[$keyCmd]) {
+			if (PEConfig::isCommandActive($keyCmd)) {
 				$this->getServer()->getCommandMap()->registerAll($this->getName(), $valueCmd);
 			}
 		}
-
-	}
-
-	private function loadLanguage(): void
-	{
-		$lang = self::$config->get("language", "en");
-		$this->saveResource("language/$lang.yml");
-		self::$messages = (new Config($this->getDataFolder() . "/language/$lang.yml"))->getAll();
 	}
 
 	public static function getInstance(): self
 	{
 		return self::$instance;
 	}
-
 }

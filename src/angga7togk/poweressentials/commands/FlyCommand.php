@@ -27,7 +27,7 @@ class FlyCommand extends PECommand {
 				$sender->sendMessage($prefix . $message['general']['no-perm']);
 				return;
 			}
-			$target = Server::getInstance()->getPlayerByPrefix($args[0]);
+			$target = Server::getInstance()->getPlayerExact($args[0]);
 			if($target == null){
 				$sender->sendMessage($prefix . $message['general']['player-null']);
 				return;

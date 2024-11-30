@@ -1,3 +1,5 @@
+lang-version: 1.0.0
+
 general:
   prefix: "§6[PowerEssentials] "
   cmd-console: "§cPlease run command in game!"
@@ -5,6 +7,7 @@ general:
   no-perm: "§cYou dont have permission."
   player-null: "§cPlayer not found."
   no-namespace: "§cYour name uses spaces, please change your name first to enter the server."
+  invalid-name: "§cInvalid name."
 gamemode:
   prefix: "§6[Gamemode] "
   change: "§6Success {player} change the gamemode to {gamemode}."
@@ -26,3 +29,11 @@ nickname:
   reset: "§c{player} nickname has been reset."
   blacklist: "§c{name} is blacklist."
   max-char: "§cMaximum characters is {max}."
+home:
+  prefix: "§6[Home] "
+  set: "§6Success set home {home}."
+  del: "§6Success delete home {home}."
+  teleport: "§6Success teleport to home {home}."
+  not-found: "§cHome not found."
+  max-home: "§cMax home is {max}."
+  blacklist: "§cYou can't set home in {world}."

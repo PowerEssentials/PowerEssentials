@@ -29,8 +29,7 @@ class SetLobbyCommand extends PECommand
             return;
         }
         $pos = $sender->getPosition();
-        PowerEssentials::$lobby->setNested("position", [(int)$pos->x, (int)$pos->y, (int)$pos->z, (string)$pos->getWorld()->getFolderName()]);
-        PowerEssentials::$lobby->save();
+        PowerEssentials::getInstance()->getDataManager()->setLobby($pos);
         $sender->sendMessage($prefix . $msg['set']);
     }
 }

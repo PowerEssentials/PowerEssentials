@@ -25,20 +25,12 @@ class LobbyCommand extends PECommand{
             $sender->sendMessage($prefix . $message['general']['cmd-console']);
             return;
         }
-        if(!PowerEssentials::$lobby->exists("position")){
+        $posLobby = PowerEssentials::getInstance()->getDataManager()->getLobby();
+        if($posLobby === null){
             $sender->sendMessage($prefix . $msg['noset']);
             return;
         }
-
-        $posLobby = PowerEssentials::$lobby->get("position");
-        $world = Server::getInstance()->getWorldManager()->getWorldByName($posLobby[3]);
-        if($world == null){
-            $sender->sendMessage($prefix . $message['general']['world-null']);
-            return;
-        }
-
-        $pos = new Position((float)$posLobby[0], (float)$posLobby[1], (float)$posLobby[2], $world);
-        $sender->teleport($pos);
+        $sender->teleport($posLobby);
         $sender->sendMessage($prefix . $msg['teleported']);
     }
 }

@@ -1,6 +1,11 @@
 ##################################
 #         PowerEssentials        #
 ##################################
+
+# config version
+# !!!dont change this!!!!
+config-version: 1.0
+
 # You can customize your own language via the language folder, just create it
 # example = id.yml
 # then change here to 'id'
@@ -15,6 +20,9 @@ spawn-lobby-join: true
 
 # Players with space names are prohibited from entering
 anti-namespace: false
+
+# show vanilla coordinates
+show-coordinates: true
 
 ##################################
 #            Nicknames           #
@@ -40,3 +48,24 @@ commands:
   fly: true
   gamemode: true
   nickname: true
+  home: true
+
+
+##################################
+#               HOME             #
+##################################
+# blacklist set home in world
+home-world-blacklists:
+  - world_nether
+  - world_the_end
+
+# Permission Limit
+# if you enable this feature, you can limit the number of homes per player
+home-permission-limit: false
+home-permission-default-limit: 3
+
+home-permission-limits:
+  homelimit.5: 5
+  homelimit.10: 10
+
+

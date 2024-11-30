@@ -7,7 +7,7 @@ PowerEssentials plugin for Pocketmine-MP
 - [x] /nickname <nickname, reset> [player]
 - [ ] /tpa, /tpaccept /tpahere /tpacancel
 - [ ] /rtp, /randomteleport
-- [ ] /home, /sethome, /delhome
+- [x] /home, /sethome, /delhome
 - [ ] /warp, /setwarp, /delwarp
 - [ ] /heal, /feed and set another player
 - [ ] /vanish
