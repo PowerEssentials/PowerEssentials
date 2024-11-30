@@ -7,6 +7,8 @@ use angga7togk\poweressentials\manager\user\NicknameManager;
 use angga7togk\poweressentials\message\Message;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerJoinEvent;
+use pocketmine\network\mcpe\protocol\GameRulesChangedPacket;
+use pocketmine\network\mcpe\protocol\types\BoolGameRule;
 use pocketmine\Server;
 use pocketmine\world\Position;
 
@@ -37,11 +39,21 @@ class EventListener implements Listener
 		}
 	}
 
-	public function setCustomNickOnJoin(PlayerJoinEvent $event): void {
+	public function setCustomNickOnJoin(PlayerJoinEvent $event): void
+	{
 		$player = $event->getPlayer();
 		$nickMgr = new NicknameManager($player);
 		if ($nick = $nickMgr->getCustomNick() != null) {
 			$player->setDisplayName($nick);
+		}
+	}
+
+	public function coordinatesOnJoin(PlayerJoinEvent $event): void
+	{
+		if (PEConfig::isShowCoordinates()) {
+			$pk = new GameRulesChangedPacket();
+			$pk->gameRules = ["showcoordinates" => new BoolGameRule(true, false)];
+			$event->getPlayer()->getNetworkSession()->sendDataPacket($pk);
 		}
 	}
 

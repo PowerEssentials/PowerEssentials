@@ -74,5 +74,10 @@ class PEConfig
   public static function getHomePermissionLimits(): array {
     return self::$config->get("home-permission-limits");
   }
+
+  public static function isShowCoordinates(): bool {
+    return self::$config->get("show-coordinates");
+  }
+  
   
 }

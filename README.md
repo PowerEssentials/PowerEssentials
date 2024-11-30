@@ -38,6 +38,7 @@ PowerEssentials plugin for Pocketmine-MP
 - [x] disable and enable commands
 - [x] gamemode set on join
 - [x] anti namespace
+- [x] vanilla coordinates
 - [ ] kits on join
 - [ ] join and leave message
 - [ ]
