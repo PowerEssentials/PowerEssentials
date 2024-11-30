@@ -37,3 +37,5 @@ permissions:
     default: true
   poweressentials.delhome:
     default: true
+  poweressentials.coordinates:
+    default: true

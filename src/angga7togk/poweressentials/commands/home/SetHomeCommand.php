@@ -4,7 +4,7 @@ namespace angga7togk\poweressentials\commands\home;
 
 use angga7togk\poweressentials\commands\PECommand;
 use angga7togk\poweressentials\config\PEConfig;
-use angga7togk\poweressentials\manager\user\HomeManager;
+use angga7togk\poweressentials\PowerEssentials;
 use angga7togk\poweressentials\utils\ValidationUtils;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
@@ -48,14 +48,14 @@ class SetHomeCommand extends PECommand
     }
 
     $homeName = $args[0];
-    $mgr = new HomeManager($sender);
+    $mgr = PowerEssentials::getInstance()->getUserManager($sender);
     if (PEConfig::isHomePermissionLimit()) {
       if ($mgr->getHomeCount() >= $max = $mgr->getHomeLimit()) {
         $sender->sendMessage($prefix . strtr($msg['max-home'], ["{max}" => $max]));
         return;
       }
     }
-    $mgr->createHome($homeName, $sender->getPosition());
+    $mgr->createHome($homeName);
     $sender->sendMessage($prefix . strtr($msg['set'], ["{home}" => $homeName]));
   }
 }

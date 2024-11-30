@@ -4,7 +4,7 @@ namespace angga7togk\poweressentials\commands\home;
 
 use angga7togk\poweressentials\commands\PECommand;
 use angga7togk\poweressentials\config\PEConfig;
-use angga7togk\poweressentials\manager\user\HomeManager;
+use angga7togk\poweressentials\PowerEssentials;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 
@@ -25,7 +25,7 @@ class HomeCommand extends PECommand
       return;
     }
 
-    $mgr = new HomeManager($sender);
+    $mgr = PowerEssentials::getInstance()->getUserManager($sender);
     if (!isset($args[0])) {
       $sender->sendMessage($prefix . implode(",", $mgr->getHomeNames()));
       return;

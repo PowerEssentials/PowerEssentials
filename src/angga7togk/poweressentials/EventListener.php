@@ -7,64 +7,65 @@ use angga7togk\poweressentials\manager\user\NicknameManager;
 use angga7togk\poweressentials\message\Message;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerJoinEvent;
+use pocketmine\event\player\PlayerLoginEvent;
+use pocketmine\event\player\PlayerQuitEvent;
 use pocketmine\network\mcpe\protocol\GameRulesChangedPacket;
 use pocketmine\network\mcpe\protocol\types\BoolGameRule;
-use pocketmine\Server;
-use pocketmine\world\Position;
 
 class EventListener implements Listener
 {
 
 	public function __construct(private PowerEssentials $plugin) {}
 
-	public function gamemodeSetOnJoin(PlayerJoinEvent $event): void
-	{
+	public function onLogin(PlayerLoginEvent $event): void{
 		$player = $event->getPlayer();
-		if (PEConfig::isGamemodeJoin()) {
-			$gamemode = PEConfig::getGamemodeJoin();
-			if ($gamemode != null) {
-				$player->setGamemode($gamemode);
-			}
-		}
-	}
+		$this->plugin->registerUserManager($player);
 
-	public function spawnToLobbyOnJoin(PlayerJoinEvent $event): void
-	{
-		$player = $event->getPlayer();
-		if (PEConfig::isSpawnLobbyJoin()) {
-			$posLobby = $this->plugin->getDataManager()->getLobby();
-			if ($posLobby != null) {
-				$player->teleport($posLobby);
-			}
-		}
-	}
-
-	public function setCustomNickOnJoin(PlayerJoinEvent $event): void
-	{
-		$player = $event->getPlayer();
-		$nickMgr = new NicknameManager($player);
-		if ($nick = $nickMgr->getCustomNick() != null) {
-			$player->setDisplayName($nick);
-		}
-	}
-
-	public function coordinatesOnJoin(PlayerJoinEvent $event): void
-	{
-		if (PEConfig::isShowCoordinates()) {
-			$pk = new GameRulesChangedPacket();
-			$pk->gameRules = ["showcoordinates" => new BoolGameRule(true, false)];
-			$event->getPlayer()->getNetworkSession()->sendDataPacket($pk);
-		}
-	}
-
-	public function antiNamespaceJoin(PlayerJoinEvent $event): void
-	{
-		$player = $event->getPlayer();
+		// Anti namespace
 		if (!$player->hasPermission("poweressentials.antinamespace.bypass")) {
 			if (PEConfig::isAntiNamespace()) {
 				if (strpos($player->getName(), " ")) {
 					$player->kick(Message::getMessage()['general']['no-namespace']);
 				}
+			}
+		}
+
+
+	}
+
+	public function onQuit(PlayerQuitEvent $event): void{
+		$this->plugin->unregisterUserManager($event->getPlayer());
+	}
+
+
+	public function onJoin(PlayerJoinEvent $event): void
+	{
+		$player = $event->getPlayer();
+		$mgr = $this->plugin->getUserManager($player);
+
+		// Coordinates
+		if ($mgr->getCoordinatesShow()) {
+			$pk = new GameRulesChangedPacket();
+			$pk->gameRules = ["showcoordinates" => new BoolGameRule(true, false)];
+			$event->getPlayer()->getNetworkSession()->sendDataPacket($pk);
+		}
+
+		// Custom Nickname
+		if (($nick = $mgr->getCustomNick()) != null) {
+			$player->setDisplayName($nick);
+		}
+
+		// Force Gamemode
+		if (PEConfig::isGamemodeJoin()) {
+			if (($gamemode = PEConfig::getGamemodeJoin()) != null) {
+				$player->setGamemode($gamemode);
+			}
+		}
+
+		// Spawn Lobby 
+		if (PEConfig::isSpawnLobbyJoin()) {
+			if (($posLobby = $this->plugin->getDataManager()->getLobby()) != null) {
+				$player->teleport($posLobby);
 			}
 		}
 	}

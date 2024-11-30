@@ -3,7 +3,7 @@
 namespace angga7togk\poweressentials\commands;
 
 use angga7togk\poweressentials\config\PEConfig;
-use angga7togk\poweressentials\manager\user\NicknameManager;
+use angga7togk\poweressentials\PowerEssentials;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 use pocketmine\Server;
@@ -44,8 +44,8 @@ class NicknameCommand extends PECommand
 			return;
 		}
 		$targetName = $args[1] ?? $sender->getName();
-		$target = Server::getInstance()->getPlayerByPrefix($targetName);
-		$mgr = new NicknameManager($target);
+		$target = Server::getInstance()->getPlayerExact($targetName);
+		$mgr = PowerEssentials::getInstance()->getUserManager($sender);
 		if ($target == null) {
 			$sender->sendMessage($prefix . $message['general']['player-null']);
 			return;

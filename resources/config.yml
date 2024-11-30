@@ -22,6 +22,7 @@ spawn-lobby-join: true
 anti-namespace: false
 
 # show vanilla coordinates
+# when show-coordinates is false, command /coordinates for player will not work
 show-coordinates: true
 
 ##################################
@@ -43,12 +44,9 @@ blacklist-nicknames:
 # commands option disable and enabled
 # set false to disable
 # set true to enable
-commands:
-  lobby: true
-  fly: true
-  gamemode: true
-  nickname: true
-  home: true
+# List: lobby, fly, gamemode, nickname, home, coordinates
+disable-commands:
+  - command1
 
 
 ##################################

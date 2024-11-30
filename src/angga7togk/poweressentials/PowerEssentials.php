@@ -2,6 +2,7 @@
 
 namespace angga7togk\poweressentials;
 
+use angga7togk\poweressentials\commands\CoordinatesCommand;
 use angga7togk\poweressentials\commands\FlyCommand;
 use angga7togk\poweressentials\commands\gamemode\AdvantureCommand;
 use angga7togk\poweressentials\commands\gamemode\CreativeCommand;
@@ -15,13 +16,19 @@ use angga7togk\poweressentials\commands\lobby\SetLobbyCommand;
 use angga7togk\poweressentials\commands\NicknameCommand;
 use angga7togk\poweressentials\config\PEConfig;
 use angga7togk\poweressentials\manager\DataManager;
+use angga7togk\poweressentials\manager\UserManager;
 use angga7togk\poweressentials\message\Message;
+use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
 
 class PowerEssentials extends PluginBase
 {
 	private static PowerEssentials $instance;
 	private DataManager $dataManager;
+
+	/** @var UserManager[] */
+	private array $userManagers = [];
+	
 
 	protected function onLoad(): void
 	{
@@ -35,6 +42,18 @@ class PowerEssentials extends PluginBase
 		$this->loadCommands();
 		$this->loadListeners();
 		$this->dataManager = new DataManager($this);
+	}
+
+	public function registerUserManager(Player $player): void{
+		$this->userManagers[$player->getName()] = new UserManager($player);
+	}
+
+	public function unregisterUserManager(Player $player): void{
+		unset($this->userManagers[$player->getName()]);
+	}
+
+	public function getUserManager(Player $player): UserManager{
+		return $this->userManagers[$player->getName()] ?? $this->userManagers[$player->getName()] = new UserManager($player);
 	}
 
 	public function getDataManager(): DataManager
@@ -54,11 +73,12 @@ class PowerEssentials extends PluginBase
 			'fly' => [new FlyCommand()],
 			'gamemode' => [new AdvantureCommand(), new CreativeCommand(), new SpectatorCommand(), new SurvivalCommand()],
 			'nickname' => [new NicknameCommand()],
-			'home' => [new HomeCommand(), new DelHomeCommand, new SetHomeCommand()]
+			'home' => [new HomeCommand(), new DelHomeCommand, new SetHomeCommand()],
+			'coordinates' => [new CoordinatesCommand()],
 		];
 
 		foreach ($commands as $keyCmd => $valueCmd) {
-			if (PEConfig::isCommandActive($keyCmd)) {
+			if (!PEConfig::isCommandDisabled($keyCmd)) {
 				$this->getServer()->getCommandMap()->registerAll($this->getName(), $valueCmd);
 			}
 		}

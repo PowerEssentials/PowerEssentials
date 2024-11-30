@@ -53,31 +53,34 @@ class PEConfig
     return (int) self::$config->get("nickname-max-char");
   }
 
-  public static function isCommandActive(string $commandKey): bool
+
+  public static function isCommandDisabled(string $commandKey): bool
   {
-    if(!isset(self::$config->get("commands")[$commandKey])) return true;
-    return (bool) self::$config->get("commands")[$commandKey];
+    return in_array($commandKey, self::$config->get("disable-commands"));
   }
 
-  public static function isWorldBlacklistSetHome(string $world): bool{
+  public static function isWorldBlacklistSetHome(string $world): bool
+  {
     return in_array($world, self::$config->get("home-world-blacklists"));
   }
 
-  public static function isHomePermissionLimit(): bool{
+  public static function isHomePermissionLimit(): bool
+  {
     return self::$config->get("home-permission-limit");
   }
 
-  public static function getHomePermissionDefaultLimit(): int{
+  public static function getHomePermissionDefaultLimit(): int
+  {
     return (int) self::$config->get("home-permission-default-limit");
   }
 
-  public static function getHomePermissionLimits(): array {
+  public static function getHomePermissionLimits(): array
+  {
     return self::$config->get("home-permission-limits");
   }
 
-  public static function isShowCoordinates(): bool {
+  public static function isShowCoordinates(): bool
+  {
     return self::$config->get("show-coordinates");
   }
-  
-  
 }

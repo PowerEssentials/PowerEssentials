@@ -37,3 +37,8 @@ home:
   not-found: "§cHome not found."
   max-home: "§cMax home is {max}."
   blacklist: "§cYou can't set home in {world}."
+coordinates:
+  prefix: "§6[Coordinates] "
+  enable: "§6Coordinates enabled."
+  disable: "§cCoordinates disabled."
+  'off': "§cCoordinates is off."
