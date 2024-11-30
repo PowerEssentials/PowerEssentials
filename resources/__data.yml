@@ -1,1 +1,3 @@
 lobby: "255:100:255:world"
+warps:
+  spawn: "255:100:255:world"

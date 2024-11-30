@@ -39,3 +39,9 @@ permissions:
     default: true
   poweressentials.coordinates:
     default: true
+  poweressentials.warp:
+    default: true
+  poweressentials.addwarp:
+    default: op
+  poweressentials.delwarp:
+    default: op

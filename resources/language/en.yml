@@ -42,3 +42,10 @@ coordinates:
   enable: "§6Coordinates enabled."
   disable: "§cCoordinates disabled."
   'off': "§cCoordinates is off."
+warp:
+  prefix: "§6[Warp] "
+  add: "§6Success add warp {name}."
+  del: "§6Success delete warp {name}."
+  teleport: "§6Success teleport to warp {name}."
+  not-found: "§cWarp not found."
+  exists: "§cWarp already exists."

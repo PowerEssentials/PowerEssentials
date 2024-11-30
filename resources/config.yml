@@ -1,69 +1,54 @@
-##################################
-#         PowerEssentials        #
-##################################
-
-# config version
-# !!!dont change this!!!!
-config-version: 1.0
-
-# You can customize your own language via the language folder, just create it
-# example = id.yml
-# then change here to 'id'
-language: en
-
-# on join force set gamemode
-gamemode-join-enable: true
-gamemode-join: SURVIVAL
-
-# on join force spawn to lobby position
-spawn-lobby-join: true
-
+---
 # Players with space names are prohibited from entering
 anti-namespace: false
-
-# show vanilla coordinates
-# when show-coordinates is false, command /coordinates for player will not work
-show-coordinates: true
-
-##################################
-#            Nicknames           #
-##################################
-# maximum number of characters
-nickname-max-char: 15
-
 # blacklist nickname
 # This feature only works for /nickname
 blacklist-nicknames:
   - admin
   - owner
   - staff
-
-##################################
-#            Commands            #
+# config version
+# !!!dont change this!!!!
+config-version: 1
 ##################################
 # commands option disable and enabled
 # set false to disable
 # set true to enable
-# List: lobby, fly, gamemode, nickname, home, coordinates
+# List: lobby, fly, gamemode, nickname, home, coordinates, warp
 disable-commands:
   - command1
-
-
+gamemode-join: SURVIVAL
+# on join force set gamemode
+gamemode-join-enable: true
+home-permission-default-limit: 3
+# Permission Limit
+# if you enable this feature, you can limit the number of homes per player
+home-permission-limit: false
+home-permission-limits:
+  homelimit.10: 10
+  homelimit.5: 5
 ##################################
 #               HOME             #
+##################################
+#            Commands            #
 ##################################
 # blacklist set home in world
 home-world-blacklists:
   - world_nether
   - world_the_end
-
-# Permission Limit
-# if you enable this feature, you can limit the number of homes per player
-home-permission-limit: false
-home-permission-default-limit: 3
-
-home-permission-limits:
-  homelimit.5: 5
-  homelimit.10: 10
-
-
+# You can customize your own language via the language folder, just create it
+# example = id.yml
+# then change here to 'id'
+language: en
+##################################
+#            Nicknames           #
+##################################
+# maximum number of characters
+nickname-max-char: 15
+# show vanilla coordinates
+# when show-coordinates is false, command /coordinates for player will not work
+show-coordinates: true
+# on join force spawn to lobby position
+spawn-lobby-join: true##################################
+#         PowerEssentials        #
+##################################

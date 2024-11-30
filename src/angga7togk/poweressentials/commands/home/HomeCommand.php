@@ -27,7 +27,7 @@ class HomeCommand extends PECommand
 
     $mgr = PowerEssentials::getInstance()->getUserManager($sender);
     if (!isset($args[0])) {
-      $sender->sendMessage($prefix . implode(",", $mgr->getHomeNames()));
+      $sender->sendMessage($prefix . implode(", ", $mgr->getHomeNames()));
       return;
     }
 
@@ -36,16 +36,19 @@ class HomeCommand extends PECommand
       return;
     }
     $homeName = $args[0];
+
+    if (!$mgr->homeExists($homeName)) {
+      $sender->sendMessage($prefix . $msg['not-found']);
+      return;
+    }
+
     $worldName = $mgr->getHomeData($homeName)["world"];
     if (PEConfig::isWorldBlacklistSetHome($worldName)) {
       $sender->sendMessage($prefix . strtr($msg['blacklist'], ["{world}" => $worldName]));
       return;
     }
 
-    if (!$mgr->homeExists($homeName)) {
-      $sender->sendMessage($prefix . $msg['not-found']);
-      return;
-    }
+
 
     $home = $mgr->getHome($homeName);
     if ($home === null) {

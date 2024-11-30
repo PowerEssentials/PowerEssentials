@@ -14,6 +14,9 @@ use angga7togk\poweressentials\commands\home\SetHomeCommand;
 use angga7togk\poweressentials\commands\lobby\LobbyCommand;
 use angga7togk\poweressentials\commands\lobby\SetLobbyCommand;
 use angga7togk\poweressentials\commands\NicknameCommand;
+use angga7togk\poweressentials\commands\warp\AddWarpCommand;
+use angga7togk\poweressentials\commands\warp\DelWarpCommand;
+use angga7togk\poweressentials\commands\warp\WarpCommand;
 use angga7togk\poweressentials\config\PEConfig;
 use angga7togk\poweressentials\manager\DataManager;
 use angga7togk\poweressentials\manager\UserManager;
@@ -28,7 +31,7 @@ class PowerEssentials extends PluginBase
 
 	/** @var UserManager[] */
 	private array $userManagers = [];
-	
+
 
 	protected function onLoad(): void
 	{
@@ -44,15 +47,18 @@ class PowerEssentials extends PluginBase
 		$this->dataManager = new DataManager($this);
 	}
 
-	public function registerUserManager(Player $player): void{
+	public function registerUserManager(Player $player): void
+	{
 		$this->userManagers[$player->getName()] = new UserManager($player);
 	}
 
-	public function unregisterUserManager(Player $player): void{
+	public function unregisterUserManager(Player $player): void
+	{
 		unset($this->userManagers[$player->getName()]);
 	}
 
-	public function getUserManager(Player $player): UserManager{
+	public function getUserManager(Player $player): UserManager
+	{
 		return $this->userManagers[$player->getName()] ?? $this->userManagers[$player->getName()] = new UserManager($player);
 	}
 
@@ -75,6 +81,7 @@ class PowerEssentials extends PluginBase
 			'nickname' => [new NicknameCommand()],
 			'home' => [new HomeCommand(), new DelHomeCommand, new SetHomeCommand()],
 			'coordinates' => [new CoordinatesCommand()],
+			'warp' => [new WarpCommand(), new AddWarpCommand(), new DelWarpCommand()]
 		];
 
 		foreach ($commands as $keyCmd => $valueCmd) {

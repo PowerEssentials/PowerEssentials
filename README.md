@@ -8,7 +8,7 @@ PowerEssentials plugin for Pocketmine-MP
 - [ ] /tpa, /tpaccept /tpahere /tpacancel
 - [ ] /rtp, /randomteleport
 - [x] /home, /sethome, /delhome
-- [ ] /warp, /setwarp, /delwarp
+- [x] /warp, /addwarp, /delwarp
 - [ ] /heal, /feed and set another player
 - [ ] /vanish
 - [ ] /tp <player | player1 player2 | x y z | x y z world>
@@ -41,4 +41,3 @@ PowerEssentials plugin for Pocketmine-MP
 - [x] vanilla coordinates
 - [ ] kits on join
 - [ ] join and leave message
-- [ ]
