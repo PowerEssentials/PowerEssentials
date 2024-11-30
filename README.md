@@ -20,7 +20,7 @@ PowerEssentials plugin for Pocketmine-MP
 - [ ] /rules
 - [ ] /size <size> [player]
 - [ ] /afk [player]
-- [ ] /coordinates /coord (display coordinate)
+- [x] /coordinates /coord (display coordinate)
 - [ ] /good (good mode)
 - [ ] /mute [player]
 - [ ] /repair
