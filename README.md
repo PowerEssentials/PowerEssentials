@@ -9,10 +9,10 @@ PowerEssentials plugin for Pocketmine-MP
 - [ ] /rtp, /randomteleport
 - [x] /home, /sethome, /delhome
 - [x] /warp, /addwarp, /delwarp
-- [ ] /heal, /feed and set another player
+- [x] /heal, /feed and set another player
 - [ ] /vanish
 - [ ] /tp <player | player1 player2 | x y z | x y z world>
-- [ ] /tptoggle (anti tp)
+- [ ] /tptoggle (anti tp) 
 - [ ] /pvptoggle, /pvpt
 - [ ] /xp <add, reduce, set>
 - [ ] /kits
@@ -32,6 +32,7 @@ PowerEssentials plugin for Pocketmine-MP
 - [ ] /senditem <player> (transfer item in hand to another player)
 - [ ] /kickall [reason] (kick all player with reason or no)
 - [ ] /tpall [player]
+- [ ] /worldprotect <pvp, build, falldamage, entityspawn, hunger>
 
 ## Feature
 - [x] custom language

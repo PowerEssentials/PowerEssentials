@@ -45,3 +45,11 @@ permissions:
     default: op
   poweressentials.delwarp:
     default: op
+  poweressentials.heal:
+    default: op
+  poweressentials.heal.other:
+    default: op
+  poweressentials.feed:
+    default: op
+  poweressentials.feed.other:
+    default: op

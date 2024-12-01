@@ -8,6 +8,8 @@ use angga7togk\poweressentials\commands\gamemode\AdvantureCommand;
 use angga7togk\poweressentials\commands\gamemode\CreativeCommand;
 use angga7togk\poweressentials\commands\gamemode\SpectatorCommand;
 use angga7togk\poweressentials\commands\gamemode\SurvivalCommand;
+use angga7togk\poweressentials\commands\healfeed\FeedCommand;
+use angga7togk\poweressentials\commands\healfeed\HealCommand;
 use angga7togk\poweressentials\commands\home\DelHomeCommand;
 use angga7togk\poweressentials\commands\home\HomeCommand;
 use angga7togk\poweressentials\commands\home\SetHomeCommand;
@@ -81,7 +83,9 @@ class PowerEssentials extends PluginBase
 			'nickname' => [new NicknameCommand()],
 			'home' => [new HomeCommand(), new DelHomeCommand, new SetHomeCommand()],
 			'coordinates' => [new CoordinatesCommand()],
-			'warp' => [new WarpCommand(), new AddWarpCommand(), new DelWarpCommand()]
+			'warp' => [new WarpCommand(), new AddWarpCommand(), new DelWarpCommand()],
+			'heal' => [new HealCommand()],
+			'feed' => [new FeedCommand()],
 		];
 
 		foreach ($commands as $keyCmd => $valueCmd) {

@@ -26,7 +26,7 @@ class DelHomeCommand extends PECommand
     }
 
     if (!isset($args[0])) {
-      $sender->sendMessage($prefix . $msg['usage']);
+      $sender->sendMessage($prefix . $this->getUsage());
       return;
     }
 

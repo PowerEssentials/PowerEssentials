@@ -49,3 +49,9 @@ warp:
   teleport: "§6Success teleport to warp {name}."
   not-found: "§cWarp not found."
   exists: "§cWarp already exists."
+healfeed:
+  prefix: "§6[HealFeed] "
+  heal: "§6You have been healed."
+  feed: "§6You have been fed."
+  heal-other: "§6{player} has been healed."
+  feed-other: "§6{player} has been fed."
