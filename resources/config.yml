@@ -6,10 +6,8 @@
 # !!!dont change this!!!!
 config-version: 1.0
 
-# You can customize your own language via the language folder, just create it
-# example = id.yml
-# then change here to 'id'
-language: en
+# language
+language: en_us
 
 # on join force set gamemode
 gamemode-join-enable: true

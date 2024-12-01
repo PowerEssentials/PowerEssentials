@@ -4,6 +4,7 @@ namespace angga7togk\poweressentials\commands\home;
 
 use angga7togk\poweressentials\commands\PECommand;
 use angga7togk\poweressentials\config\PEConfig;
+use angga7togk\poweressentials\i18n\PELang;
 use angga7togk\poweressentials\PowerEssentials;
 use angga7togk\poweressentials\utils\ValidationUtils;
 use pocketmine\command\CommandSender;
@@ -15,15 +16,14 @@ class SetHomeCommand extends PECommand
   public function __construct()
   {
     parent::__construct("sethome", "set home", "/sethome <name>");
+    $this->setPrefix('home.prefix');
     $this->setPermission("sethome");
   }
 
-  public function run(CommandSender $sender, array $message, array $args): void
+  public function run(CommandSender $sender, string $prefix, PELang $lang, array $args): void
   {
-    $msg = $message['home'];
-    $prefix = $msg['prefix'];
     if (!($sender instanceof Player)) {
-      $sender->sendMessage($prefix . $message['general']['cmd-console']);
+      $sender->sendMessage($prefix . $lang->translateString('error.console'));
       return;
     }
 
@@ -33,17 +33,17 @@ class SetHomeCommand extends PECommand
     }
 
     if (!$this->testPermission($sender)) {
-      $sender->sendMessage($prefix . $message['general']['no-perm']);
+      $sender->sendMessage($prefix . $lang->translateString('error.permission'));
       return;
     }
 
     if (!ValidationUtils::isValidString($args[0])) {
-      $sender->sendMessage($prefix . $message['general']['invalid-name']);
+      $sender->sendMessage($prefix . $lang->translateString('error.invalid.name'));
       return;
     }
     $worldName = $sender->getWorld()->getFolderName();
     if (PEConfig::isWorldBlacklistSetHome($worldName)) {
-      $sender->sendMessage($prefix . strtr($msg['blacklist'], ["{world}" => $worldName]));
+      $sender->sendMessage($prefix . $lang->translateString('error.blacklist'), ["World $worldName"]);
       return;
     }
 
@@ -51,11 +51,16 @@ class SetHomeCommand extends PECommand
     $mgr = PowerEssentials::getInstance()->getUserManager($sender);
     if (PEConfig::isHomePermissionLimit()) {
       if ($mgr->getHomeCount() >= $max = $mgr->getHomeLimit()) {
-        $sender->sendMessage($prefix . strtr($msg['max-home'], ["{max}" => $max]));
+        $sender->sendMessage($prefix . $lang->translateString('home.error.max.home', [$max]));
         return;
       }
     }
+
+    if ($mgr->homeExists($homeName)) {
+      $sender->sendMessage($prefix . $lang->translateString('error.exists', [$homeName]));
+      return;
+    }
     $mgr->createHome($homeName);
-    $sender->sendMessage($prefix . strtr($msg['set'], ["{home}" => $homeName]));
+    $sender->sendMessage($prefix . $lang->translateString('home.set', [$homeName]));
   }
 }

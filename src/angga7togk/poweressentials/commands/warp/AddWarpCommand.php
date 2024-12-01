@@ -3,6 +3,7 @@
 namespace angga7togk\poweressentials\commands\warp;
 
 use angga7togk\poweressentials\commands\PECommand;
+use angga7togk\poweressentials\i18n\PELang;
 use angga7togk\poweressentials\PowerEssentials;
 use angga7togk\poweressentials\utils\ValidationUtils;
 use pocketmine\command\CommandSender;
@@ -14,21 +15,15 @@ class AddWarpCommand extends PECommand
   public function __construct()
   {
     parent::__construct('addwarp', 'add warp on server', '/addwarp <warpname>', ['createwarp']);
+    $this->setPrefix("warp.prefix");
     $this->setPermission("addwarp");
   }
 
-  public function run(CommandSender $sender, array $message, array $args): void
+  public function run(CommandSender $sender, string $prefix, PELang $lang, array $args): void
   {
-    $msg = $message['warp'];
-    $prefix = $msg['prefix'];
 
     if (!($sender instanceof Player)) {
-      $sender->sendMessage($prefix . $message['general']['cmd-console']);
-      return;
-    }
-
-    if (!$this->testPermission($sender)) {
-      $sender->sendMessage($prefix . $message['general']['no-perm']);
+      $sender->sendMessage($prefix . $lang->translateString('error.console'));
       return;
     }
 
@@ -38,20 +33,18 @@ class AddWarpCommand extends PECommand
     }
 
     if (!ValidationUtils::isValidString($args[0])) {
-      $sender->sendMessage($prefix . $message['general']['invalid-name']);
+      $sender->sendMessage($prefix . $lang->translateString('error.invalid.name'));
       return;
     }
 
     $mgr = PowerEssentials::getInstance()->getDataManager();
 
     if ($mgr->warpExists($args[0])) {
-      $sender->sendMessage($prefix . $msg['exists']);
+      $sender->sendMessage($prefix . $lang->translateString('error.exists', [$args[0]]));
       return;
     }
 
     $mgr->addWarp($args[0], $sender->getPosition());
-    $sender->sendMessage($prefix . strtr($msg['add'], [
-      '{name}' => $args[0]
-    ]));
+    $sender->sendMessage($prefix . $lang->translateString('warp.add', [$args[0]]));
   }
 }

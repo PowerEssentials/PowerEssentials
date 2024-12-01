@@ -3,6 +3,7 @@
 namespace angga7togk\poweressentials;
 
 use angga7togk\poweressentials\config\PEConfig;
+use angga7togk\poweressentials\i18n\PELang;
 use angga7togk\poweressentials\manager\user\NicknameManager;
 use angga7togk\poweressentials\message\Message;
 use pocketmine\event\Listener;
@@ -25,7 +26,7 @@ class EventListener implements Listener
 		if (!$player->hasPermission("poweressentials.antinamespace.bypass")) {
 			if (PEConfig::isAntiNamespace()) {
 				if (strpos($player->getName(), " ")) {
-					$player->kick(Message::getMessage()['general']['no-namespace']);
+					$player->kick(PELang::fromConsole()->translateString('error.namespace'));
 				}
 			}
 		}

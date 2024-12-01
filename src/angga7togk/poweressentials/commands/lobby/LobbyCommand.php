@@ -3,34 +3,31 @@
 namespace angga7togk\poweressentials\commands\lobby;
 
 use angga7togk\poweressentials\commands\PECommand;
+use angga7togk\poweressentials\i18n\PELang;
 use angga7togk\poweressentials\PowerEssentials;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
-use pocketmine\Server;
-use pocketmine\world\Position;
 
-class LobbyCommand extends PECommand{
+class LobbyCommand extends PECommand
+{
 
     public function __construct()
     {
         parent::__construct("lobby", "teleport to lobby spawn", "/lobby", ["hub", "lobbytp"]);
+        $this->setPrefix("lobby.prefix");
         $this->setPermission("lobby");
     }
-    public function run(CommandSender $sender, array $message, array $args): void
+    public function run(CommandSender $sender, string $prefix, PELang $lang, array $args): void
     {
-        $msg = $message['lobby'];
-		$prefix = $msg['prefix'];
-        if (!$this->testPermission($sender)) return;
-        if(!$sender instanceof Player){
-            $sender->sendMessage($prefix . $message['general']['cmd-console']);
+        if (!$sender instanceof Player) {
+            $sender->sendMessage($this->getPrefix() . $lang->translateString('error.console'));
             return;
         }
-        $posLobby = PowerEssentials::getInstance()->getDataManager()->getLobby();
-        if($posLobby === null){
-            $sender->sendMessage($prefix . $msg['noset']);
+        if (($posLobby = PowerEssentials::getInstance()->getDataManager()->getLobby()) === null) {
+            $sender->sendMessage($this->getPrefix() . $lang->translateString('error.null'));
             return;
         }
         $sender->teleport($posLobby);
-        $sender->sendMessage($prefix . $msg['teleported']);
+        $sender->sendMessage($this->getPrefix() . $lang->translateString('lobby.teleported'));
     }
 }

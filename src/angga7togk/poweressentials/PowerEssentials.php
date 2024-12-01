@@ -20,6 +20,7 @@ use angga7togk\poweressentials\commands\warp\AddWarpCommand;
 use angga7togk\poweressentials\commands\warp\DelWarpCommand;
 use angga7togk\poweressentials\commands\warp\WarpCommand;
 use angga7togk\poweressentials\config\PEConfig;
+use angga7togk\poweressentials\i18n\PELang;
 use angga7togk\poweressentials\manager\DataManager;
 use angga7togk\poweressentials\manager\UserManager;
 use angga7togk\poweressentials\message\Message;
@@ -34,6 +35,8 @@ class PowerEssentials extends PluginBase
 	/** @var UserManager[] */
 	private array $userManagers = [];
 
+	private PELang $lang;
+
 
 	protected function onLoad(): void
 	{
@@ -43,7 +46,7 @@ class PowerEssentials extends PluginBase
 	public function onEnable(): void
 	{
 		PEConfig::init();
-		Message::init();
+		$this->loadResources();
 		$this->loadCommands();
 		$this->loadListeners();
 		$this->dataManager = new DataManager($this);
@@ -67,6 +70,48 @@ class PowerEssentials extends PluginBase
 	public function getDataManager(): DataManager
 	{
 		return $this->dataManager;
+	}
+
+	private function loadResources(): void
+	{
+		$oldLanguageDir = $this->getDataFolder() . "language";
+		if (file_exists($oldLanguageDir)) {
+			$this->unlinkRecursive($oldLanguageDir);
+		}
+
+		$resources = $this->getResources();
+		foreach ($resources as $resource) {
+			$fileName = $resource->getFileName();
+			$extension = $this->getFileExtension($fileName);
+
+			if ($extension !== PELang::LANGUAGE_EXTENSION) continue;
+
+			$lang = new PELang($resource);
+			$this->getLogger()->debug("Loaded language file: {$lang->getLang()}.ini");
+		}
+		PELang::setConsoleLocale(PEConfig::getLang());
+		$this->lang = PELang::fromConsole();
+		$message = $this->lang->translateString("language.selected", [
+			$this->lang->getName(),
+			$this->lang->getLang(),
+		]);
+		$this->getLogger()->info($message);
+	}
+
+	private function unlinkRecursive(string $dir): bool
+	{
+		$files = array_diff(scandir($dir), [".", ".."]);
+		foreach ($files as $file) {
+			$path = $dir . DIRECTORY_SEPARATOR . $file;
+			is_dir($path) ? $this->unlinkRecursive($path) : unlink($path);
+		}
+		return rmdir($dir);
+	}
+
+	private function getFileExtension(string $path): string
+	{
+		$exploded = explode(".", $path);
+		return $exploded[array_key_last($exploded)];
 	}
 
 	private function loadListeners(): void

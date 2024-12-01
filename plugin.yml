@@ -15,7 +15,13 @@ permissions:
     default: op
   poweressentials.antinamespace.bypass:
     default: op
-  poweressentials.gamemode:
+  poweressentials.gamemode.gmc:
+    default: op
+  poweressentials.gamemode.gms:
+    default: op
+  poweressentials.gamemode.gma:
+    default: op
+  poweressentials.gamemode.gmspc:
     default: op
   poweressentials.gamemode.other:
     default: op

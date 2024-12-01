@@ -14,7 +14,7 @@ class UserManager extends PEConfig
   private PowerEssentials $plugin;
   private Player $player;
   private Config $data;
-
+  
   use HomeTrait;
   use NicknameTrait;
 

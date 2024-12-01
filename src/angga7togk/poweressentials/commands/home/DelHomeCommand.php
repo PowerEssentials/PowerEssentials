@@ -3,6 +3,7 @@
 namespace angga7togk\poweressentials\commands\home;
 
 use angga7togk\poweressentials\commands\PECommand;
+use angga7togk\poweressentials\i18n\PELang;
 use angga7togk\poweressentials\PowerEssentials;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
@@ -13,15 +14,14 @@ class DelHomeCommand extends PECommand
   public function __construct()
   {
     parent::__construct("delhome", "delete home", "/delhome <name>");
+    $this->setPrefix('home.prefix');
     $this->setPermission("delhome");
   }
 
-  public function run(CommandSender $sender, array $message, array $args): void
+  public function run(CommandSender $sender, string $prefix, PELang $lang, array $args): void
   {
-    $msg = $message['home'];
-    $prefix = $msg['prefix'];
     if (!($sender instanceof Player)) {
-      $sender->sendMessage($prefix . $message['general']['cmd-console']);
+      $sender->sendMessage($prefix . $lang->translateString('error.console'));
       return;
     }
 
@@ -31,18 +31,18 @@ class DelHomeCommand extends PECommand
     }
 
     if (!$this->testPermission($sender)) {
-      $sender->sendMessage($prefix . $message['general']['no-perm']);
+      $sender->sendMessage($prefix . $lang->translateString('error.permission'));
       return;
     }
 
     $homeName = $args[0];
     $mgr = PowerEssentials::getInstance()->getUserManager($sender);
     if (!$mgr->homeExists($homeName)) {
-      $sender->sendMessage($prefix . $msg['not-found']);
+      $sender->sendMessage($prefix . $lang->translateString('error.null'));
       return;
     }
 
     $mgr->deleteHome($homeName);
-    $sender->sendMessage($prefix . strtr($msg['del'], ["{home}" => $homeName]));
+    $sender->sendMessage($prefix . $lang->translateString('home.del', [$homeName]));
   }
 }
