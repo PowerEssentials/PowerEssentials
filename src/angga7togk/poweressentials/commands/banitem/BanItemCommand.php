@@ -29,7 +29,7 @@ class BanItemCommand extends PECommand
 
     $item = $sender->getInventory()->getItemInHand();
 
-    if($item->isNull() || $item instanceof Air){
+    if($item->isNull() || $item === null){
       $sender->sendMessage($prefix . $lang->translateString('banitem.error.hold.item'));
       return;
     }
