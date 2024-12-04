@@ -5,6 +5,7 @@ PowerEssentials plugin for Pocketmine-MP
 - [x] /gmc, /gms, /gmspc, /gma and set other player
 - [x] /fly and set other player
 - [x] /nickname <nickname, reset> [player]
+- [x] /banitem [world], /unbanitem [world], /banitemlist [world]
 - [ ] /tpa, /tpaccept /tpahere /tpacancel
 - [ ] /rtp, /randomteleport
 - [x] /home, /sethome, /delhome

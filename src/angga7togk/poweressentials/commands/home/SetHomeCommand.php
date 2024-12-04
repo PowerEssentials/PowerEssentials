@@ -43,7 +43,7 @@ class SetHomeCommand extends PECommand
     }
     $worldName = $sender->getWorld()->getFolderName();
     if (PEConfig::isWorldBlacklistSetHome($worldName)) {
-      $sender->sendMessage($prefix . $lang->translateString('error.blacklist'), ["World $worldName"]);
+      $sender->sendMessage($prefix . $lang->translateString('error.blacklist', [$worldName]));
       return;
     }
 

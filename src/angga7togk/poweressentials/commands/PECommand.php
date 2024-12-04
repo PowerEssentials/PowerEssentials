@@ -6,6 +6,7 @@ use angga7togk\poweressentials\i18n\PELang;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\lang\Translatable;
+use pocketmine\utils\TextFormat;
 
 abstract class PECommand extends Command
 {
@@ -18,7 +19,7 @@ abstract class PECommand extends Command
 
     public function setPrefix(string $prefixLang): void
     {
-        $this->prefix = "§6" . PELang::fromConsole()->translateString($prefixLang) . " ";
+        $this->prefix = TextFormat::GOLD . PELang::fromConsole()->translateString($prefixLang) . " ";
     }
 
     public function getPrefix(): string

@@ -40,7 +40,7 @@ class HomeCommand extends PECommand
 
     $worldName = $mgr->getHomeData($homeName)["world"];
     if (PEConfig::isWorldBlacklistSetHome($worldName)) {
-      $sender->sendMessage($prefix . $lang->translateString("error.blacklist"), ["World $worldName"]);
+      $sender->sendMessage($prefix . $lang->translateString("error.blacklist", [$worldName]));
       return;
     }
 

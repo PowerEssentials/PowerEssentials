@@ -2,6 +2,9 @@
 
 namespace angga7togk\poweressentials;
 
+use angga7togk\poweressentials\commands\banitem\BanItemCommand;
+use angga7togk\poweressentials\commands\banitem\BanItemListCommand;
+use angga7togk\poweressentials\commands\banitem\UnbanItemCommand;
 use angga7togk\poweressentials\commands\CoordinatesCommand;
 use angga7togk\poweressentials\commands\FlyCommand;
 use angga7togk\poweressentials\commands\gamemode\AdvantureCommand;
@@ -23,7 +26,6 @@ use angga7togk\poweressentials\config\PEConfig;
 use angga7togk\poweressentials\i18n\PELang;
 use angga7togk\poweressentials\manager\DataManager;
 use angga7togk\poweressentials\manager\UserManager;
-use angga7togk\poweressentials\message\Message;
 use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
 
@@ -45,11 +47,10 @@ class PowerEssentials extends PluginBase
 
 	public function onEnable(): void
 	{
-		PEConfig::init();
 		$this->loadResources();
+		$this->dataManager = new DataManager($this);
 		$this->loadCommands();
 		$this->loadListeners();
-		$this->dataManager = new DataManager($this);
 	}
 
 	public function registerUserManager(Player $player): void
@@ -74,6 +75,9 @@ class PowerEssentials extends PluginBase
 
 	private function loadResources(): void
 	{
+		/** place this on first */
+		PEConfig::init();
+
 		$oldLanguageDir = $this->getDataFolder() . "language";
 		if (file_exists($oldLanguageDir)) {
 			$this->unlinkRecursive($oldLanguageDir);
@@ -131,6 +135,7 @@ class PowerEssentials extends PluginBase
 			'warp' => [new WarpCommand(), new AddWarpCommand(), new DelWarpCommand()],
 			'heal' => [new HealCommand()],
 			'feed' => [new FeedCommand()],
+			'banitem' => [new BanItemCommand(), new UnbanItemCommand(), new BanItemListCommand()]
 		];
 
 		foreach ($commands as $keyCmd => $valueCmd) {

@@ -2,6 +2,7 @@
 
 namespace angga7togk\poweressentials\manager;
 
+use angga7togk\poweressentials\manager\data\BanItemTrait;
 use angga7togk\poweressentials\manager\data\LobbyTrait;
 use angga7togk\poweressentials\manager\data\WarpTrait;
 use angga7togk\poweressentials\PowerEssentials;
@@ -15,6 +16,7 @@ class DataManager
 
   use LobbyTrait;
   use WarpTrait;
+  use BanItemTrait;
 
   public function __construct(PowerEssentials $plugin)
   {
