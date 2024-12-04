@@ -19,6 +19,7 @@ use angga7togk\poweressentials\commands\home\SetHomeCommand;
 use angga7togk\poweressentials\commands\lobby\LobbyCommand;
 use angga7togk\poweressentials\commands\lobby\SetLobbyCommand;
 use angga7togk\poweressentials\commands\NicknameCommand;
+use angga7togk\poweressentials\commands\SudoCommand;
 use angga7togk\poweressentials\commands\warp\AddWarpCommand;
 use angga7togk\poweressentials\commands\warp\DelWarpCommand;
 use angga7togk\poweressentials\commands\warp\WarpCommand;
@@ -135,6 +136,7 @@ class PowerEssentials extends PluginBase
 			'warp' => [new WarpCommand(), new AddWarpCommand(), new DelWarpCommand()],
 			'heal' => [new HealCommand()],
 			'feed' => [new FeedCommand()],
+			'sudo' => [new SudoCommand()],
 			'banitem' => [new BanItemCommand(), new UnbanItemCommand(), new BanItemListCommand()]
 		];
 

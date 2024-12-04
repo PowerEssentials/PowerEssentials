@@ -59,6 +59,8 @@ permissions:
     default: op
   poweressentials.feed.other:
     default: op
+  poweressentials.sudo:
+    default: op
   poweressentials.banitem:
     default: op
   poweressentials.banitem.bypass:
