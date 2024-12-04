@@ -16,15 +16,23 @@ class SudoCommand extends PECommand {
     }
 
     public function run(CommandSender $sender, string $prefix, PELang $lang, array $args): void {
-        if (empty($args)) {
+        if (count($args) < 2) {
             $sender->sendMessage($prefix . $this->getUsage());
             return;
         }
-        if (!($target = Server::getInstance()->getPlayerExact($args[0])) instanceof Player) {
+
+        $targetName = array_shift($args);
+        $target = Server::getInstance()->getPlayerExact($targetName);
+        
+        if (!$target instanceof Player) { 
             $sender->sendMessage($prefix . $lang->translateString('error.player.null'));
             return;
         }
-        $target->chat(array_shift($args));
+
+        $commandOrMessage = implode(" ", $args);
+        $target->chat($commandOrMessage); 
+
+        $sender->sendMessage($prefix . $lang->translateString('sudo.success', [$target->getName()]));
     }
 
 }
