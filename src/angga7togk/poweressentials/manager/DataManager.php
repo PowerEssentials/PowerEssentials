@@ -5,6 +5,7 @@ namespace angga7togk\poweressentials\manager;
 use angga7togk\poweressentials\manager\data\BanItemTrait;
 use angga7togk\poweressentials\manager\data\LobbyTrait;
 use angga7togk\poweressentials\manager\data\WarpTrait;
+use angga7togk\poweressentials\manager\data\WorldProtectTrait;
 use angga7togk\poweressentials\PowerEssentials;
 use pocketmine\utils\Config;
 
@@ -17,6 +18,7 @@ class DataManager
   use LobbyTrait;
   use WarpTrait;
   use BanItemTrait;
+  use WorldProtectTrait;
 
   public function __construct(PowerEssentials $plugin)
   {

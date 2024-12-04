@@ -23,8 +23,11 @@ use angga7togk\poweressentials\commands\SudoCommand;
 use angga7togk\poweressentials\commands\warp\AddWarpCommand;
 use angga7togk\poweressentials\commands\warp\DelWarpCommand;
 use angga7togk\poweressentials\commands\warp\WarpCommand;
+use angga7togk\poweressentials\commands\WorldProtectCommand;
 use angga7togk\poweressentials\config\PEConfig;
 use angga7togk\poweressentials\i18n\PELang;
+use angga7togk\poweressentials\listeners\EventListener;
+use angga7togk\poweressentials\listeners\WorldProtectListener;
 use angga7togk\poweressentials\manager\DataManager;
 use angga7togk\poweressentials\manager\UserManager;
 use pocketmine\player\Player;
@@ -121,6 +124,7 @@ class PowerEssentials extends PluginBase
 
 	private function loadListeners(): void
 	{
+		$this->getServer()->getPluginManager()->registerEvents(new WorldProtectListener($this), $this);
 		$this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
 	}
 
@@ -137,7 +141,8 @@ class PowerEssentials extends PluginBase
 			'heal' => [new HealCommand()],
 			'feed' => [new FeedCommand()],
 			'sudo' => [new SudoCommand()],
-			'banitem' => [new BanItemCommand(), new UnbanItemCommand(), new BanItemListCommand()]
+			'banitem' => [new BanItemCommand(), new UnbanItemCommand(), new BanItemListCommand()],
+			'worldprotect' => [new WorldProtectCommand()]
 		];
 
 		foreach ($commands as $keyCmd => $valueCmd) {

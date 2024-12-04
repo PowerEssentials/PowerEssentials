@@ -6,7 +6,6 @@ use angga7togk\poweressentials\commands\PECommand;
 use pocketmine\command\CommandSender;
 use angga7togk\poweressentials\i18n\PELang;
 use angga7togk\poweressentials\PowerEssentials;
-use pocketmine\block\Air;
 use pocketmine\player\Player;
 use pocketmine\Server;
 
@@ -29,7 +28,7 @@ class UnbanItemCommand extends PECommand
 
     $item = $sender->getInventory()->getItemInHand(); 
 
-    if($item->isNull() || $item === null){
+    if($item->isNull()){
       $sender->sendMessage($prefix . $lang->translateString('banitem.error.hold.item'));
       return;
     }

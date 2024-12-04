@@ -65,3 +65,7 @@ permissions:
     default: op
   poweressentials.banitem.bypass:
     default: op
+  poweressentials.worldprotect:
+    default: op
+  poweressentials.worldprotect.bypass:
+    default: op

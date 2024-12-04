@@ -1,6 +1,9 @@
 # PowerEssentials
-PowerEssentials plugin for Pocketmine-MP
-## Commands
+
+
+PowerEssentials is a plugin for Pocketmine-MP designed to enhance server management and provide essential commands for players and administrators. It simplifies server operations and adds useful features to improve the gameplay experience.
+
+## Commands 
 - [x] /hub, /lobby, /setlobby
 - [x] /gmc, /gms, /gmspc, /gma and set other player
 - [x] /fly and set other player
@@ -33,7 +36,7 @@ PowerEssentials plugin for Pocketmine-MP
 - [ ] /senditem <player> (transfer item in hand to another player)
 - [ ] /kickall [reason] (kick all player with reason or no)
 - [ ] /tpall [player]
-- [ ] /worldprotect <pvp, build, falldamage, entityspawn, hunger>
+- [x] /worldprotect <place, break, pvp, hunger, health, falldamage, interaction, explosion> <value: true | false> [world]
 
 ## Feature
 - [x] custom language
