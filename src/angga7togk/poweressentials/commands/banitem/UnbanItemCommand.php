@@ -43,6 +43,6 @@ class UnbanItemCommand extends PECommand
     $mgr = PowerEssentials::getInstance()->getDataManager();
     $mgr->unbanItem($item, $world);
 
-    $sender->sendMessage($prefix . $lang->translateString('banitem.ban.success'));
+    $sender->sendMessage($prefix . $lang->translateString('banitem.unban.success'));
   }
 }

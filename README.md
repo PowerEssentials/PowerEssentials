@@ -40,7 +40,7 @@
 | `/home`, `/sethome`, `/delhome`        | Manage homes for players.                                        | ✅     |
 | `/warp`, `/addwarp`, `/delwarp`        | Create and teleport to warps.                                    | ✅     |
 | `/heal`, `/feed`                       | Heal or feed yourself or another player.                         | ✅     |
-| `/vanish`                              | Toggle vanish mode (coming soon).                                | ⏳     |
+| `/vanish [player]`, `/vanishlist`                             | Toggle vanish mode.                                | ✅     |
 | `/tp <player/player1 player2/x y z>`   | Teleport to a player or coordinates (coming soon).               | ⏳     |
 | `/tptoggle`                            | Block teleport requests (coming soon).                           | ⏳     |
 | `/pvptoggle`, `/pvpt`                  | Enable or disable PvP (coming soon).                             | ⏳     |

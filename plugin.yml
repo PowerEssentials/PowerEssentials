@@ -69,3 +69,9 @@ permissions:
     default: op
   poweressentials.worldprotect.bypass:
     default: op
+  poweressentials.vanish:
+    default: op
+  poweressentials.vanish.other:
+    default: op
+  poweressentials.vanish.see:
+    default: op

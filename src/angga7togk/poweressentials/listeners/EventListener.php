@@ -2,6 +2,7 @@
 
 namespace angga7togk\poweressentials\listeners;
 
+use angga7togk\poweressentials\commands\vanish\VanishCommand;
 use angga7togk\poweressentials\config\PEConfig;
 use angga7togk\poweressentials\i18n\PELang;
 use angga7togk\poweressentials\manager\DataManager;
@@ -9,6 +10,7 @@ use angga7togk\poweressentials\PowerEssentials;
 use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\event\block\BlockPlaceEvent;
 use pocketmine\event\entity\EntityDamageByEntityEvent;
+use pocketmine\event\entity\EntityItemPickupEvent;
 use pocketmine\event\Event;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerInteractEvent;
@@ -43,9 +45,23 @@ class EventListener implements Listener
 		}
 	}
 
+	public function onDropPickup(EntityItemPickupEvent $event)
+	{
+		$player = $event->getEntity();
+		if ($player instanceof Player && VanishCommand::isVanished($player)) {
+			$event->cancel();
+		}
+	}
+
 	public function onQuit(PlayerQuitEvent $event): void
 	{
-		$this->plugin->unregisterUserManager($event->getPlayer());
+		$player = $event->getPlayer();
+		$this->plugin->unregisterUserManager($player);
+
+		// Vanish unset data
+		if (VanishCommand::isVanished($player)) {
+			VanishCommand::unsetDataVanish($player);
+		}
 	}
 
 

@@ -20,6 +20,8 @@ use angga7togk\poweressentials\commands\lobby\LobbyCommand;
 use angga7togk\poweressentials\commands\lobby\SetLobbyCommand;
 use angga7togk\poweressentials\commands\NicknameCommand;
 use angga7togk\poweressentials\commands\SudoCommand;
+use angga7togk\poweressentials\commands\vanish\VanishCommand;
+use angga7togk\poweressentials\commands\vanish\VanishListCommand;
 use angga7togk\poweressentials\commands\warp\AddWarpCommand;
 use angga7togk\poweressentials\commands\warp\DelWarpCommand;
 use angga7togk\poweressentials\commands\warp\WarpCommand;
@@ -30,6 +32,7 @@ use angga7togk\poweressentials\listeners\EventListener;
 use angga7togk\poweressentials\listeners\WorldProtectListener;
 use angga7togk\poweressentials\manager\DataManager;
 use angga7togk\poweressentials\manager\UserManager;
+use angga7togk\poweressentials\task\VanishTask;
 use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
 
@@ -54,6 +57,7 @@ class PowerEssentials extends PluginBase
 		$this->loadResources();
 		$this->dataManager = new DataManager($this);
 		$this->loadCommands();
+		$this->loadTasks();
 		$this->loadListeners();
 	}
 
@@ -122,6 +126,11 @@ class PowerEssentials extends PluginBase
 		return $exploded[array_key_last($exploded)];
 	}
 
+	private function loadTasks(): void
+	{
+		$this->getScheduler()->scheduleRepeatingTask(new VanishTask(), 35);
+	}
+
 	private function loadListeners(): void
 	{
 		$this->getServer()->getPluginManager()->registerEvents(new WorldProtectListener($this), $this);
@@ -142,7 +151,8 @@ class PowerEssentials extends PluginBase
 			'feed' => [new FeedCommand()],
 			'sudo' => [new SudoCommand()],
 			'banitem' => [new BanItemCommand(), new UnbanItemCommand(), new BanItemListCommand()],
-			'worldprotect' => [new WorldProtectCommand()]
+			'worldprotect' => [new WorldProtectCommand()],
+			'vanish' => [new VanishCommand(), new VanishListCommand()]
 		];
 
 		foreach ($commands as $keyCmd => $valueCmd) {
