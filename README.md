@@ -22,6 +22,7 @@
 - **Vanilla coordinates**: Display precise coordinates for players.
 - **Anti-namespace protection**: Prevent unauthorized namespace usage.
 - **Upcoming features**: Kits on join, join/leave messages, and more!
+
 ---
 
 ## 📜 Commands
@@ -46,10 +47,11 @@
 | `/kits`                                | Access predefined kits (coming soon).                            | ⏳     |
 | `/sudo <player> <message/command>`     | Execute a command or send a message as another player.           | ✅     |
 | `/rules`                               | Display server rules (coming soon).                              | ⏳     |
-| `/size <size> [player]`                | Change player size (coming soon).                                | ⏳     |
-| `/afk [player]`                        | Mark yourself or others as AFK (coming soon).                    | ⏳     |
+| `/size <size>`                         | Change player size.                                              | ✅     |
+| `/afk`                                 | Mark yourself as AFK.                                            | ✅     |
 | `/coordinates`                         | Display current coordinates.                                     | ✅     |
 | `/good`                                | Activate "good mode" (coming soon).                              | ⏳     |
+| `/bless`                               | Clear bad effects (coming soon).                                 | ⏳     |
 | `/mute [player]`                       | Mute a player (coming soon).                                     | ⏳     |
 | `/repair`                              | Repair items in hand (coming soon).                              | ⏳     |
 | `/world <world-name>`                  | Teleport to a specific world (coming soon).                      | ⏳     |
@@ -60,11 +62,11 @@
 | `/senditem <player>`                   | Transfer an item to another player (coming soon).                | ⏳     |
 | `/kickall [reason]`                    | Kick all players with an optional reason (coming soon).          | ⏳     |
 | `/tpall [player]`                      | Teleport all players to a target player (coming soon).           | ⏳     |
-| `/flyspeed` | custom fly speed (coming soon). | ⏳ |
-| `/walkspeed` | custom walk speed (coming soon). | ⏳ |
-| `/bancommand` | ban specific commands from world (coming soon). | ⏳ |
-| `/nighvision` | toggle nighvision (coming soon). | ⏳ |
-| `/lightning` | summon lightning (coming soon). | ⏳ |
+| `/flyspeed`                            | custom fly speed (coming soon).                                  | ⏳     |
+| `/walkspeed`                           | custom walk speed (coming soon).                                 | ⏳     |
+| `/bancommand`                          | ban specific commands from world (coming soon).                  | ⏳     |
+| `/nighvision`                          | toggle nighvision (coming soon).                                 | ⏳     |
+| `/lightning`                           | summon lightning (coming soon).                                  | ⏳     |
 | `/worldprotect <type> <value> [world]` | Protect worlds with various settings (place, PvP, hunger, etc.). | ✅     |
 
 ---

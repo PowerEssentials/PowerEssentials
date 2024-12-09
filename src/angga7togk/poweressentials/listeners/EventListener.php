@@ -2,6 +2,7 @@
 
 namespace angga7togk\poweressentials\listeners;
 
+use angga7togk\poweressentials\commands\AFKCommand;
 use angga7togk\poweressentials\commands\vanish\VanishCommand;
 use angga7togk\poweressentials\config\PEConfig;
 use angga7togk\poweressentials\i18n\PELang;
@@ -16,6 +17,7 @@ use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerLoginEvent;
+use pocketmine\event\player\PlayerMoveEvent;
 use pocketmine\event\player\PlayerQuitEvent;
 use pocketmine\network\mcpe\protocol\GameRulesChangedPacket;
 use pocketmine\network\mcpe\protocol\types\BoolGameRule;
@@ -99,50 +101,41 @@ class EventListener implements Listener
 
 	public function onHitPlayer(EntityDamageByEntityEvent $event)
 	{
-		if ($event->getEntity() instanceof Player) {
-			$damager = $event->getDamager();
-			if ($damager instanceof Player) {
-				if ($damager->hasPermission("poweressentials.hitplayer.bypass")) {
-					return;
-				}
+		$target = $event->getEntity();
+		$damager = $event->getDamager();
+		if ($target instanceof Player && $damager instanceof Player) {
+
+			// AFK
+			if (AFKCommand::isAfk($target) && !$damager->hasPermission('poweressentials.afk.bypass')) {
+				$lang = PELang::fromConsole();
+				$damager->sendMessage(TextFormat::GOLD . $lang->translateString('afk.prefix') . " " . $lang->translateString('afk.error.target.is.afk', [$target->getName()]));
 			}
+		}
+	}
+
+	public function onMove(PlayerMoveEvent $event)
+	{
+		$player = $event->getPlayer();
+		if (AFKCommand::isAfk($player)) {
+			$lang = PELang::fromConsole();
+			$player->sendMessage(TextFormat::GOLD . $lang->translateString('afk.prefix') . " " . $lang->translateString('afk.disabled'));
+			AFKCommand::disabledAfk($player);
 		}
 	}
 
 	public function onInteraction(PlayerInteractEvent $event): void
 	{
 		$this->banItemEvent($event);
-		$worldName = $event->getPlayer()->getWorld()->getFolderName();
-		if ($this->dataManager->isWorldProtected('interaction', $worldName) && !$event->getPlayer()->hasPermission('poweressentials.worldprotect.bypass')) {
-			$lang = PELang::fromConsole();
-			$prefix = TextFormat::GOLD . $lang->translateString('worldprotect.prefix') . " ";
-			$event->getPlayer()->sendMessage($prefix . $lang->translateString('worldprotect.error.world.protected'));
-			$event->cancel();
-		}
 	}
 
 	public function onPlace(BlockPlaceEvent $event): void
 	{
 		$this->banItemEvent($event);
-		$worldName = $event->getPlayer()->getWorld()->getFolderName();
-		if ($this->dataManager->isWorldProtected('place', $worldName) && !$event->getPlayer()->hasPermission('poweressentials.worldprotect.bypass')) {
-			$lang = PELang::fromConsole();
-			$prefix = TextFormat::GOLD . $lang->translateString('worldprotect.prefix') . " ";
-			$event->getPlayer()->sendMessage($prefix . $lang->translateString('worldprotect.error.world.protected'));
-			$event->cancel();
-		}
 	}
 
 	public function onBreak(BlockBreakEvent $event)
 	{
 		$this->banItemEvent($event);
-		$worldName = $event->getPlayer()->getWorld()->getFolderName();
-		if ($this->dataManager->isWorldProtected('break', $worldName) && !$event->getPlayer()->hasPermission('poweressentials.worldprotect.bypass')) {
-			$lang = PELang::fromConsole();
-			$prefix = TextFormat::GOLD . $lang->translateString('worldprotect.prefix') . " ";
-			$event->getPlayer()->sendMessage($prefix . $lang->translateString('worldprotect.error.world.protected'));
-			$event->cancel();
-		}
 	}
 
 	private function banItemEvent(Event $event)

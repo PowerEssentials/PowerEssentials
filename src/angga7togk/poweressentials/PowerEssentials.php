@@ -2,6 +2,7 @@
 
 namespace angga7togk\poweressentials;
 
+use angga7togk\poweressentials\commands\AFKCommand;
 use angga7togk\poweressentials\commands\banitem\BanItemCommand;
 use angga7togk\poweressentials\commands\banitem\BanItemListCommand;
 use angga7togk\poweressentials\commands\banitem\UnbanItemCommand;
@@ -156,7 +157,8 @@ class PowerEssentials extends PluginBase
 			'worldprotect' => [new WorldProtectCommand()],
 			'vanish' => [new VanishCommand(), new VanishListCommand()],
 			'rtp' => [new RandomTeleport()],
-			'size' => [new SizeCommand()]
+			'size' => [new SizeCommand()],
+			'afk' => [new AFKCommand()]
 		];
 
 		foreach ($commands as $keyCmd => $valueCmd) {

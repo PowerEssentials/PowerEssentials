@@ -79,3 +79,7 @@ permissions:
     default: true
   poweressentials.size:
     default: op
+  poweressentials.afk:
+    default: true
+  poweressentials.afk.bypass:
+    default: op
