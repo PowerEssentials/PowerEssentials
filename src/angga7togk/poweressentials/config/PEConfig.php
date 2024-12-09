@@ -10,12 +10,24 @@ use pocketmine\world\World;
 class PEConfig
 {
   private static Config $config;
+  private const CONFIG_NEW_VERSION = 1.0;
 
   public static function init()
   {
     PowerEssentials::getInstance()->saveDefaultConfig();
     self::$config = PowerEssentials::getInstance()->getConfig();
   }
+
+  public static function getNewVersion(): float
+  {
+    return self::CONFIG_NEW_VERSION;
+  }
+
+  public static function getVersion(): float
+  {
+    return (float) self::$config->get("config-version");
+  }
+
   public static function getLang(): string
   {
     return self::$config->get("language", "en");
@@ -90,7 +102,8 @@ class PEConfig
     return self::$config->get("random-teleport-anti-water");
   }
 
-  public static function getRandomTeleportTimeOut(): int{
+  public static function getRandomTeleportTimeOut(): int
+  {
     return self::$config->get('random-teleport-timeout');
   }
 
@@ -106,5 +119,10 @@ class PEConfig
   {
     $worldName = $world->getFolderName();
     return in_array($worldName, self::$config->get("random-teleport-world-blacklists"));
+  }
+
+  public static function getSizeMax(): float
+  {
+    return (float) self::$config->get("size-max", 5.0);
   }
 }

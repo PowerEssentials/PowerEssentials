@@ -77,3 +77,5 @@ permissions:
     default: op
   poweressentials.randomteleport:
     default: true
+  poweressentials.size:
+    default: op

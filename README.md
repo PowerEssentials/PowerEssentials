@@ -16,12 +16,12 @@
 ## ✨ Features
 
 - **Custom language support**: Localize your server effortlessly.
+- **Full Configuration**: Customize the plugin's behavior.
 - **Command control**: Enable or disable commands as needed.
 - **Gamemode on join**: Automatically set players' gamemode.
 - **Vanilla coordinates**: Display precise coordinates for players.
 - **Anti-namespace protection**: Prevent unauthorized namespace usage.
 - **Upcoming features**: Kits on join, join/leave messages, and more!
-
 ---
 
 ## 📜 Commands
@@ -41,10 +41,8 @@
 | `/warp`, `/addwarp`, `/delwarp`        | Create and teleport to warps.                                    | ✅     |
 | `/heal`, `/feed`                       | Heal or feed yourself or another player.                         | ✅     |
 | `/vanish [player]`, `/vanishlist`      | Toggle vanish mode.                                              | ✅     |
-| `/tp <player/player1 player2/x y z>`   | Teleport to a player or coordinates (coming soon).               | ⏳     |
 | `/tptoggle`                            | Block teleport requests (coming soon).                           | ⏳     |
 | `/pvptoggle`, `/pvpt`                  | Enable or disable PvP (coming soon).                             | ⏳     |
-| `/xp <add/reduce/set>`                 | Manage player experience (coming soon).                          | ⏳     |
 | `/kits`                                | Access predefined kits (coming soon).                            | ⏳     |
 | `/sudo <player> <message/command>`     | Execute a command or send a message as another player.           | ✅     |
 | `/rules`                               | Display server rules (coming soon).                              | ⏳     |
@@ -62,6 +60,11 @@
 | `/senditem <player>`                   | Transfer an item to another player (coming soon).                | ⏳     |
 | `/kickall [reason]`                    | Kick all players with an optional reason (coming soon).          | ⏳     |
 | `/tpall [player]`                      | Teleport all players to a target player (coming soon).           | ⏳     |
+| `/flyspeed` | custom fly speed (coming soon). | ⏳ |
+| `/walkspeed` | custom walk speed (coming soon). | ⏳ |
+| `/bancommand` | ban specific commands from world (coming soon). | ⏳ |
+| `/nighvision` | toggle nighvision (coming soon). | ⏳ |
+| `/lightning` | summon lightning (coming soon). | ⏳ |
 | `/worldprotect <type> <value> [world]` | Protect worlds with various settings (place, PvP, hunger, etc.). | ✅     |
 
 ---

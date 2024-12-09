@@ -40,8 +40,6 @@ blacklist-nicknames:
 #            Commands            #
 ##################################
 # commands option disable and enabled
-# set false to disable
-# set true to enable
 # List: lobby, fly, gamemode, nickname, home, coordinates, warp
 disable-commands:
 - command1
@@ -85,3 +83,10 @@ random-teleport-world-blacklists:
 - end
 - world_the_end
 - world_end
+
+
+##################################
+#         PLAYER SIZE            #
+##################################
+
+size-max: 5.0
