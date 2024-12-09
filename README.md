@@ -36,11 +36,11 @@
 | `/unbanitem [world]`                   | Unban specific items in a world.                                 | ✅     |
 | `/banitemlist [world]`                 | View banned items in a world.                                    | ✅     |
 | `/tpa`, `/tpaccept`, `/tpahere`        | Request to teleport to another player (coming soon).             | ⏳     |
-| `/rtp`, `/randomteleport`              | Randomly teleport to a location (coming soon).                   | ⏳     |
+| `/rtp`, `/randomteleport`              | Randomly teleport to a world (Anti Water Area).                  | ✅     |
 | `/home`, `/sethome`, `/delhome`        | Manage homes for players.                                        | ✅     |
 | `/warp`, `/addwarp`, `/delwarp`        | Create and teleport to warps.                                    | ✅     |
 | `/heal`, `/feed`                       | Heal or feed yourself or another player.                         | ✅     |
-| `/vanish [player]`, `/vanishlist`                             | Toggle vanish mode.                                | ✅     |
+| `/vanish [player]`, `/vanishlist`      | Toggle vanish mode.                                              | ✅     |
 | `/tp <player/player1 player2/x y z>`   | Teleport to a player or coordinates (coming soon).               | ⏳     |
 | `/tptoggle`                            | Block teleport requests (coming soon).                           | ⏳     |
 | `/pvptoggle`, `/pvpt`                  | Enable or disable PvP (coming soon).                             | ⏳     |
@@ -93,9 +93,9 @@ We welcome contributions! Feel free to open issues or submit pull requests to he
 ---
 
 ## 📜 Credits
+
 Icon by [Flaticon](https://www.flaticon.com/)
 
 ## 📜 License
 
 PowerEssentials is licensed under the [MIT License](https://github.com/angga7togk/PowerEssentials/blob/main/LICENSES).
-

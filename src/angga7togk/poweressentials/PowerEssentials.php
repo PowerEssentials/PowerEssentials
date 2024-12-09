@@ -19,6 +19,7 @@ use angga7togk\poweressentials\commands\home\SetHomeCommand;
 use angga7togk\poweressentials\commands\lobby\LobbyCommand;
 use angga7togk\poweressentials\commands\lobby\SetLobbyCommand;
 use angga7togk\poweressentials\commands\NicknameCommand;
+use angga7togk\poweressentials\commands\RandomTeleport;
 use angga7togk\poweressentials\commands\SudoCommand;
 use angga7togk\poweressentials\commands\vanish\VanishCommand;
 use angga7togk\poweressentials\commands\vanish\VanishListCommand;
@@ -152,7 +153,8 @@ class PowerEssentials extends PluginBase
 			'sudo' => [new SudoCommand()],
 			'banitem' => [new BanItemCommand(), new UnbanItemCommand(), new BanItemListCommand()],
 			'worldprotect' => [new WorldProtectCommand()],
-			'vanish' => [new VanishCommand(), new VanishListCommand()]
+			'vanish' => [new VanishCommand(), new VanishListCommand()],
+			'rtp' => [new RandomTeleport()]
 		];
 
 		foreach ($commands as $keyCmd => $valueCmd) {

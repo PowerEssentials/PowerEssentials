@@ -75,3 +75,5 @@ permissions:
     default: op
   poweressentials.vanish.see:
     default: op
+  poweressentials.randomteleport:
+    default: true

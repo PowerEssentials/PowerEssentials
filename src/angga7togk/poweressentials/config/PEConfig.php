@@ -5,6 +5,7 @@ namespace angga7togk\poweressentials\config;
 use angga7togk\poweressentials\PowerEssentials;
 use pocketmine\player\GameMode;
 use pocketmine\utils\Config;
+use pocketmine\world\World;
 
 class PEConfig
 {
@@ -82,5 +83,28 @@ class PEConfig
   public static function isShowCoordinates(): bool
   {
     return self::$config->get("show-coordinates");
+  }
+
+  public static function isRandomTeleportAntiWater(): bool
+  {
+    return self::$config->get("random-teleport-anti-water");
+  }
+
+  public static function getRandomTeleportTimeOut(): int{
+    return self::$config->get('random-teleport-timeout');
+  }
+
+  /** @return int[] 
+   * @param "x" | "z"  $coordType
+   */
+  public static function getRandomTeleportRange(string $coordType): array
+  {
+    return isset(self::$config->get("random-teleport-range")[$coordType]) ? self::$config->get("random-teleport-range")[$coordType] : [];
+  }
+
+  public static function isRandomTeleportWorldBlocked(World $world): bool
+  {
+    $worldName = $world->getFolderName();
+    return in_array($worldName, self::$config->get("random-teleport-world-blacklists"));
   }
 }

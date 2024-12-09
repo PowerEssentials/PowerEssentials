@@ -32,9 +32,9 @@ nickname-max-char: 15
 # blacklist nickname
 # This feature only works for /nickname
 blacklist-nicknames:
-  - admin
-  - owner
-  - staff
+- admin
+- owner
+- staff
 
 ##################################
 #            Commands            #
@@ -44,16 +44,15 @@ blacklist-nicknames:
 # set true to enable
 # List: lobby, fly, gamemode, nickname, home, coordinates, warp
 disable-commands:
-  - command1
-
+- command1
 
 ##################################
 #               HOME             #
 ##################################
 # blacklist set home in world
 home-world-blacklists:
-  - world_nether
-  - world_the_end
+- world_nether
+- world_the_end
 
 # Permission Limit
 # if you enable this feature, you can limit the number of homes per player
@@ -64,10 +63,25 @@ home-permission-limits:
   homelimit.5: 5
   homelimit.10: 10
 
-
-
 ##################################
-#              VANISH            #
+#         RANDOM TELEPORT        #
 ##################################
 
+# random teleport anti water
+# if you set this to true, the teleport will not be on water
+random-teleport-anti-water: true
+random-teleport-timeout: 3
 
+# random teleport range
+# if you set the range to 0, the teleport will be on the same location
+random-teleport-range:
+  x: [ -1000, 1000 ] # -1000 to 1000
+  z: [ -1000, 1000 ] # -1000 to 1000
+
+random-teleport-world-blacklists:
+- nether
+- world_nether
+- the_end
+- end
+- world_the_end
+- world_end
