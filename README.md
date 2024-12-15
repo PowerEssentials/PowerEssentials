@@ -27,47 +27,47 @@
 
 ## 📜 Commands
 
-| Command                                | Description                                                      | Status |
-| -------------------------------------- | ---------------------------------------------------------------- | ------ |
-| `/hub`, `/lobby`, `/setlobby`          | Set and teleport to the lobby.                                   | ✅     |
-| `/gmc`, `/gms`, `/gmspc`, `/gma`       | Change gamemode for yourself or others.                          | ✅     |
-| `/fly`                                 | Enable or disable flying for yourself or others.                 | ✅     |
-| `/nickname <nickname/reset> [player]`  | Change your or another player's nickname.                        | ✅     |
-| `/banitem [world]`                     | Ban specific items in a world.                                   | ✅     |
-| `/unbanitem [world]`                   | Unban specific items in a world.                                 | ✅     |
-| `/banitemlist [world]`                 | View banned items in a world.                                    | ✅     |
-| `/tpa`, `/tpaccept`, `/tpahere`        | Request to teleport to another player (coming soon).             | ⏳     |
-| `/rtp`, `/randomteleport`              | Randomly teleport to a world (Anti Water Area).                  | ✅     |
-| `/home`, `/sethome`, `/delhome`        | Manage homes for players.                                        | ✅     |
-| `/warp`, `/addwarp`, `/delwarp`        | Create and teleport to warps.                                    | ✅     |
-| `/heal`, `/feed`                       | Heal or feed yourself or another player.                         | ✅     |
-| `/vanish [player]`, `/vanishlist`      | Toggle vanish mode.                                              | ✅     |
-| `/tptoggle`                            | Block teleport requests (coming soon).                           | ⏳     |
-| `/pvptoggle`, `/pvpt`                  | Enable or disable PvP (coming soon).                             | ⏳     |
-| `/kits`                                | Access predefined kits (coming soon).                            | ⏳     |
-| `/sudo <player> <message/command>`     | Execute a command or send a message as another player.           | ✅     |
-| `/rules`                               | Display server rules (coming soon).                              | ⏳     |
-| `/size <size>`                         | Change player size.                                              | ✅     |
-| `/afk`                                 | Mark yourself as AFK.                                            | ✅     |
-| `/coordinates`                         | Display current coordinates.                                     | ✅     |
-| `/good`                                | Activate "good mode" (coming soon).                              | ⏳     |
-| `/bless`                               | Clear bad effects (coming soon).                                 | ⏳     |
-| `/mute [player]`                       | Mute a player (coming soon).                                     | ⏳     |
-| `/repair`                              | Repair items in hand (coming soon).                              | ⏳     |
-| `/world <world-name>`                  | Teleport to a specific world (coming soon).                      | ⏳     |
-| `/itemname`                            | View the name of the item in hand (coming soon).                 | ⏳     |
-| `/itemid`                              | View the ID of the item in hand (coming soon).                   | ⏳     |
-| `/broadcast <message>`                 | Send a broadcast message to all players (coming soon).           | ⏳     |
-| `/getpos <player>`                     | Get the position of a player (coming soon).                      | ⏳     |
-| `/senditem <player>`                   | Transfer an item to another player (coming soon).                | ⏳     |
-| `/kickall [reason]`                    | Kick all players with an optional reason (coming soon).          | ⏳     |
-| `/tpall [player]`                      | Teleport all players to a target player (coming soon).           | ⏳     |
-| `/flyspeed`                            | custom fly speed (coming soon).                                  | ⏳     |
-| `/walkspeed`                           | custom walk speed (coming soon).                                 | ⏳     |
-| `/bancommand`                          | ban specific commands from world (coming soon).                  | ⏳     |
-| `/nighvision`                          | toggle nighvision (coming soon).                                 | ⏳     |
-| `/lightning`                           | summon lightning (coming soon).                                  | ⏳     |
-| `/worldprotect <type> <value> [world]` | Protect worlds with various settings (place, PvP, hunger, etc.). | ✅     |
+| Command                                      | Description                                                      | Status |
+| -------------------------------------------- | ---------------------------------------------------------------- | ------ |
+| `/hub`, `/lobby`, `/setlobby`                | Set and teleport to the lobby.                                   | ✅     |
+| `/gmc`, `/gms`, `/gmspc`, `/gma`             | Change gamemode for yourself or others.                          | ✅     |
+| `/fly`                                       | Enable or disable flying for yourself or others.                 | ✅     |
+| `/nickname <nickname/reset> [player]`        | Change your or another player's nickname.                        | ✅     |
+| `/banitem [world]`                           | Ban specific items in a world.                                   | ✅     |
+| `/unbanitem [world]`                         | Unban specific items in a world.                                 | ✅     |
+| `/banitemlist [world]`                       | View banned items in a world.                                    | ✅     |
+| `/tpa <to,here,accept,deny,cancel> <player>` | Request to teleport to another player.             | ✅     |
+| `/rtp`, `/randomteleport`                    | Randomly teleport to a world (Anti Water Area).                  | ✅     |
+| `/home`, `/sethome`, `/delhome`              | Manage homes for players.                                        | ✅     |
+| `/warp`, `/addwarp`, `/delwarp`              | Create and teleport to warps.                                    | ✅     |
+| `/heal`, `/feed`                             | Heal or feed yourself or another player.                         | ✅     |
+| `/vanish [player]`, `/vanishlist`            | Toggle vanish mode.                                              | ✅     |
+| `/tptoggle`                                  | Block teleport requests (coming soon).                           | ⏳     |
+| `/pvptoggle`, `/pvpt`                        | Enable or disable PvP (coming soon).                             | ⏳     |
+| `/kits`                                      | Access predefined kits (coming soon).                            | ⏳     |
+| `/sudo <player> <message/command>`           | Execute a command or send a message as another player.           | ✅     |
+| `/rules`                                     | Display server rules (coming soon).                              | ⏳     |
+| `/size <size>`                               | Change player size.                                              | ✅     |
+| `/afk`                                       | Mark yourself as AFK.                                            | ✅     |
+| `/coordinates`                               | Display current coordinates.                                     | ✅     |
+| `/good`                                      | Activate "good mode" (coming soon).                              | ⏳     |
+| `/bless`                                     | Clear bad effects (coming soon).                                 | ⏳     |
+| `/mute [player]`                             | Mute a player (coming soon).                                     | ⏳     |
+| `/repair`                                    | Repair items in hand (coming soon).                              | ⏳     |
+| `/world <world-name>`                        | Teleport to a specific world (coming soon).                      | ⏳     |
+| `/itemname`                                  | View the name of the item in hand (coming soon).                 | ⏳     |
+| `/itemid`                                    | View the ID of the item in hand (coming soon).                   | ⏳     |
+| `/broadcast <message>`                       | Send a broadcast message to all players (coming soon).           | ⏳     |
+| `/getpos <player>`                           | Get the position of a player (coming soon).                      | ⏳     |
+| `/senditem <player>`                         | Transfer an item to another player (coming soon).                | ⏳     |
+| `/kickall [reason]`                          | Kick all players with an optional reason (coming soon).          | ⏳     |
+| `/tpall [player]`                            | Teleport all players to a target player (coming soon).           | ⏳     |
+| `/flyspeed`                                  | custom fly speed (coming soon).                                  | ⏳     |
+| `/walkspeed`                                 | custom walk speed (coming soon).                                 | ⏳     |
+| `/bancommand`                                | ban specific commands from world (coming soon).                  | ⏳     |
+| `/nighvision`                                | toggle nighvision (coming soon).                                 | ⏳     |
+| `/lightning`                                 | summon lightning (coming soon).                                  | ⏳     |
+| `/worldprotect <type> <value> [world]`       | Protect worlds with various settings (place, PvP, hunger, etc.). | ✅     |
 
 ---
 
