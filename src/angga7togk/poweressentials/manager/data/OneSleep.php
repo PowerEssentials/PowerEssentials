@@ -15,8 +15,8 @@ trait OneSleep
   /** @var string[] $voterToCancel */
   private array $voterToCancel = [];
 
-  private int $cancelVoteTimeOut; // 5 Seconds
-  private int $cancelVoteNeedCount; // need 3 votes
+  private int $cancelVoteTimeOut;
+  private int $cancelVoteNeedCount;
 
   private ?TaskHandler $handler = null;
 

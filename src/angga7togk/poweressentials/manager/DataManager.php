@@ -5,6 +5,7 @@ namespace angga7togk\poweressentials\manager;
 use angga7togk\poweressentials\manager\data\BanItemTrait;
 use angga7togk\poweressentials\manager\data\LobbyTrait;
 use angga7togk\poweressentials\manager\data\OneSleep;
+use angga7togk\poweressentials\manager\data\TPATrait;
 use angga7togk\poweressentials\manager\data\WarpTrait;
 use angga7togk\poweressentials\manager\data\WorldProtectTrait;
 use angga7togk\poweressentials\PowerEssentials;
@@ -25,6 +26,7 @@ class DataManager
   use OneSleep{
     OneSleep::__construct as private __constructOneSleep;
   }
+  use TPATrait;
 
   public function __construct(PowerEssentials $plugin)
   {

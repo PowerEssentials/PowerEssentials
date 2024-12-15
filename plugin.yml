@@ -85,3 +85,5 @@ permissions:
     default: op
   poweressentials.onesleep.cancel:
     default: true
+  poweressentials.tpa:
+    default: true
