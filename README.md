@@ -42,11 +42,9 @@
 | `/warp`, `/addwarp`, `/delwarp`              | Create and teleport to warps.                                    | ✅     |
 | `/heal`, `/feed`                             | Heal or feed yourself or another player.                         | ✅     |
 | `/vanish [player]`, `/vanishlist`            | Toggle vanish mode.                                              | ✅     |
-| `/tptoggle`                                  | Block teleport requests (coming soon).                           | ⏳     |
+| `/antitp`                                  | Block teleport requests (coming soon).                           | ⏳     |
 | `/pvptoggle`, `/pvpt`                        | Enable or disable PvP (coming soon).                             | ⏳     |
-| `/kits`                                      | Access predefined kits (coming soon).                            | ⏳     |
 | `/sudo <player> <message/command>`           | Execute a command or send a message as another player.           | ✅     |
-| `/rules`                                     | Display server rules (coming soon).                              | ⏳     |
 | `/size <size>`                               | Change player size.                                              | ✅     |
 | `/afk`                                       | Mark yourself as AFK.                                            | ✅     |
 | `/coordinates`                               | Display current coordinates.                                     | ✅     |
@@ -54,7 +52,6 @@
 | `/bless`                                     | Clear bad effects (coming soon).                                 | ⏳     |
 | `/mute [player]`                             | Mute a player (coming soon).                                     | ⏳     |
 | `/repair`                                    | Repair items in hand (coming soon).                              | ⏳     |
-| `/world <world-name>`                        | Teleport to a specific world (coming soon).                      | ⏳     |
 | `/itemname`                                  | View the name of the item in hand (coming soon).                 | ⏳     |
 | `/itemid`                                    | View the ID of the item in hand (coming soon).                   | ⏳     |
 | `/broadcast <message>`                       | Send a broadcast message to all players (coming soon).           | ⏳     |
