@@ -42,7 +42,7 @@
 | `/warp`, `/addwarp`, `/delwarp`              | Create and teleport to warps.                                    | ✅     |
 | `/heal`, `/feed`                             | Heal or feed yourself or another player.                         | ✅     |
 | `/vanish [player]`, `/vanishlist`            | Toggle vanish mode.                                              | ✅     |
-| `/antitp`                                  | Block teleport requests (coming soon).                           | ⏳     |
+| `/antitp`                                    | Block teleport requests (coming soon).                           | ⏳     |
 | `/pvptoggle`, `/pvpt`                        | Enable or disable PvP (coming soon).                             | ⏳     |
 | `/sudo <player> <message/command>`           | Execute a command or send a message as another player.           | ✅     |
 | `/size <size>`                               | Change player size.                                              | ✅     |
@@ -52,8 +52,7 @@
 | `/bless`                                     | Clear bad effects (coming soon).                                 | ⏳     |
 | `/mute [player]`                             | Mute a player (coming soon).                                     | ⏳     |
 | `/repair`                                    | Repair items in hand (coming soon).                              | ⏳     |
-| `/itemname`                                  | View the name of the item in hand (coming soon).                 | ⏳     |
-| `/itemid`                                    | View the ID of the item in hand (coming soon).                   | ⏳     |
+| `/itemid`                                    | View the ID of the item in hand.                   | ✅     |
 | `/broadcast <message>`                       | Send a broadcast message to all players (coming soon).           | ⏳     |
 | `/getpos <player>`                           | Get the position of a player (coming soon).                      | ⏳     |
 | `/senditem <player>`                         | Transfer an item to another player (coming soon).                | ⏳     |

@@ -17,6 +17,7 @@ use angga7togk\poweressentials\commands\healfeed\HealCommand;
 use angga7togk\poweressentials\commands\home\DelHomeCommand;
 use angga7togk\poweressentials\commands\home\HomeCommand;
 use angga7togk\poweressentials\commands\home\SetHomeCommand;
+use angga7togk\poweressentials\commands\ItemIDCommand;
 use angga7togk\poweressentials\commands\lobby\LobbyCommand;
 use angga7togk\poweressentials\commands\lobby\SetLobbyCommand;
 use angga7togk\poweressentials\commands\NicknameCommand;
@@ -164,7 +165,8 @@ class PowerEssentials extends PluginBase
 			'afk' => [new AFKCommand()],
 			'onesleep' => [new OneSleepCancelCommand()],
 			'tpa' => [new TPACommand()],
-			'tpall' => [new TPAllCommand()]
+			'tpall' => [new TPAllCommand()],
+			'itemid' => [new ItemIDCommand()]
 		];
 
 		foreach ($commands as $keyCmd => $valueCmd) {

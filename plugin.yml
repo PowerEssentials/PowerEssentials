@@ -89,3 +89,5 @@ permissions:
     default: true
   poweressentials.tpall:
     default: op
+  poweressentials.itemid:
+    default: op

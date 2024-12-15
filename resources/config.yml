@@ -41,6 +41,7 @@ blacklist-nicknames:
 ##################################
 # commands option disable and enabled
 # List: lobby, fly, gamemode, nickname, home, coordinates, warp
+# more can go to https://github.com/angga7togk/PowerEssentials/blob/main/docs/COMMANDS.md
 disable-commands:
 - command1
 

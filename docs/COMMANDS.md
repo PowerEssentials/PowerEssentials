@@ -2,7 +2,6 @@
 
 This note is useful for disabling commands in config.yml
 
-
 | Prefix         | Commands                                 |
 | -------------- | ---------------------------------------- |
 | `lobby`        | `/lobby`, `/setlobby`                    |
@@ -24,3 +23,4 @@ This note is useful for disabling commands in config.yml
 | `onesleep`     | `/sleepcancel`                           |
 | `tpa`          | `/tpa`                                   |
 | `tpall`        | `/tpall`                                 |
+| `itemid`       | `/itemid`                                |
