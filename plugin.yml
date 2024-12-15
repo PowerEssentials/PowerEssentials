@@ -87,3 +87,5 @@ permissions:
     default: true
   poweressentials.tpa:
     default: true
+  poweressentials.tpall:
+    default: op

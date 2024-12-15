@@ -25,6 +25,7 @@ use angga7togk\poweressentials\commands\RTPCommand;
 use angga7togk\poweressentials\commands\SizeCommand;
 use angga7togk\poweressentials\commands\SudoCommand;
 use angga7togk\poweressentials\commands\TPACommand;
+use angga7togk\poweressentials\commands\TPAllCommand;
 use angga7togk\poweressentials\commands\vanish\VanishCommand;
 use angga7togk\poweressentials\commands\vanish\VanishListCommand;
 use angga7togk\poweressentials\commands\warp\AddWarpCommand;
@@ -162,7 +163,8 @@ class PowerEssentials extends PluginBase
 			'size' => [new SizeCommand()],
 			'afk' => [new AFKCommand()],
 			'onesleep' => [new OneSleepCancelCommand()],
-			'tpa' => [new TPACommand()]
+			'tpa' => [new TPACommand()],
+			'tpall' => [new TPAllCommand()]
 		];
 
 		foreach ($commands as $keyCmd => $valueCmd) {

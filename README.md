@@ -36,7 +36,7 @@
 | `/banitem [world]`                           | Ban specific items in a world.                                   | ✅     |
 | `/unbanitem [world]`                         | Unban specific items in a world.                                 | ✅     |
 | `/banitemlist [world]`                       | View banned items in a world.                                    | ✅     |
-| `/tpa <to,here,accept,deny,cancel> <player>` | Request to teleport to another player.             | ✅     |
+| `/tpa <to,here,accept,deny,cancel> <player>` | Request to teleport to another player.                           | ✅     |
 | `/rtp`, `/randomteleport`                    | Randomly teleport to a world (Anti Water Area).                  | ✅     |
 | `/home`, `/sethome`, `/delhome`              | Manage homes for players.                                        | ✅     |
 | `/warp`, `/addwarp`, `/delwarp`              | Create and teleport to warps.                                    | ✅     |
@@ -61,7 +61,7 @@
 | `/getpos <player>`                           | Get the position of a player (coming soon).                      | ⏳     |
 | `/senditem <player>`                         | Transfer an item to another player (coming soon).                | ⏳     |
 | `/kickall [reason]`                          | Kick all players with an optional reason (coming soon).          | ⏳     |
-| `/tpall [player]`                            | Teleport all players to a target player (coming soon).           | ⏳     |
+| `/tpall [player]`                            | Teleport all players to a target player.                         | ✅     |
 | `/flyspeed`                                  | custom fly speed (coming soon).                                  | ⏳     |
 | `/walkspeed`                                 | custom walk speed (coming soon).                                 | ⏳     |
 | `/bancommand`                                | ban specific commands from world (coming soon).                  | ⏳     |
