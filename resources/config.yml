@@ -90,3 +90,19 @@ random-teleport-world-blacklists:
 ##################################
 
 size-max: 5.0
+
+
+##################################
+#            ONE SLEEP           #
+##################################
+
+one-sleep-enable: true
+
+# if you enable this feature, other player can vote to cancel sleep player
+cancel-sleep-vote: true
+cancel-sleep-vote-count: 3 # need 3 votes to cancel sleep player
+cancel-sleep-vote-timeout: 15 # 15 seconds to vote
+
+
+
+

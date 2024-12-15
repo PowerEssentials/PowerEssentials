@@ -83,3 +83,5 @@ permissions:
     default: true
   poweressentials.afk.bypass:
     default: op
+  poweressentials.onesleep.cancel:
+    default: true

@@ -11,12 +11,12 @@ use pocketmine\Server;
 use pocketmine\world\Position;
 use pocketmine\world\World;
 
-class RandomTeleport extends PECommand
+class RTPCommand extends PECommand
 {
 
   public function __construct()
   {
-    parent::__construct('randomteleport', 'Random teleport to world', "/rtp [world]", ['rtp', 'wilderness', 'wild']);
+    parent::__construct('RTPCommand', 'Random teleport to world', "/rtp [world]", ['rtp', 'wilderness', 'wild']);
     $this->setPrefix('rtp.prefix');
     $this->setPermission('randomteleport');
   }

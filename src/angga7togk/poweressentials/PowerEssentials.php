@@ -20,7 +20,8 @@ use angga7togk\poweressentials\commands\home\SetHomeCommand;
 use angga7togk\poweressentials\commands\lobby\LobbyCommand;
 use angga7togk\poweressentials\commands\lobby\SetLobbyCommand;
 use angga7togk\poweressentials\commands\NicknameCommand;
-use angga7togk\poweressentials\commands\RandomTeleport;
+use angga7togk\poweressentials\commands\OneSleepCancelCommand;
+use angga7togk\poweressentials\commands\RTPCommand;
 use angga7togk\poweressentials\commands\SizeCommand;
 use angga7togk\poweressentials\commands\SudoCommand;
 use angga7togk\poweressentials\commands\vanish\VanishCommand;
@@ -156,9 +157,10 @@ class PowerEssentials extends PluginBase
 			'banitem' => [new BanItemCommand(), new UnbanItemCommand(), new BanItemListCommand()],
 			'worldprotect' => [new WorldProtectCommand()],
 			'vanish' => [new VanishCommand(), new VanishListCommand()],
-			'rtp' => [new RandomTeleport()],
+			'rtp' => [new RTPCommand()],
 			'size' => [new SizeCommand()],
-			'afk' => [new AFKCommand()]
+			'afk' => [new AFKCommand()],
+			'onesleep' => [new OneSleepCancelCommand()]
 		];
 
 		foreach ($commands as $keyCmd => $valueCmd) {
@@ -168,7 +170,7 @@ class PowerEssentials extends PluginBase
 		}
 	}
 
-	public static function getInstance(): self
+	public static function getInstance(): PowerEssentials
 	{
 		return self::$instance;
 	}

@@ -14,6 +14,8 @@ use pocketmine\event\entity\EntityDamageByEntityEvent;
 use pocketmine\event\entity\EntityItemPickupEvent;
 use pocketmine\event\Event;
 use pocketmine\event\Listener;
+use pocketmine\event\player\PlayerBedEnterEvent;
+use pocketmine\event\player\PlayerBedLeaveEvent;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerLoginEvent;
@@ -27,9 +29,11 @@ use pocketmine\utils\TextFormat;
 class EventListener implements Listener
 {
 	private DataManager $dataManager;
+	private PELang $lang;
 	public function __construct(private PowerEssentials $plugin)
 	{
 		$this->dataManager = $this->plugin->getDataManager();
+		$this->lang = PELang::fromConsole();
 	}
 
 	public function onLogin(PlayerLoginEvent $event): void
@@ -44,6 +48,26 @@ class EventListener implements Listener
 					$player->kick(TextFormat::RED . PELang::fromConsole()->translateString('error.namespace'));
 				}
 			}
+		}
+	}
+
+	public function onSleep(PlayerBedEnterEvent $event)
+	{
+		$player = $event->getPlayer();
+		if (count($this->plugin->getServer()->getOnlinePlayers()) !== 1) {
+			if ($this->dataManager->getSlepper() === null) {
+				$this->dataManager->setSlepper($player);
+				$this->plugin->getServer()->broadcastMessage(TextFormat::GOLD . $this->lang->translateString('onesleep.prefix') . " " . $this->lang->translateString('onesleep.broadcast', [$player->getName()]));
+			}
+		}
+	}
+
+	public function onUnsleep(PlayerBedLeaveEvent $event)
+	{
+		$player = $event->getPlayer();
+		$sleeper = $this->dataManager->getSlepper();
+		if ($sleeper !== null && $sleeper->getName() === $player->getName()) {
+			$this->dataManager->unsetSlepper();
 		}
 	}
 
@@ -104,7 +128,6 @@ class EventListener implements Listener
 		$target = $event->getEntity();
 		$damager = $event->getDamager();
 		if ($target instanceof Player && $damager instanceof Player) {
-
 			// AFK
 			if (AFKCommand::isAfk($target) && !$damager->hasPermission('poweressentials.afk.bypass')) {
 				$lang = PELang::fromConsole();

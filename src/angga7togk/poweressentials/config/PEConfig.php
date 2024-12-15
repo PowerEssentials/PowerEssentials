@@ -66,7 +66,6 @@ class PEConfig
     return (int) self::$config->get("nickname-max-char");
   }
 
-
   public static function isCommandDisabled(string $commandKey): bool
   {
     return in_array($commandKey, self::$config->get("disable-commands"));
@@ -124,5 +123,25 @@ class PEConfig
   public static function getSizeMax(): float
   {
     return (float) self::$config->get("size-max", 5.0);
+  }
+
+  public static function isOneSleepEnabled(): bool
+  {
+    return (bool) self::$config->get("one-sleep-enable", true);
+  }
+
+  public static function isOneSleepCancelVote(): bool
+  {
+    return (bool) self::$config->get("cancel-sleep-vote", true);
+  }
+
+  public static function getOneSleepCancelVoteCount(): int
+  {
+    return (int) self::$config->get("cancel-sleep-vote-count", 3);
+  }
+
+  public static function getOneSleepCancelVoteTimeout(): int
+  {
+    return (int) self::$config->get("cancel-sleep-vote-timeout", 10);
   }
 }

@@ -14,7 +14,7 @@ class UserManager extends PEConfig
   private PowerEssentials $plugin;
   private Player $player;
   private Config $data;
-  
+
   use HomeTrait;
   use NicknameTrait;
 
@@ -41,13 +41,15 @@ class UserManager extends PEConfig
     return $this->plugin;
   }
 
-  public function setCoordinatesShow(bool $value): void{
+  public function setCoordinatesShow(bool $value): void
+  {
     $this->getData()->set("show-coordinates", $value);
     $this->getData()->save();
   }
 
-  public function getCoordinatesShow(): bool{
-    if(!PEConfig::isShowCoordinates()) return false;
+  public function getCoordinatesShow(): bool
+  {
+    if (!PEConfig::isShowCoordinates()) return false;
     return $this->getData()->get("show-coordinates", true);
   }
 }
