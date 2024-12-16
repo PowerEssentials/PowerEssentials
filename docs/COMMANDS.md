@@ -26,3 +26,4 @@ This note is useful for disabling commands in config.yml
 | `itemid`       | `/itemid`                                |
 | `repair`       | `/repair`                                |
 | `senditem`     | `/senditem`                              |
+| `getpos`       | `/getpos`                                |

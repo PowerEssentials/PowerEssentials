@@ -12,6 +12,7 @@ use angga7togk\poweressentials\commands\gamemode\AdvantureCommand;
 use angga7togk\poweressentials\commands\gamemode\CreativeCommand;
 use angga7togk\poweressentials\commands\gamemode\SpectatorCommand;
 use angga7togk\poweressentials\commands\gamemode\SurvivalCommand;
+use angga7togk\poweressentials\commands\GetPositionCommand;
 use angga7togk\poweressentials\commands\healfeed\FeedCommand;
 use angga7togk\poweressentials\commands\healfeed\HealCommand;
 use angga7togk\poweressentials\commands\home\DelHomeCommand;
@@ -170,7 +171,8 @@ class PowerEssentials extends PluginBase
 			'tpall' => [new TPAllCommand()],
 			'itemid' => [new ItemIDCommand()],
 			'repair' => [new RepairCommand()],
-			'senditem' => [new SendItemCommand()]
+			'senditem' => [new SendItemCommand()],
+			'getpos' => [new GetPositionCommand()]
 		];
 
 		foreach ($commands as $keyCmd => $valueCmd) {

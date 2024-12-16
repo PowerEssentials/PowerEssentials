@@ -99,3 +99,5 @@ permissions:
     default: op
   poweressentials.senditem:
     default: true
+  poweressentials.getpos:
+    default: op
