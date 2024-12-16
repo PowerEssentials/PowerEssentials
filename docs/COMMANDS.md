@@ -25,3 +25,4 @@ This note is useful for disabling commands in config.yml
 | `tpall`        | `/tpall`                                 |
 | `itemid`       | `/itemid`                                |
 | `repair`       | `/repair`                                |
+| `senditem`     | `/senditem`                              |

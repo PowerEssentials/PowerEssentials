@@ -24,6 +24,7 @@ use angga7togk\poweressentials\commands\NicknameCommand;
 use angga7togk\poweressentials\commands\OneSleepCancelCommand;
 use angga7togk\poweressentials\commands\RepairCommand;
 use angga7togk\poweressentials\commands\RTPCommand;
+use angga7togk\poweressentials\commands\SendItemCommand;
 use angga7togk\poweressentials\commands\SizeCommand;
 use angga7togk\poweressentials\commands\SudoCommand;
 use angga7togk\poweressentials\commands\TPACommand;
@@ -168,7 +169,8 @@ class PowerEssentials extends PluginBase
 			'tpa' => [new TPACommand()],
 			'tpall' => [new TPAllCommand()],
 			'itemid' => [new ItemIDCommand()],
-			'repair' => [new RepairCommand()]
+			'repair' => [new RepairCommand()],
+			'senditem' => [new SendItemCommand()]
 		];
 
 		foreach ($commands as $keyCmd => $valueCmd) {

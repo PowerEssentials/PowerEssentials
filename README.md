@@ -51,11 +51,11 @@
 | `/good`                                      | Activate "good mode" (coming soon).                              | ⏳     |
 | `/bless`                                     | Clear bad effects (coming soon).                                 | ⏳     |
 | `/mute [player]`                             | Mute a player (coming soon).                                     | ⏳     |
-| `/repair <hand,all> [player]`                                    | Repair items.                              | ✅     |
-| `/itemid`                                    | View the ID of the item in hand.                   | ✅     |
+| `/repair <hand,all> [player]`                | Repair items.                                                    | ✅     |
+| `/itemid`                                    | View the ID of the item in hand.                                 | ✅     |
 | `/broadcast <message>`                       | Send a broadcast message to all players (coming soon).           | ⏳     |
 | `/getpos <player>`                           | Get the position of a player (coming soon).                      | ⏳     |
-| `/senditem <player>`                         | Transfer an item to another player (coming soon).                | ⏳     |
+| `/senditem <player>`                         | Transfer an item to another player.                              | ✅     |
 | `/kickall [reason]`                          | Kick all players with an optional reason (coming soon).          | ⏳     |
 | `/tpall [player]`                            | Teleport all players to a target player.                         | ✅     |
 | `/worldprotect <type> <value> [world]`       | Protect worlds with various settings (place, PvP, hunger, etc.). | ✅     |
