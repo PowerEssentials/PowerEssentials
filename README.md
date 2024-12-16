@@ -40,18 +40,13 @@
 | `/warp [name]`, `/addwarp <name>`, `/delwarp <name>`                 | Create and teleport to warps.                                    | ✅     |
 | `/heal [name]`, `/feed [name]`                                       | Heal or feed yourself or another player.                         | ✅     |
 | `/vanish [player]`, `/vanishlist`                                    | Toggle vanish mode.                                              | ✅     |
-| `/antitp`                                                            | Block teleport requests (coming soon).                           | ⏳     |
-| `/pvptoggle`, `/pvpt`                                                | Enable or disable PvP (coming soon).                             | ⏳     |
 | `/sudo <player> <message/command>`                                   | Execute a command or send a message as another player.           | ✅     |
 | `/size <size>`                                                       | Change player size.                                              | ✅     |
 | `/afk`                                                               | Mark yourself as AFK.                                            | ✅     |
 | `/coordinates`                                                       | Display current coordinates.                                     | ✅     |
-| `/good`                                                              | Activate "good mode" (coming soon).                              | ⏳     |
 | `/bless [player]`                                                    | Clear bad effects.                                               | ✅     |
-| `/mute [player]`                                                     | Mute a player (coming soon).                                     | ⏳     |
 | `/repair <hand,all> [player]`                                        | Repair items.                                                    | ✅     |
 | `/itemid`                                                            | View the ID of the item in hand.                                 | ✅     |
-| `/broadcast <message>`                                               | Send a broadcast message to all players (coming soon).           | ⏳     |
 | `/getpos <player>`                                                   | Get the position of a player.                                    | ✅     |
 | `/senditem <player> [amount]`                                        | Transfer an item to another player.                              | ✅     |
 | `/kickall [reason]`                                                  | Kick all players with an optional reason.                        | ✅     |
