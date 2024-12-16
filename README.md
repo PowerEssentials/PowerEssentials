@@ -54,7 +54,7 @@
 | `/broadcast <message>`                                               | Send a broadcast message to all players (coming soon).           | ⏳     |
 | `/getpos <player>`                                                   | Get the position of a player.                                    | ✅     |
 | `/senditem <player> [amount]`                                        | Transfer an item to another player.                              | ✅     |
-| `/kickall [reason]`                                                  | Kick all players with an optional reason (coming soon).          | ⏳     |
+| `/kickall [reason]`                                                  | Kick all players with an optional reason.                        | ✅     |
 | `/tpall [player]`                                                    | Teleport all players to a target player.                         | ✅     |
 | `/worldprotect <type> <value> [world]`                               | Protect worlds with various settings (place, PvP, hunger, etc.). | ✅     |
 

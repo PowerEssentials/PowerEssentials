@@ -28,3 +28,4 @@ This note is useful for disabling commands in config.yml
 | `senditem`     | `/senditem`                              |
 | `getpos`       | `/getpos`                                |
 | `bless`        | `/bless`                                 |
+| `kickall`      | `/kickall`                               |

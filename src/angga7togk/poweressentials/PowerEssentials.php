@@ -20,6 +20,7 @@ use angga7togk\poweressentials\commands\home\DelHomeCommand;
 use angga7togk\poweressentials\commands\home\HomeCommand;
 use angga7togk\poweressentials\commands\home\SetHomeCommand;
 use angga7togk\poweressentials\commands\ItemIDCommand;
+use angga7togk\poweressentials\commands\KickAllCommand;
 use angga7togk\poweressentials\commands\lobby\LobbyCommand;
 use angga7togk\poweressentials\commands\lobby\SetLobbyCommand;
 use angga7togk\poweressentials\commands\NicknameCommand;
@@ -174,7 +175,8 @@ class PowerEssentials extends PluginBase
 			'repair' => [new RepairCommand()],
 			'senditem' => [new SendItemCommand()],
 			'getpos' => [new GetPositionCommand()],
-			'bless' => [new BlessCommand()]
+			'bless' => [new BlessCommand()],
+			'kickall' => [new KickAllCommand()]
 		];
 
 		foreach ($commands as $keyCmd => $valueCmd) {
