@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <a href="https://powernukkitx.com">
+  <a href="https://github.com/angga7togk/PowerEssentials">
     <img src="https://raw.githubusercontent.com/angga7togk/PowerEssentials/refs/heads/main/icon.png" width="25%">
   </a>
 </p>
