@@ -24,3 +24,4 @@ This note is useful for disabling commands in config.yml
 | `tpa`          | `/tpa`                                   |
 | `tpall`        | `/tpall`                                 |
 | `itemid`       | `/itemid`                                |
+| `repair`       | `/repair`                                |

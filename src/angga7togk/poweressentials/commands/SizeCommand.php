@@ -40,7 +40,6 @@ class SizeCommand extends PECommand
       $sender->sendMessage($prefix . $lang->translateString('size.error.invalid'));
       return;
     }
-
     $sender->setScale((float) $args[0]);
     $sender->sendMessage($prefix . $lang->translateString('size.success', [$args[0]]));
   }

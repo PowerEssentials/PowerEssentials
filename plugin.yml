@@ -91,3 +91,9 @@ permissions:
     default: op
   poweressentials.itemid:
     default: op
+  poweressentials.repair:
+    default: op
+  poweressentials.repair.all:
+    default: op
+  poweressentials.repair.other:
+    default: op

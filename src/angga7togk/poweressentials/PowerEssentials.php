@@ -22,6 +22,7 @@ use angga7togk\poweressentials\commands\lobby\LobbyCommand;
 use angga7togk\poweressentials\commands\lobby\SetLobbyCommand;
 use angga7togk\poweressentials\commands\NicknameCommand;
 use angga7togk\poweressentials\commands\OneSleepCancelCommand;
+use angga7togk\poweressentials\commands\RepairCommand;
 use angga7togk\poweressentials\commands\RTPCommand;
 use angga7togk\poweressentials\commands\SizeCommand;
 use angga7togk\poweressentials\commands\SudoCommand;
@@ -166,7 +167,8 @@ class PowerEssentials extends PluginBase
 			'onesleep' => [new OneSleepCancelCommand()],
 			'tpa' => [new TPACommand()],
 			'tpall' => [new TPAllCommand()],
-			'itemid' => [new ItemIDCommand()]
+			'itemid' => [new ItemIDCommand()],
+			'repair' => [new RepairCommand()]
 		];
 
 		foreach ($commands as $keyCmd => $valueCmd) {

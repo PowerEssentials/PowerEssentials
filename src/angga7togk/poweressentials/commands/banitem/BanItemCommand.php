@@ -30,7 +30,7 @@ class BanItemCommand extends PECommand
     $item = $sender->getInventory()->getItemInHand();
 
     if($item->isNull()){
-      $sender->sendMessage($prefix . $lang->translateString('banitem.error.hold.item'));
+      $sender->sendMessage($prefix . $lang->translateString('error.hold.item'));
       return;
     }
 
