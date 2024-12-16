@@ -27,3 +27,4 @@ This note is useful for disabling commands in config.yml
 | `repair`       | `/repair`                                |
 | `senditem`     | `/senditem`                              |
 | `getpos`       | `/getpos`                                |
+| `bless`        | `/bless`                                 |

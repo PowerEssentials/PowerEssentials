@@ -101,3 +101,7 @@ permissions:
     default: true
   poweressentials.getpos:
     default: op
+  poweressentials.bless:
+    default: op
+  poweressentials.bless.other:
+    default: op

@@ -6,6 +6,7 @@ use angga7togk\poweressentials\commands\AFKCommand;
 use angga7togk\poweressentials\commands\banitem\BanItemCommand;
 use angga7togk\poweressentials\commands\banitem\BanItemListCommand;
 use angga7togk\poweressentials\commands\banitem\UnbanItemCommand;
+use angga7togk\poweressentials\commands\BlessCommand;
 use angga7togk\poweressentials\commands\CoordinatesCommand;
 use angga7togk\poweressentials\commands\FlyCommand;
 use angga7togk\poweressentials\commands\gamemode\AdvantureCommand;
@@ -172,7 +173,8 @@ class PowerEssentials extends PluginBase
 			'itemid' => [new ItemIDCommand()],
 			'repair' => [new RepairCommand()],
 			'senditem' => [new SendItemCommand()],
-			'getpos' => [new GetPositionCommand()]
+			'getpos' => [new GetPositionCommand()],
+			'bless' => [new BlessCommand()]
 		];
 
 		foreach ($commands as $keyCmd => $valueCmd) {
