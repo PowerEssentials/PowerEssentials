@@ -1,9 +1,10 @@
 <p align="right">
-  <img src="https://raw.githubusercontent.com/angga7togk/PowerEssentials/refs/heads/main/img/indonesia.png" width="5%">
+  <a href="https://poggit.pmmp.io/p/PowerEssentials"><img src="https://poggit.pmmp.io/shield.state/PowerEssentials" height="20px"></a>
+  <img src="https://raw.githubusercontent.com/angga7togk/PowerEssentials/refs/heads/main/img/indonesia.png" height="23px">
 </p>
 
 <p align="center">
-  <a href="https://github.com/angga7togk/PowerEssentials">
+  <a href="https://powernukkitx.com">
     <img src="https://raw.githubusercontent.com/angga7togk/PowerEssentials/refs/heads/main/icon.png" width="25%">
   </a>
 </p>
@@ -52,6 +53,19 @@
 | `/kickall [reason]`                                                  | Kick all players with an optional reason.                        | ✅     |
 | `/tpall [player]`                                                    | Teleport all players to a target player.                         | ✅     |
 | `/worldprotect <type> <value> [world]`                               | Protect worlds with various settings (place, PvP, hunger, etc.). | ✅     |
+| `/mute <player> [time: 10m]`                               | Mute Player. | ⌛     |
+| `/tempban <player> <time: 10m> [reason]`                               | Banned players with time. | ⌛     |
+| `/bancommand <command> [world]`                               | Banned command on specific world. | ⌛     |
+| `/lightning [player]`                               | Send lightning. | ⌛     |
+| `/staffchat`                               | Entering staff chat mode. | ⌛     |
+| `/walkspeed <speed: 1.5>`                               | Walkspeed. | ⌛     |
+| `/flyspeed <speed: 1.5>`                               | Flyspeed. | ⌛     |
+| `/renameitem <name>`                               | Rename the item on your hand. | ⌛     |
+| `/itemlore <name>`                               | Set lore the item on your hand, (`use {line} to create new line`). | ⌛     |
+| `/enchants [<enchant:level>]`                               | enchant lots of items in your hand, (`/enchants unbreaking:2 thorns:1 vampire:1`). | ⌛     |
+| `/pvptoggle`                               | On/Off your pvp mode. | ⌛     |
+| `/antitp`                               | Anti Teleport. | ⌛     |
+| `/nightvision`                               | Night Vision mode. | ⌛     |
 
 ---
 
