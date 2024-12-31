@@ -77,6 +77,6 @@ trait HomeTrait
 
   public function getHomeNames(): array
   {
-    return array_keys($this->getData()->get("homes"));
+    return array_keys($this->getData()->get("homes", []));
   }
 }
