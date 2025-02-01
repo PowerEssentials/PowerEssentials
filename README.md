@@ -99,6 +99,8 @@ We welcome contributions! Feel free to open issues or submit pull requests to he
 
 Icon by [Flaticon](https://www.flaticon.com/)
 
+---
+
 ## 📜 License
 
-PowerEssentials is licensed under the [MIT License](https://github.com/angga7togk/PowerEssentials/blob/main/LICENSES).
+PowerEssentials is licensed under the [MIT License](LICENSES).
