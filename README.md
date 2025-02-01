@@ -103,4 +103,4 @@ Icon by [Flaticon](https://www.flaticon.com/)
 
 ## 📜 License
 
-PowerEssentials is licensed under the [MIT License](LICENSES).
+PowerEssentials is licensed under the [MIT License](LICENSE).
