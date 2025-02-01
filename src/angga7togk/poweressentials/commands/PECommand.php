@@ -6,12 +6,17 @@ use angga7togk\poweressentials\i18n\PELang;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\lang\Translatable;
+use pocketmine\plugin\PluginOwned;
+use pocketmine\plugin\PluginOwnedTrait;
 use pocketmine\utils\TextFormat;
 
-abstract class PECommand extends Command
+abstract class PECommand extends Command implements PluginOwned
 {
+    use PluginOwnedTrait;
+ 
     const PREFIX_PERMISSION = "poweressentials.";
     private string $prefix;
+
     public function __construct(string $name, Translatable|string $description = "", Translatable|string|null $usageMessage = null, array $aliases = [])
     {
         parent::__construct($name, $description, $usageMessage, $aliases);
