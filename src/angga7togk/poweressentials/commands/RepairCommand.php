@@ -1,5 +1,21 @@
 <?php
 
+/*
+ *   ____                        _____                    _   _       _
+ *  |  _ \ _____      _____ _ __| ____|___ ___  ___ _ __ | |_(_) __ _| |___
+ *  | |_) / _ \ \ /\ / / _ \ '__|  _| / __/ __|/ _ \ '_ \| __| |/ _` | / __|
+ *  |  __/ (_) \ V  V /  __/ |  | |___\__ \__ \  __/ | | | |_| | (_| | \__ \
+ *  |_|   \___/ \_/\_/ \___|_|  |_____|___/___/\___|_| |_|\__|_|\__,_|_|___/
+ *
+ *
+ * This file is part of PowerEssentials plugins.
+ *
+ * (c) Angga7Togk <kiplihode123321@gmail.com>
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
 namespace angga7togk\poweressentials\commands;
 
 use angga7togk\poweressentials\i18n\PELang;
@@ -9,80 +25,98 @@ use pocketmine\player\Player;
 
 class RepairCommand extends PECommand
 {
-
-  public function __construct()
-  {
-    parent::__construct("repair", "Repair item in hand", "/repair <hand|all> [player]");
-    $this->setPrefix("repair.prefix");
-    $this->setPermission("repair");
-  }
-
-  public function run(CommandSender $sender, string $prefix, PELang $lang, array $args): void
-  {
-    if (!$sender instanceof Player) {
-      $sender->sendMessage($prefix . $lang->translateString('error.console'));
-      return;
+    public function __construct()
+    {
+        parent::__construct('repair', 'Repair item in hand', '/repair <hand|all> [player]');
+        $this->setPrefix('repair.prefix');
+        $this->setPermission('repair');
     }
 
-    if (!isset($args[0])) {
-      $sender->sendMessage($prefix . $this->getUsage());
-      return;
-    }
-    $target = $sender;
-    if (isset($args[1])) {
-      if (!$sender->hasPermission('poweressentials.repair.other')) {
-        $sender->sendMessage($prefix . $lang->translateString('error.permission'));
-        return;
-      }
+    public function run(CommandSender $sender, string $prefix, PELang $lang, array $args): void
+    {
+        if (!$sender instanceof Player) {
+            $sender->sendMessage($prefix . $lang->translateString('error.console'));
 
-      $target = $sender->getServer()->getPlayerExact($args[1]);
-      if ($target === null) {
-        $sender->sendMessage($prefix . $lang->translateString('error.player.null'));
-        return;
-      }
-    }
-
-    switch (strtolower($args[0])) {
-      case "hand":
-        $item = $target->getInventory()->getItemInHand();
-        if ($item->isNull()) {
-          $sender->sendMessage($prefix . $lang->translateString('error.hold.item'));
-          return;
-        }
-        if (!($item instanceof Durable)) {
-          $sender->sendMessage($prefix . $lang->translateString('error.item.invalid'));
-          return;
-        }
-        $item->setDamage(0);
-        $target->getInventory()->setItemInHand($item);
-        $sender->sendMessage($prefix . $lang->translateString('repair.success'));
-        break;
-      case "all":
-        if (!$sender->hasPermission('poweressentials.repair.all')) {
-          $sender->sendMessage($prefix . $lang->translateString('error.permission'));
-          return;
+            return;
         }
 
-        foreach ($target->getInventory()->getContents() as $slot => $item) {
-          if ($item->isNull()) continue;
-          if (!($item instanceof Durable)) continue;
-          $target->getInventory()->setItem($slot, $item->setDamage(0));
+        if (!isset($args[0])) {
+            $sender->sendMessage($prefix . $this->getUsage());
+
+            return;
         }
-        foreach ($target->getOffHandInventory()->getContents() as $slot => $item) {
-          if ($item->isNull()) continue;
-          if (!($item instanceof Durable)) continue;
-          $target->getOffHandInventory()->setItem($slot, $item->setDamage(0));
+        $target = $sender;
+        if (isset($args[1])) {
+            if (!$sender->hasPermission('poweressentials.repair.other')) {
+                $sender->sendMessage($prefix . $lang->translateString('error.permission'));
+
+                return;
+            }
+
+            $target = $sender->getServer()->getPlayerExact($args[1]);
+            if ($target === null) {
+                $sender->sendMessage($prefix . $lang->translateString('error.player.null'));
+
+                return;
+            }
         }
-        foreach ($target->getArmorInventory()->getContents() as $slot => $item) {
-          if ($item->isNull()) continue;
-          if (!($item instanceof Durable)) continue;
-          $target->getArmorInventory()->setItem($slot, $item->setDamage(0));
+
+        switch (strtolower($args[0])) {
+            case 'hand':
+                $item = $target->getInventory()->getItemInHand();
+                if ($item->isNull()) {
+                    $sender->sendMessage($prefix . $lang->translateString('error.hold.item'));
+
+                    return;
+                }
+                if (!($item instanceof Durable)) {
+                    $sender->sendMessage($prefix . $lang->translateString('error.item.invalid'));
+
+                    return;
+                }
+                $item->setDamage(0);
+                $target->getInventory()->setItemInHand($item);
+                $sender->sendMessage($prefix . $lang->translateString('repair.success'));
+                break;
+            case 'all':
+                if (!$sender->hasPermission('poweressentials.repair.all')) {
+                    $sender->sendMessage($prefix . $lang->translateString('error.permission'));
+
+                    return;
+                }
+
+                foreach ($target->getInventory()->getContents() as $slot => $item) {
+                    if ($item->isNull()) {
+                        continue;
+                    }
+                    if (!($item instanceof Durable)) {
+                        continue;
+                    }
+                    $target->getInventory()->setItem($slot, $item->setDamage(0));
+                }
+                foreach ($target->getOffHandInventory()->getContents() as $slot => $item) {
+                    if ($item->isNull()) {
+                        continue;
+                    }
+                    if (!($item instanceof Durable)) {
+                        continue;
+                    }
+                    $target->getOffHandInventory()->setItem($slot, $item->setDamage(0));
+                }
+                foreach ($target->getArmorInventory()->getContents() as $slot => $item) {
+                    if ($item->isNull()) {
+                        continue;
+                    }
+                    if (!($item instanceof Durable)) {
+                        continue;
+                    }
+                    $target->getArmorInventory()->setItem($slot, $item->setDamage(0));
+                }
+                $sender->sendMessage($prefix . $lang->translateString('repair.success.all'));
+                break;
+            default:
+                $sender->sendMessage($prefix . $this->getUsage());
+                break;
         }
-        $sender->sendMessage($prefix . $lang->translateString('repair.success.all'));
-        break;
-      default:
-        $sender->sendMessage($prefix . $this->getUsage());
-        break;
     }
-  }
 }
