@@ -2,7 +2,6 @@
 build-by-default: true
 branches:
 - main
-- Add-Command-Mute
 projects:
   PowerEssentials:
     path: ""
