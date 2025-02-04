@@ -20,6 +20,7 @@ namespace angga7togk\poweressentials\manager;
 
 use angga7togk\poweressentials\config\PEConfig;
 use angga7togk\poweressentials\manager\user\HomeTrait;
+use angga7togk\poweressentials\manager\user\MuteTrait;
 use angga7togk\poweressentials\manager\user\NicknameTrait;
 use angga7togk\poweressentials\PowerEssentials;
 use pocketmine\player\Player;
@@ -28,6 +29,7 @@ use pocketmine\utils\Config;
 class UserManager extends PEConfig
 {
     use HomeTrait;
+    use MuteTrait;
     use NicknameTrait;
     private PowerEssentials $plugin;
     private Player $player;

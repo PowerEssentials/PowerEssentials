@@ -39,6 +39,8 @@ use angga7togk\poweressentials\commands\ItemIDCommand;
 use angga7togk\poweressentials\commands\KickAllCommand;
 use angga7togk\poweressentials\commands\lobby\LobbyCommand;
 use angga7togk\poweressentials\commands\lobby\SetLobbyCommand;
+use angga7togk\poweressentials\commands\mute\MuteCommand;
+use angga7togk\poweressentials\commands\mute\UnmuteCommand;
 use angga7togk\poweressentials\commands\NicknameCommand;
 use angga7togk\poweressentials\commands\OneSleepCancelCommand;
 use angga7togk\poweressentials\commands\RepairCommand;
@@ -195,7 +197,9 @@ class PowerEssentials extends PluginBase
             'senditem'     => [new SendItemCommand()],
             'getpos'       => [new GetPositionCommand()],
             'bless'        => [new BlessCommand()],
-            'kickall'      => [new KickAllCommand()]
+            'kickall'      => [new KickAllCommand()],
+            'mute'         => [new MuteCommand()],
+            'unmute'       => [new UnmuteCommand()]
         ];
 
         foreach ($commands as $keyCmd => $valueCmd) {
