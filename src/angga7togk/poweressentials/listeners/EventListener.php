@@ -32,6 +32,7 @@ use pocketmine\event\Event;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerBedEnterEvent;
 use pocketmine\event\player\PlayerBedLeaveEvent;
+use pocketmine\event\player\PlayerChatEvent;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerLoginEvent;
@@ -67,7 +68,7 @@ class EventListener implements Listener
         }
     }
 
-    public function onSleep(PlayerBedEnterEvent $event)
+    public function onSleep(PlayerBedEnterEvent $event): void
     {
         $player = $event->getPlayer();
         if (count($this->plugin->getServer()->getOnlinePlayers()) !== 1) {
@@ -78,7 +79,7 @@ class EventListener implements Listener
         }
     }
 
-    public function onUnsleep(PlayerBedLeaveEvent $event)
+    public function onUnsleep(PlayerBedLeaveEvent $event): void
     {
         $player  = $event->getPlayer();
         $sleeper = $this->dataManager->getSlepper();
@@ -87,7 +88,7 @@ class EventListener implements Listener
         }
     }
 
-    public function onDropPickup(EntityItemPickupEvent $event)
+    public function onDropPickup(EntityItemPickupEvent $event): void
     {
         $player = $event->getEntity();
         if ($player instanceof Player && VanishCommand::isVanished($player)) {
@@ -138,7 +139,7 @@ class EventListener implements Listener
         }
     }
 
-    public function onHitPlayer(EntityDamageByEntityEvent $event)
+    public function onHitPlayer(EntityDamageByEntityEvent $event): void
     {
         $target  = $event->getEntity();
         $damager = $event->getDamager();
@@ -151,7 +152,7 @@ class EventListener implements Listener
         }
     }
 
-    public function onMove(PlayerMoveEvent $event)
+    public function onMove(PlayerMoveEvent $event): void
     {
         $player = $event->getPlayer();
         if (AFKCommand::isAfk($player)) {
@@ -171,12 +172,12 @@ class EventListener implements Listener
         $this->banItemEvent($event);
     }
 
-    public function onBreak(BlockBreakEvent $event)
+    public function onBreak(BlockBreakEvent $event): void
     {
         $this->banItemEvent($event);
     }
 
-    private function banItemEvent(Event $event)
+    private function banItemEvent(Event $event): void
     {
         if ($event instanceof BlockBreakEvent || $event instanceof BlockPlaceEvent || $event instanceof PlayerInteractEvent) {
             $player      = $event->getPlayer();
@@ -191,6 +192,17 @@ class EventListener implements Listener
                 $player->sendMessage($prefix . $lang->translateString('banitem.error.item.is.banned'));
                 $event->cancel();
             }
+        }
+    }
+
+    public function onChat(PlayerChatEvent $event): void
+    {
+        $player = $event->getPlayer();
+        $name = $player->getName();
+
+        if (PowerEssentials::getInstance()->getUserManager()->isMuted($name)) {
+            $event->cancel();
+            $player->sendMessage($prefix . $lang->translateString('mute.notify'));
         }
     }
 }
