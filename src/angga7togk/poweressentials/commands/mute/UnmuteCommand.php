@@ -16,9 +16,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-namespace angga7togk\poweressentials\commands;
+namespace angga7togk\poweressentials\commands\mute;
 
-use angga7togk\poweressentials\command\PECommand;
+use angga7togk\poweressentials\commands\PECommand;
 use angga7togk\poweressentials\i18n\PELang;
 use angga7togk\poweressentials\PowerEssentials;
 use pocketmine\command\CommandSender;
