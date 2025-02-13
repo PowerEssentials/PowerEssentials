@@ -18,11 +18,12 @@
 
 namespace angga7togk\poweressentials\commands;
 
+use angga7togk\poweressentials\command\PECommand;
 use angga7togk\poweressentials\i18n\PELang;
 use angga7togk\poweressentials\PowerEssentials;
 use pocketmine\command\CommandSender;
 
-class UnmuteCommand extends PECommand implements PluginOwned
+class UnmuteCommand extends PECommand
 {
     public function __construct()
     {

@@ -18,13 +18,13 @@
 
 namespace angga7togk\poweressentials\commands;
 
+use angga7togk\poweressentials\command\PECommand;
 use angga7togk\poweressentials\i18n\PELang;
 use angga7togk\poweressentials\PowerEssentials;
 use pocketmine\command\CommandSender;
 
-class MuteCommand extends PECommand implements PluginOwned
+class MuteCommand extends PECommand
 {
-    use PluginOwnedTrait;
 
     public function __construct()
     {
