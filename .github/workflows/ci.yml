@@ -1,0 +1,27 @@
+name: PHPStan Analyze
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  phpstan:
+    name: Run PHPStan
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: mbstring, xml, ctype, iconv
+          tools: composer
+
+      - name: Install dependencies
+        run: composer install --no-progress --no-suggest --prefer-dist --ignore-platform-req=*
+
+      - name: Run PHPStan
+        run: vendor/bin/phpstan analyse --memory-limit=1G
