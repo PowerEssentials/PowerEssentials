@@ -1,11 +1,10 @@
 <p align="right">
-  <a href="https://poggit.pmmp.io/p/PowerEssentials"><img src="https://poggit.pmmp.io/shield.state/PowerEssentials" height="20px"></a>
-  <img src="https://raw.githubusercontent.com/angga7togk/PowerEssentials/refs/heads/main/img/indonesia.png" height="23px">
+  <img src="https://raw.githubusercontent.com/PowerEssentials/PowerEssentials/refs/heads/stable/img/indonesia.png" height="23px">
 </p>
 
 <p align="center">
   <a href="https://github.com/PowerEssentials">
-    <img src="https://raw.githubusercontent.com/angga7togk/PowerEssentials/refs/heads/main/icon.png" width="25%">
+    <img src="https://raw.githubusercontent.com/PowerEssentials/PowerEssentials/refs/heads/stable/icon.png" width="25%">
   </a>
 </p>
 
