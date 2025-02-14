@@ -35,6 +35,8 @@ class MuteCommand extends PECommand
     /**
      * @param string[] $args
      * @phpstan-param list<string> $args
+     *
+     * @return mixed
      */
     public function run(CommandSender $sender, string $prefix, PELang $lang, array $args): void
     {
