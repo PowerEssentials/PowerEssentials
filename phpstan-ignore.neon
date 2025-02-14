@@ -7,64 +7,10 @@ parameters:
 			path: src/angga7togk/poweressentials/PowerEssentials.php
 
 		-
-			message: '#^Instantiated class angga7togk\\poweressentials\\commands\\mute\\MuteCommand not found\.$#'
-			identifier: class.notFound
-			count: 1
-			path: src/angga7togk/poweressentials/PowerEssentials.php
-
-		-
-			message: '#^Instantiated class angga7togk\\poweressentials\\commands\\mute\\UnmuteCommand not found\.$#'
-			identifier: class.notFound
-			count: 1
-			path: src/angga7togk/poweressentials/PowerEssentials.php
-
-		-
 			message: '#^Parameter \#1 \$array of function array_diff expects array, list\<string\>\|false given\.$#'
 			identifier: argument.type
 			count: 1
 			path: src/angga7togk/poweressentials/PowerEssentials.php
-
-		-
-			message: '#^Parameter \#2 \$commands of method pocketmine\\command\\SimpleCommandMap\:\:registerAll\(\) expects array\<pocketmine\\command\\Command\>, list\<angga7togk\\poweressentials\\commands\\AFKCommand\|angga7togk\\poweressentials\\commands\\banitem\\BanItemCommand\|angga7togk\\poweressentials\\commands\\banitem\\BanItemListCommand\|angga7togk\\poweressentials\\commands\\banitem\\UnbanItemCommand\|angga7togk\\poweressentials\\commands\\BlessCommand\|angga7togk\\poweressentials\\commands\\CoordinatesCommand\|angga7togk\\poweressentials\\commands\\FlyCommand\|angga7togk\\poweressentials\\commands\\gamemode\\AdvantureCommand\|angga7togk\\poweressentials\\commands\\gamemode\\CreativeCommand\|angga7togk\\poweressentials\\commands\\gamemode\\SpectatorCommand\|angga7togk\\poweressentials\\commands\\gamemode\\SurvivalCommand\|angga7togk\\poweressentials\\commands\\GetPositionCommand\|angga7togk\\poweressentials\\commands\\healfeed\\FeedCommand\|angga7togk\\poweressentials\\commands\\healfeed\\HealCommand\|angga7togk\\poweressentials\\commands\\home\\DelHomeCommand\|angga7togk\\poweressentials\\commands\\home\\HomeCommand\|angga7togk\\poweressentials\\commands\\home\\SetHomeCommand\|angga7togk\\poweressentials\\commands\\ItemIDCommand\|angga7togk\\poweressentials\\commands\\KickAllCommand\|angga7togk\\poweressentials\\commands\\lobby\\LobbyCommand\|angga7togk\\poweressentials\\commands\\lobby\\SetLobbyCommand\|angga7togk\\poweressentials\\commands\\mute\\MuteCommand\|angga7togk\\poweressentials\\commands\\mute\\UnmuteCommand\|angga7togk\\poweressentials\\commands\\NicknameCommand\|angga7togk\\poweressentials\\commands\\OneSleepCancelCommand\|angga7togk\\poweressentials\\commands\\RepairCommand\|angga7togk\\poweressentials\\commands\\RTPCommand\|angga7togk\\poweressentials\\commands\\SendItemCommand\|angga7togk\\poweressentials\\commands\\SizeCommand\|angga7togk\\poweressentials\\commands\\SudoCommand\|angga7togk\\poweressentials\\commands\\TPACommand\|angga7togk\\poweressentials\\commands\\TPAllCommand\|angga7togk\\poweressentials\\commands\\vanish\\VanishCommand\|angga7togk\\poweressentials\\commands\\vanish\\VanishListCommand\|angga7togk\\poweressentials\\commands\\warp\\AddWarpCommand\|angga7togk\\poweressentials\\commands\\warp\\DelWarpCommand\|angga7togk\\poweressentials\\commands\\warp\\WarpCommand\|angga7togk\\poweressentials\\commands\\WorldProtectCommand\> given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/PowerEssentials.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\commands\\AFKCommand\:\:run\(\) has parameter \$args with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/angga7togk/poweressentials/commands/AFKCommand.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\commands\\BlessCommand\:\:run\(\) has parameter \$args with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/angga7togk/poweressentials/commands/BlessCommand.php
-
-		-
-			message: '#^Parameter \#1 \$name of method pocketmine\\Server\:\:getPlayerExact\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/commands/BlessCommand.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\commands\\CoordinatesCommand\:\:run\(\) has parameter \$args with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/angga7togk/poweressentials/commands/CoordinatesCommand.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\commands\\FlyCommand\:\:run\(\) has parameter \$args with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/angga7togk/poweressentials/commands/FlyCommand.php
-
-		-
-			message: '#^Parameter \#1 \$name of method pocketmine\\Server\:\:getPlayerExact\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/commands/FlyCommand.php
 
 		-
 			message: '#^Property angga7togk\\poweressentials\\commands\\FlyCommand\:\:\$flying type has no value type specified in iterable type array\.$#'
@@ -79,44 +25,14 @@ parameters:
 			path: src/angga7togk/poweressentials/commands/GetPositionCommand.php
 
 		-
-			message: '#^Method angga7togk\\poweressentials\\commands\\GetPositionCommand\:\:run\(\) has parameter \$args with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/angga7togk/poweressentials/commands/GetPositionCommand.php
-
-		-
 			message: '#^Parameter \#1 \$message of method pocketmine\\command\\CommandSender\:\:sendMessage\(\) expects pocketmine\\lang\\Translatable\|string, mixed given\.$#'
 			identifier: argument.type
 			count: 1
 			path: src/angga7togk/poweressentials/commands/GetPositionCommand.php
 
 		-
-			message: '#^Parameter \#1 \$name of method pocketmine\\Server\:\:getPlayerExact\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/commands/GetPositionCommand.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\commands\\ItemIDCommand\:\:run\(\) has parameter \$args with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/angga7togk/poweressentials/commands/ItemIDCommand.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\commands\\KickAllCommand\:\:run\(\) has parameter \$args with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/angga7togk/poweressentials/commands/KickAllCommand.php
-
-		-
 			message: '#^Binary operation "\." between string and pocketmine\\lang\\Translatable\|string results in an error\.$#'
 			identifier: binaryOp.invalid
-			count: 1
-			path: src/angga7togk/poweressentials/commands/NicknameCommand.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\commands\\NicknameCommand\:\:run\(\) has parameter \$args with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
 			count: 1
 			path: src/angga7togk/poweressentials/commands/NicknameCommand.php
 
@@ -127,58 +43,10 @@ parameters:
 			path: src/angga7togk/poweressentials/commands/NicknameCommand.php
 
 		-
-			message: '#^Parameter \#1 \$name of method pocketmine\\Server\:\:getPlayerExact\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/commands/NicknameCommand.php
-
-		-
-			message: '#^Parameter \#1 \$name of method pocketmine\\player\\Player\:\:setDisplayName\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/commands/NicknameCommand.php
-
-		-
-			message: '#^Parameter \#1 \$nick of static method angga7togk\\poweressentials\\config\\PEConfig\:\:isBlacklistNickname\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/commands/NicknameCommand.php
-
-		-
-			message: '#^Parameter \#1 \$nickname of method angga7togk\\poweressentials\\manager\\UserManager\:\:setCustomNick\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/commands/NicknameCommand.php
-
-		-
-			message: '#^Parameter \#1 \$string of function strlen expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/commands/NicknameCommand.php
-
-		-
-			message: '#^Parameter \#2 \$params of method angga7togk\\poweressentials\\i18n\\PELang\:\:translateString\(\) expects array\<float\|int\|pocketmine\\lang\\Translatable\|string\>, array\<int, mixed\> given\.$#'
-			identifier: argument.type
-			count: 3
-			path: src/angga7togk/poweressentials/commands/NicknameCommand.php
-
-		-
 			message: '#^Cannot call method stopSleep\(\) on pocketmine\\player\\Player\|null\.$#'
 			identifier: method.nonObject
 			count: 1
 			path: src/angga7togk/poweressentials/commands/OneSleepCancelCommand.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\commands\\OneSleepCancelCommand\:\:run\(\) has parameter \$args with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/angga7togk/poweressentials/commands/OneSleepCancelCommand.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\commands\\PECommand\:\:run\(\) has parameter \$args with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/angga7togk/poweressentials/commands/PECommand.php
 
 		-
 			message: '#^Method angga7togk\\poweressentials\\commands\\RTPCommand\:\:attemptTeleport\(\) has parameter \$rangeX with no value type specified in iterable type array\.$#'
@@ -193,21 +61,9 @@ parameters:
 			path: src/angga7togk/poweressentials/commands/RTPCommand.php
 
 		-
-			message: '#^Method angga7togk\\poweressentials\\commands\\RTPCommand\:\:run\(\) has parameter \$args with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/angga7togk/poweressentials/commands/RTPCommand.php
-
-		-
 			message: '#^Parameter \#1 \$min of function random_int expects int, mixed given\.$#'
 			identifier: argument.type
 			count: 2
-			path: src/angga7togk/poweressentials/commands/RTPCommand.php
-
-		-
-			message: '#^Parameter \#1 \$name of method pocketmine\\world\\WorldManager\:\:getWorldByName\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
 			path: src/angga7togk/poweressentials/commands/RTPCommand.php
 
 		-
@@ -223,27 +79,9 @@ parameters:
 			path: src/angga7togk/poweressentials/commands/RepairCommand.php
 
 		-
-			message: '#^Method angga7togk\\poweressentials\\commands\\RepairCommand\:\:run\(\) has parameter \$args with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/angga7togk/poweressentials/commands/RepairCommand.php
-
-		-
 			message: '#^Parameter \#1 \$message of method pocketmine\\player\\Player\:\:sendMessage\(\) expects pocketmine\\lang\\Translatable\|string, mixed given\.$#'
 			identifier: argument.type
 			count: 2
-			path: src/angga7togk/poweressentials/commands/RepairCommand.php
-
-		-
-			message: '#^Parameter \#1 \$name of method pocketmine\\Server\:\:getPlayerExact\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/commands/RepairCommand.php
-
-		-
-			message: '#^Parameter \#1 \$string of function strtolower expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
 			path: src/angga7togk/poweressentials/commands/RepairCommand.php
 
 		-
@@ -259,25 +97,7 @@ parameters:
 			path: src/angga7togk/poweressentials/commands/SendItemCommand.php
 
 		-
-			message: '#^Cannot cast mixed to int\.$#'
-			identifier: cast.int
-			count: 1
-			path: src/angga7togk/poweressentials/commands/SendItemCommand.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\commands\\SendItemCommand\:\:run\(\) has parameter \$args with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/angga7togk/poweressentials/commands/SendItemCommand.php
-
-		-
 			message: '#^Parameter \#1 \$message of method pocketmine\\player\\Player\:\:sendMessage\(\) expects pocketmine\\lang\\Translatable\|string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/commands/SendItemCommand.php
-
-		-
-			message: '#^Parameter \#1 \$name of method pocketmine\\Server\:\:getPlayerExact\(\) expects string, mixed given\.$#'
 			identifier: argument.type
 			count: 1
 			path: src/angga7togk/poweressentials/commands/SendItemCommand.php
@@ -285,12 +105,6 @@ parameters:
 		-
 			message: '#^Binary operation "\." between string and pocketmine\\lang\\Translatable\|string results in an error\.$#'
 			identifier: binaryOp.invalid
-			count: 1
-			path: src/angga7togk/poweressentials/commands/SizeCommand.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\commands\\SizeCommand\:\:run\(\) has parameter \$args with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
 			count: 1
 			path: src/angga7togk/poweressentials/commands/SizeCommand.php
 
@@ -313,19 +127,7 @@ parameters:
 			path: src/angga7togk/poweressentials/commands/SudoCommand.php
 
 		-
-			message: '#^Method angga7togk\\poweressentials\\commands\\SudoCommand\:\:run\(\) has parameter \$args with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/angga7togk/poweressentials/commands/SudoCommand.php
-
-		-
 			message: '#^Parameter \#1 \$message of method pocketmine\\command\\CommandSender\:\:sendMessage\(\) expects pocketmine\\lang\\Translatable\|string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/commands/SudoCommand.php
-
-		-
-			message: '#^Parameter \#1 \$name of method pocketmine\\Server\:\:getPlayerExact\(\) expects string, mixed given\.$#'
 			identifier: argument.type
 			count: 1
 			path: src/angga7togk/poweressentials/commands/SudoCommand.php
@@ -334,12 +136,6 @@ parameters:
 			message: '#^Binary operation "\." between string and pocketmine\\lang\\Translatable\|string results in an error\.$#'
 			identifier: binaryOp.invalid
 			count: 2
-			path: src/angga7togk/poweressentials/commands/TPACommand.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\commands\\TPACommand\:\:run\(\) has parameter \$args with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
 			path: src/angga7togk/poweressentials/commands/TPACommand.php
 
 		-
@@ -349,38 +145,8 @@ parameters:
 			path: src/angga7togk/poweressentials/commands/TPACommand.php
 
 		-
-			message: '#^Parameter \#1 \$name of method pocketmine\\Server\:\:getPlayerExact\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/commands/TPACommand.php
-
-		-
-			message: '#^Parameter \#1 \$string of function strtolower expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 2
-			path: src/angga7togk/poweressentials/commands/TPACommand.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\commands\\TPAllCommand\:\:run\(\) has parameter \$args with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/angga7togk/poweressentials/commands/TPAllCommand.php
-
-		-
-			message: '#^Parameter \#1 \$name of method pocketmine\\Server\:\:getPlayerExact\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/commands/TPAllCommand.php
-
-		-
 			message: '#^Binary operation "\." between string and pocketmine\\lang\\Translatable\|string results in an error\.$#'
 			identifier: binaryOp.invalid
-			count: 1
-			path: src/angga7togk/poweressentials/commands/WorldProtectCommand.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\commands\\WorldProtectCommand\:\:run\(\) has parameter \$args with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
 			count: 1
 			path: src/angga7togk/poweressentials/commands/WorldProtectCommand.php
 
@@ -388,18 +154,6 @@ parameters:
 			message: '#^Parameter \#1 \$message of method pocketmine\\command\\CommandSender\:\:sendMessage\(\) expects pocketmine\\lang\\Translatable\|string, mixed given\.$#'
 			identifier: argument.type
 			count: 1
-			path: src/angga7togk/poweressentials/commands/WorldProtectCommand.php
-
-		-
-			message: '#^Parameter \#1 \$name of method pocketmine\\world\\WorldManager\:\:getWorldByName\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/commands/WorldProtectCommand.php
-
-		-
-			message: '#^Parameter \#1 \$string of function strtolower expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 3
 			path: src/angga7togk/poweressentials/commands/WorldProtectCommand.php
 
 		-
@@ -409,134 +163,8 @@ parameters:
 			path: src/angga7togk/poweressentials/commands/WorldProtectCommand.php
 
 		-
-			message: '#^Method angga7togk\\poweressentials\\commands\\banitem\\BanItemCommand\:\:run\(\) has parameter \$args with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/angga7togk/poweressentials/commands/banitem/BanItemCommand.php
-
-		-
-			message: '#^Parameter \#1 \$name of method pocketmine\\world\\WorldManager\:\:getWorldByName\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/commands/banitem/BanItemCommand.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\commands\\banitem\\BanItemListCommand\:\:run\(\) has parameter \$args with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/angga7togk/poweressentials/commands/banitem/BanItemListCommand.php
-
-		-
-			message: '#^Parameter \#1 \$name of method pocketmine\\world\\WorldManager\:\:getWorldByName\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/commands/banitem/BanItemListCommand.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\commands\\banitem\\UnbanItemCommand\:\:run\(\) has parameter \$args with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/angga7togk/poweressentials/commands/banitem/UnbanItemCommand.php
-
-		-
-			message: '#^Parameter \#1 \$name of method pocketmine\\world\\WorldManager\:\:getWorldByName\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/commands/banitem/UnbanItemCommand.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\commands\\gamemode\\AdvantureCommand\:\:run\(\) has parameter \$args with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/angga7togk/poweressentials/commands/gamemode/AdvantureCommand.php
-
-		-
-			message: '#^Parameter \#1 \$name of method pocketmine\\Server\:\:getPlayerExact\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/commands/gamemode/AdvantureCommand.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\commands\\gamemode\\CreativeCommand\:\:run\(\) has parameter \$args with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/angga7togk/poweressentials/commands/gamemode/CreativeCommand.php
-
-		-
-			message: '#^Parameter \#1 \$name of method pocketmine\\Server\:\:getPlayerExact\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/commands/gamemode/CreativeCommand.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\commands\\gamemode\\SpectatorCommand\:\:run\(\) has parameter \$args with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/angga7togk/poweressentials/commands/gamemode/SpectatorCommand.php
-
-		-
-			message: '#^Parameter \#1 \$name of method pocketmine\\Server\:\:getPlayerExact\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/commands/gamemode/SpectatorCommand.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\commands\\gamemode\\SurvivalCommand\:\:run\(\) has parameter \$args with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/angga7togk/poweressentials/commands/gamemode/SurvivalCommand.php
-
-		-
-			message: '#^Parameter \#1 \$name of method pocketmine\\Server\:\:getPlayerExact\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/commands/gamemode/SurvivalCommand.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\commands\\healfeed\\FeedCommand\:\:run\(\) has parameter \$args with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/angga7togk/poweressentials/commands/healfeed/FeedCommand.php
-
-		-
-			message: '#^Parameter \#1 \$name of method pocketmine\\Server\:\:getPlayerExact\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/commands/healfeed/FeedCommand.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\commands\\healfeed\\HealCommand\:\:run\(\) has parameter \$args with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/angga7togk/poweressentials/commands/healfeed/HealCommand.php
-
-		-
-			message: '#^Parameter \#1 \$name of method pocketmine\\Server\:\:getPlayerExact\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/commands/healfeed/HealCommand.php
-
-		-
 			message: '#^Binary operation "\." between string and pocketmine\\lang\\Translatable\|string results in an error\.$#'
 			identifier: binaryOp.invalid
-			count: 1
-			path: src/angga7togk/poweressentials/commands/home/DelHomeCommand.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\commands\\home\\DelHomeCommand\:\:run\(\) has parameter \$args with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/angga7togk/poweressentials/commands/home/DelHomeCommand.php
-
-		-
-			message: '#^Parameter \#1 \$homeName of method angga7togk\\poweressentials\\manager\\UserManager\:\:deleteHome\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/commands/home/DelHomeCommand.php
-
-		-
-			message: '#^Parameter \#1 \$homeName of method angga7togk\\poweressentials\\manager\\UserManager\:\:homeExists\(\) expects string, mixed given\.$#'
-			identifier: argument.type
 			count: 1
 			path: src/angga7togk/poweressentials/commands/home/DelHomeCommand.php
 
@@ -547,38 +175,8 @@ parameters:
 			path: src/angga7togk/poweressentials/commands/home/DelHomeCommand.php
 
 		-
-			message: '#^Parameter \#2 \$params of method angga7togk\\poweressentials\\i18n\\PELang\:\:translateString\(\) expects array\<float\|int\|pocketmine\\lang\\Translatable\|string\>, array\<int, mixed\> given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/commands/home/DelHomeCommand.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\commands\\home\\HomeCommand\:\:run\(\) has parameter \$args with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/angga7togk/poweressentials/commands/home/HomeCommand.php
-
-		-
 			message: '#^Offset ''world'' might not exist on array\|null\.$#'
 			identifier: offsetAccess.notFound
-			count: 1
-			path: src/angga7togk/poweressentials/commands/home/HomeCommand.php
-
-		-
-			message: '#^Parameter \#1 \$homeName of method angga7togk\\poweressentials\\manager\\UserManager\:\:getHome\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/commands/home/HomeCommand.php
-
-		-
-			message: '#^Parameter \#1 \$homeName of method angga7togk\\poweressentials\\manager\\UserManager\:\:getHomeData\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/commands/home/HomeCommand.php
-
-		-
-			message: '#^Parameter \#1 \$homeName of method angga7togk\\poweressentials\\manager\\UserManager\:\:homeExists\(\) expects string, mixed given\.$#'
-			identifier: argument.type
 			count: 1
 			path: src/angga7togk/poweressentials/commands/home/HomeCommand.php
 
@@ -591,30 +189,12 @@ parameters:
 		-
 			message: '#^Parameter \#2 \$params of method angga7togk\\poweressentials\\i18n\\PELang\:\:translateString\(\) expects array\<float\|int\|pocketmine\\lang\\Translatable\|string\>, array\<int, mixed\> given\.$#'
 			identifier: argument.type
-			count: 2
+			count: 1
 			path: src/angga7togk/poweressentials/commands/home/HomeCommand.php
 
 		-
 			message: '#^Binary operation "\." between string and pocketmine\\lang\\Translatable\|string results in an error\.$#'
 			identifier: binaryOp.invalid
-			count: 1
-			path: src/angga7togk/poweressentials/commands/home/SetHomeCommand.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\commands\\home\\SetHomeCommand\:\:run\(\) has parameter \$args with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/angga7togk/poweressentials/commands/home/SetHomeCommand.php
-
-		-
-			message: '#^Parameter \#1 \$homeName of method angga7togk\\poweressentials\\manager\\UserManager\:\:createHome\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/commands/home/SetHomeCommand.php
-
-		-
-			message: '#^Parameter \#1 \$homeName of method angga7togk\\poweressentials\\manager\\UserManager\:\:homeExists\(\) expects string, mixed given\.$#'
-			identifier: argument.type
 			count: 1
 			path: src/angga7togk/poweressentials/commands/home/SetHomeCommand.php
 
@@ -625,81 +205,21 @@ parameters:
 			path: src/angga7togk/poweressentials/commands/home/SetHomeCommand.php
 
 		-
-			message: '#^Parameter \#2 \$params of method angga7togk\\poweressentials\\i18n\\PELang\:\:translateString\(\) expects array\<float\|int\|pocketmine\\lang\\Translatable\|string\>, array\<int, mixed\> given\.$#'
-			identifier: argument.type
-			count: 2
-			path: src/angga7togk/poweressentials/commands/home/SetHomeCommand.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\commands\\lobby\\LobbyCommand\:\:run\(\) has parameter \$args with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/angga7togk/poweressentials/commands/lobby/LobbyCommand.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\commands\\lobby\\SetLobbyCommand\:\:run\(\) has parameter \$args with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/angga7togk/poweressentials/commands/lobby/SetLobbyCommand.php
-
-		-
 			message: '#^Method angga7togk\\poweressentials\\PowerEssentials\:\:getUserManager\(\) invoked with 0 parameters, 1 required\.$#'
 			identifier: arguments.count
 			count: 1
 			path: src/angga7togk/poweressentials/commands/mute/MuteCommand.php
 
 		-
-			message: '#^Method angga7togk\\poweressentials\\commands\\MuteCommand\:\:run\(\) has parameter \$args with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
+			message: '#^PHPDoc tag @return with type mixed is not subtype of native type void\.$#'
+			identifier: return.phpDocType
 			count: 1
-			path: src/angga7togk/poweressentials/commands/mute/MuteCommand.php
-
-		-
-			message: '#^Parameter \#1 \$playerName of method angga7togk\\poweressentials\\manager\\UserManager\:\:isMuted\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/commands/mute/MuteCommand.php
-
-		-
-			message: '#^Parameter \#1 \$playerName of method angga7togk\\poweressentials\\manager\\UserManager\:\:mutePlayer\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/commands/mute/MuteCommand.php
-
-		-
-			message: '#^Parameter \#2 \$params of method angga7togk\\poweressentials\\i18n\\PELang\:\:translateString\(\) expects array\<float\|int\|pocketmine\\lang\\Translatable\|string\>, array\<int, mixed\> given\.$#'
-			identifier: argument.type
-			count: 2
 			path: src/angga7togk/poweressentials/commands/mute/MuteCommand.php
 
 		-
 			message: '#^Method angga7togk\\poweressentials\\PowerEssentials\:\:getUserManager\(\) invoked with 0 parameters, 1 required\.$#'
 			identifier: arguments.count
 			count: 1
-			path: src/angga7togk/poweressentials/commands/mute/UnmuteCommand.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\commands\\UnmuteCommand\:\:run\(\) has parameter \$args with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/angga7togk/poweressentials/commands/mute/UnmuteCommand.php
-
-		-
-			message: '#^Parameter \#1 \$playerName of method angga7togk\\poweressentials\\manager\\UserManager\:\:isMuted\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/commands/mute/UnmuteCommand.php
-
-		-
-			message: '#^Parameter \#1 \$playerName of method angga7togk\\poweressentials\\manager\\UserManager\:\:unmutePlayer\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/commands/mute/UnmuteCommand.php
-
-		-
-			message: '#^Parameter \#2 \$params of method angga7togk\\poweressentials\\i18n\\PELang\:\:translateString\(\) expects array\<float\|int\|pocketmine\\lang\\Translatable\|string\>, array\<int, mixed\> given\.$#'
-			identifier: argument.type
-			count: 2
 			path: src/angga7togk/poweressentials/commands/mute/UnmuteCommand.php
 
 		-
@@ -727,20 +247,8 @@ parameters:
 			path: src/angga7togk/poweressentials/commands/vanish/VanishCommand.php
 
 		-
-			message: '#^Method angga7togk\\poweressentials\\commands\\vanish\\VanishCommand\:\:run\(\) has parameter \$args with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/angga7togk/poweressentials/commands/vanish/VanishCommand.php
-
-		-
 			message: '#^Method angga7togk\\poweressentials\\commands\\vanish\\VanishCommand\:\:setVanish\(\) has no return type specified\.$#'
 			identifier: missingType.return
-			count: 1
-			path: src/angga7togk/poweressentials/commands/vanish/VanishCommand.php
-
-		-
-			message: '#^Parameter \#1 \$name of method pocketmine\\Server\:\:getPlayerExact\(\) expects string, mixed given\.$#'
-			identifier: argument.type
 			count: 1
 			path: src/angga7togk/poweressentials/commands/vanish/VanishCommand.php
 
@@ -763,20 +271,8 @@ parameters:
 			path: src/angga7togk/poweressentials/commands/vanish/VanishCommand.php
 
 		-
-			message: '#^Method angga7togk\\poweressentials\\commands\\vanish\\VanishListCommand\:\:run\(\) has parameter \$args with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/angga7togk/poweressentials/commands/vanish/VanishListCommand.php
-
-		-
 			message: '#^Binary operation "\." between string and pocketmine\\lang\\Translatable\|string results in an error\.$#'
 			identifier: binaryOp.invalid
-			count: 1
-			path: src/angga7togk/poweressentials/commands/warp/AddWarpCommand.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\commands\\warp\\AddWarpCommand\:\:run\(\) has parameter \$args with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
 			count: 1
 			path: src/angga7togk/poweressentials/commands/warp/AddWarpCommand.php
 
@@ -787,32 +283,8 @@ parameters:
 			path: src/angga7togk/poweressentials/commands/warp/AddWarpCommand.php
 
 		-
-			message: '#^Parameter \#1 \$warpName of method angga7togk\\poweressentials\\manager\\DataManager\:\:addWarp\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/commands/warp/AddWarpCommand.php
-
-		-
-			message: '#^Parameter \#1 \$warpName of method angga7togk\\poweressentials\\manager\\DataManager\:\:warpExists\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/commands/warp/AddWarpCommand.php
-
-		-
-			message: '#^Parameter \#2 \$params of method angga7togk\\poweressentials\\i18n\\PELang\:\:translateString\(\) expects array\<float\|int\|pocketmine\\lang\\Translatable\|string\>, array\<int, mixed\> given\.$#'
-			identifier: argument.type
-			count: 2
-			path: src/angga7togk/poweressentials/commands/warp/AddWarpCommand.php
-
-		-
 			message: '#^Binary operation "\." between string and pocketmine\\lang\\Translatable\|string results in an error\.$#'
 			identifier: binaryOp.invalid
-			count: 1
-			path: src/angga7togk/poweressentials/commands/warp/DelWarpCommand.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\commands\\warp\\DelWarpCommand\:\:run\(\) has parameter \$args with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
 			count: 1
 			path: src/angga7togk/poweressentials/commands/warp/DelWarpCommand.php
 
@@ -821,48 +293,6 @@ parameters:
 			identifier: argument.type
 			count: 1
 			path: src/angga7togk/poweressentials/commands/warp/DelWarpCommand.php
-
-		-
-			message: '#^Parameter \#1 \$warpName of method angga7togk\\poweressentials\\manager\\DataManager\:\:removeWarp\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/commands/warp/DelWarpCommand.php
-
-		-
-			message: '#^Parameter \#1 \$warpName of method angga7togk\\poweressentials\\manager\\DataManager\:\:warpExists\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/commands/warp/DelWarpCommand.php
-
-		-
-			message: '#^Parameter \#2 \$params of method angga7togk\\poweressentials\\i18n\\PELang\:\:translateString\(\) expects array\<float\|int\|pocketmine\\lang\\Translatable\|string\>, array\<int, mixed\> given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/commands/warp/DelWarpCommand.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\commands\\warp\\WarpCommand\:\:run\(\) has parameter \$args with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/angga7togk/poweressentials/commands/warp/WarpCommand.php
-
-		-
-			message: '#^Parameter \#1 \$warpName of method angga7togk\\poweressentials\\manager\\DataManager\:\:getWarp\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/commands/warp/WarpCommand.php
-
-		-
-			message: '#^Parameter \#1 \$warpName of method angga7togk\\poweressentials\\manager\\DataManager\:\:warpExists\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/commands/warp/WarpCommand.php
-
-		-
-			message: '#^Parameter \#2 \$params of method angga7togk\\poweressentials\\i18n\\PELang\:\:translateString\(\) expects array\<float\|int\|pocketmine\\lang\\Translatable\|string\>, array\<int, mixed\> given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/commands/warp/WarpCommand.php
 
 		-
 			message: '#^Argument of an invalid type mixed supplied for foreach, only iterables are supported\.$#'

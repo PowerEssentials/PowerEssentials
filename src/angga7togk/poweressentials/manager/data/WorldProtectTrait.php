@@ -50,7 +50,7 @@ trait WorldProtectTrait
         if (!$value) {
             $protects[] = $type;
         } else {
-            $protects = array_filter($protects, fn ($v) => $v !== $type);
+            $protects = array_filter($protects, fn($v) => $v !== $type);
         }
 
         $manager->getData()->setNested("worldprotect.$worldName", $protects);

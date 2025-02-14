@@ -25,40 +25,52 @@ use pocketmine\command\CommandSender;
 
 class MuteCommand extends PECommand
 {
-
     public function __construct()
     {
-        parent::__construct("mute", "Mute a player", "/mute <player> [reason]", []);
-        $this->setPrefix("mute.prefix");
-        $this->setPermission("mute");
+        parent::__construct('mute', 'Mute a player', '/mute <player> [reason]', []);
+        $this->setPrefix('mute.prefix');
+        $this->setPermission('mute');
     }
 
-    /** 
-     *@param string[] $args
+    /**
+     * @param string[] $args
+     * @phpstan-param list<string> $args
+     *
+     * @return mixed
      */
-    public function run(CommandSender $sender, string $prefix, PELang $lang, array $args = []): void
+    public function run(CommandSender $sender, string $prefix, PELang $lang, array $args): void
     {
         if (!$this->testPermission($sender)) {
             $sender->sendMessage($prefix . $lang->translateString('error.permission'));
+
             return;
         }
 
         if (count($args) < 1) {
             $sender->sendMessage($prefix . $lang->translateString('mute.usage'));
+
             return;
         }
 
-        $playerName = array_shift($args);
-        $reason = empty($args) ? $lang->translateString('mute.default_reason') : implode(" ", $args);
+        $playerName = (string) array_shift($args);
+        if ($playerName === '') {
+            $sender->sendMessage($prefix . $lang->translateString('mute.usage'));
+
+            return;
+        }
+
+        $reason = empty($args) ? $lang->translateString('mute.default_reason') : implode(' ', $args);
+        $reason = (string) $reason;
 
         $userManager = PowerEssentials::getInstance()->getUserManager();
 
         if ($userManager->isMuted($playerName)) {
-            $sender->sendMessage($prefix . $lang->translateString('mute.already_muted', [$playerName]));
+            $sender->sendMessage($prefix . $lang->translateString('mute.already_muted', [(string) $playerName]));
+
             return;
         }
 
-        $userManager->mutePlayer($playerName, $reason);
-        $sender->sendMessage($prefix . $lang->translateString('mute.success', [$playerName, $reason]));
+        $userManager->mutePlayer((string) $playerName, (string) $reason);
+        $sender->sendMessage($prefix . $lang->translateString('mute.success', [(string) $playerName, (string) $reason]));
     }
 }

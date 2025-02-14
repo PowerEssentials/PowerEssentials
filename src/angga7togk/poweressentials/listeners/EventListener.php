@@ -198,7 +198,7 @@ class EventListener implements Listener
     public function onChat(PlayerChatEvent $event): void
     {
         $player = $event->getPlayer();
-        $name = $player->getName();
+        $name   = $player->getName();
 
         if (PowerEssentials::getInstance()->getUserManager()->isMuted($name)) {
             $event->cancel();
