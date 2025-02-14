@@ -61,5 +61,11 @@ abstract class PECommand extends Command implements PluginOwned
         $this->run($sender, $this->getPrefix(), PELang::fromConsole(), $args);
     }
 
+    /**
+     * @param string[] $args
+	 * @phpstan-param list<string> $args
+     *
+     * @return void
+     */
     abstract public function run(CommandSender $sender, string $prefix, PELang $lang, array $args): void;
 }
