@@ -36,7 +36,7 @@ class MuteCommand extends PECommand
     /**
      * @param string[] $args
      */
-    public function run(CommandSender $sender, string $prefix, PELang $lang, array $args): void
+    public function run(CommandSender $sender, string $prefix, PELang $lang, array $args = []): void
     {
         if (!$this->testPermission($sender)) {
             $sender->sendMessage($prefix . $lang->translateString('error.permission'));
