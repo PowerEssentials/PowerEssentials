@@ -25,7 +25,6 @@ use pocketmine\command\CommandSender;
 
 class MuteCommand extends PECommand
 {
-
     public function __construct()
     {
         parent::__construct("mute", "Mute a player", "/mute <player> [reason]", []);
@@ -33,9 +32,6 @@ class MuteCommand extends PECommand
         $this->setPermission("mute");
     }
 
-    /**
-     * @param string[] $args
-     */
     public function run(CommandSender $sender, string $prefix, PELang $lang, array $args = []): void
     {
         if (!$this->testPermission($sender)) {
@@ -49,6 +45,11 @@ class MuteCommand extends PECommand
         }
 
         $playerName = (string) array_shift($args);
+        if ($playerName === '') {
+            $sender->sendMessage($prefix . $lang->translateString('mute.usage'));
+            return;
+        }
+
         $reason = empty($args) ? $lang->translateString('mute.default_reason') : implode(" ", $args);
 
         $userManager = PowerEssentials::getInstance()->getUserManager();
@@ -58,7 +59,7 @@ class MuteCommand extends PECommand
             return;
         }
 
-        $userManager->mutePlayer($playerName, $reason);
+        $userManager->mutePlayer((string) $playerName, (string) $reason);
         $sender->sendMessage($prefix . $lang->translateString('mute.success', [(string) $playerName, (string) $reason]));
     }
 }
