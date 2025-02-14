@@ -33,10 +33,10 @@ class MuteCommand extends PECommand
         $this->setPermission("mute");
     }
 
-    /** 
-     *@param string[] $args
+    /**
+     * @param string[] $args
      */
-    public function run(CommandSender $sender, string $prefix, PELang $lang, array $args = []): void
+    public function run(CommandSender $sender, string $prefix, PELang $lang, array $args): void
     {
         if (!$this->testPermission($sender)) {
             $sender->sendMessage($prefix . $lang->translateString('error.permission'));
@@ -48,17 +48,17 @@ class MuteCommand extends PECommand
             return;
         }
 
-        $playerName = array_shift($args);
+        $playerName = (string) array_shift($args);
         $reason = empty($args) ? $lang->translateString('mute.default_reason') : implode(" ", $args);
 
         $userManager = PowerEssentials::getInstance()->getUserManager();
 
         if ($userManager->isMuted($playerName)) {
-            $sender->sendMessage($prefix . $lang->translateString('mute.already_muted', [$playerName]));
+            $sender->sendMessage($prefix . $lang->translateString('mute.already_muted', [(string) $playerName]));
             return;
         }
 
         $userManager->mutePlayer($playerName, $reason);
-        $sender->sendMessage($prefix . $lang->translateString('mute.success', [$playerName, $reason]));
+        $sender->sendMessage($prefix . $lang->translateString('mute.success', [(string) $playerName, (string) $reason]));
     }
 }
