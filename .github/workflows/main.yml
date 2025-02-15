@@ -17,7 +17,7 @@ jobs:
         uses: pmmp/setup-php-action@3.2.0
         with:
           php-version: '8.2'
-          install-path: "/bin"
+          install-path: "./bin"
           pm-version-major: 5
 
       - name: Install dependencies
