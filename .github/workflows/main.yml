@@ -21,7 +21,7 @@ jobs:
           pm-version-major: 5
 
       - name: Install dependencies
-        run: sudo apt install composer && composer install --no-progress --no-suggest --prefer-dist
+        run: sudo apt install composer ext-session && composer install --no-progress --no-suggest --prefer-dist
 
       - name: Run PHPStan
         run: vendor/bin/phpstan analyse --memory-limit=1G
