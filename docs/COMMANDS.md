@@ -29,3 +29,4 @@ This note is useful for disabling commands in config.yml
 | `getpos`       | `/getpos`                                |
 | `bless`        | `/bless`                                 |
 | `kickall`      | `/kickall`                               |
+| `mute`         | `/mute`, `/unmute`                       |
