@@ -1,8 +1,8 @@
 <?php
 
 $finder = PhpCsFixer\Finder::create()
-    ->in(__DIR__) // Scan seluruh file di direktori proyek
-    ->exclude('vendor') // Abaikan folder vendor jika menggunakan Composer
+    ->in(__DIR__)
+    ->exclude('vendor')
     ->name('*.php')
     ->ignoreDotFiles(true)
     ->ignoreVCS(true);
@@ -38,7 +38,7 @@ return (new PhpCsFixer\Config())
         'blank_line_before_statement' => [
             'statements' => ['return', 'throw', 'try'],
         ],
-        'braces' => ['position_after_functions_and_oop_constructs' => 'same'],
+        'braces' => ['position_after_functions_and_oop_constructs' => 'next'],
         'concat_space' => ['spacing' => 'one'],
         'declare_equal_normalize' => ['space' => 'single'],
         'function_typehint_space' => true,
@@ -62,5 +62,6 @@ return (new PhpCsFixer\Config())
         'ternary_operator_spaces' => true,
         'trim_array_spaces' => true,
         'whitespace_after_comma_in_array' => true,
+        'function_declaration' => ['closure_fn_spacing' => 'none'],
     ])
     ->setFinder($finder);
