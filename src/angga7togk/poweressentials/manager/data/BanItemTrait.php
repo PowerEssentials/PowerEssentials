@@ -84,7 +84,7 @@ trait BanItemTrait
         if (!in_array($itemVanillaName, $banItems)) {
             return;
         }
-        $banItems = array_filter($banItems, fn ($banItem) => $banItem !== $itemVanillaName);
+        $banItems = array_filter($banItems, fn($banItem) => $banItem !== $itemVanillaName);
 
         /** @var DataManager $manager */
         $manager = $this;

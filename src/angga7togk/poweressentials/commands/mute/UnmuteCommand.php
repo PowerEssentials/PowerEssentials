@@ -27,20 +27,22 @@ class UnmuteCommand extends PECommand
 {
     public function __construct()
     {
-        parent::__construct("unmute", "Unmute a player", "/unmute <player>", []);
-        $this->setPrefix("unmute.prefix");
-        $this->setPermission("unmute");
+        parent::__construct('unmute', 'Unmute a player', '/unmute <player>', []);
+        $this->setPrefix('unmute.prefix');
+        $this->setPermission('unmute');
     }
 
     public function run(CommandSender $sender, string $prefix, PELang $lang, array $args): void
     {
         if (!$this->testPermission($sender)) {
             $sender->sendMessage($prefix . $lang->translateString('error.permission'));
+
             return;
         }
 
         if (count($args) < 1) {
             $sender->sendMessage($prefix . $lang->translateString('unmute.usage'));
+
             return;
         }
 
@@ -50,6 +52,7 @@ class UnmuteCommand extends PECommand
 
         if (!$userManager->isMuted($playerName)) {
             $sender->sendMessage($prefix . $lang->translateString('unmute.not_muted', [$playerName]));
+
             return;
         }
 

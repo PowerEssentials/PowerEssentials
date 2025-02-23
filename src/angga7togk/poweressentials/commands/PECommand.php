@@ -63,7 +63,7 @@ abstract class PECommand extends Command implements PluginOwned
 
     /**
      * @param string[] $args
-	 * @phpstan-param list<string> $args
+     * @phpstan-param list<string> $args
      *
      * @return void
      */
