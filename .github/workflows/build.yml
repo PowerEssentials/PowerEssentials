@@ -1,0 +1,32 @@
+name: Build Plugin
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
+
+      - name: Install dependencies
+        run: |
+          if [ -f composer.json ]; then
+            composer install --no-dev --prefer-dist --ignore-platform-req=*
+          fi
+
+      - name: Build .phar
+        run: php build.php
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: plugin-phar
+          path: builds/*.phar
