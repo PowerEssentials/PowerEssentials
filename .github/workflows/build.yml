@@ -16,12 +16,6 @@ jobs:
         with:
           php-version: "8.2"
 
-      - name: Install dependencies
-        run: |
-          if [ -f composer.json ]; then
-            composer install --no-dev --prefer-dist --ignore-platform-req=*
-          fi
-
       - name: Build .phar
         run: php -d phar.readonly=0 build.php
 
