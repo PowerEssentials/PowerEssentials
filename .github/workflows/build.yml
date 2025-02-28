@@ -23,7 +23,7 @@ jobs:
           fi
 
       - name: Build .phar
-        run: php build.php
+        run: php -d phar.readonly=0 build.php
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
