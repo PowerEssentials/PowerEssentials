@@ -70,7 +70,7 @@
 
 ## 📂 Installation
 
-1. Download the latest release from the [releases page](https://github.com/angga7togk/PowerEssentials/releases).
+1. Download the latest release from the [releases page](https://github.com/PowerEssentials/PowerEssentials/releases).
 2. Place the `PowerEssentials.phar` file into your server's `plugins` folder.
 3. Restart your server.
 
@@ -78,7 +78,7 @@
 
 ## 🌐 Localization
 
-PowerEssentials supports multiple languages. Contributions for new translations are welcome!
+**PowerEssentials** supports multiple languages. Contributions for new translations are welcome!
 
 ---
 
@@ -90,13 +90,13 @@ We welcome contributions! Feel free to open issues or submit pull requests to he
 
 ## 🔗 Links
 
-- [GitHub Repository](https://github.com/angga7togk/PowerEssentials)
+- [GitHub Repository](https://github.com/PowerEssentials/PowerEssentials)
 
 ---
 
 ## 📜 Credits
 
-Icon by [Flaticon](https://www.flaticon.com/)
+Icon from [Flaticon](https://www.flaticon.com/)
 
 ---
 
