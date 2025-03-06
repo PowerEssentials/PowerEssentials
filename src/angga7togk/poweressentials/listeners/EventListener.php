@@ -109,8 +109,9 @@ class EventListener implements Listener
 
     public function onJoin(PlayerJoinEvent $event): void
     {
-        $player = $event->getPlayer();
-        $mgr    = $this->plugin->getUserManager($player);
+        $player      = $event->getPlayer();
+        $mgr         = $this->plugin->getUserManager($player);
+        $userManager = PowerEssentials::getInstance()->getUserManager();
 
         // Coordinates
         if ($mgr->getCoordinatesShow()) {
@@ -136,6 +137,10 @@ class EventListener implements Listener
             if (($posLobby = $this->dataManager->getLobby()) != null) {
                 $player->teleport($posLobby);
             }
+        }
+
+        if (PEConfig::checkTempBans()) {
+            $event->cancel();
         }
     }
 

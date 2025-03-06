@@ -164,4 +164,22 @@ class PEConfig
     {
         return (int) self::$config->get('cancel-sleep-vote-timeout', 10);
     }
+
+    public function checkTempBan(Player $player): bool
+    {
+        $name = $player->getName();
+
+        if ($this->isTempBanned($name)) {
+            $reason    = $this->getTempBanReason($name);
+            $expire    = $this->getTempBans()[$name]['expire'];
+            $remaining = max(0, $expire - time());
+
+            $timeMessage = gmdate('H:i:s', $remaining);
+            $player->kick(TextFormat::RED . "You are temporarily banned for $timeMessage.\nReason: $reason");
+
+            return true;
+        }
+
+        return false;
+    }
 }
