@@ -37,6 +37,7 @@ use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerLoginEvent;
 use pocketmine\event\player\PlayerMoveEvent;
+use pocketmine\event\player\PlayerPreLogin;
 use pocketmine\event\player\PlayerQuitEvent;
 use pocketmine\network\mcpe\protocol\GameRulesChangedPacket;
 use pocketmine\network\mcpe\protocol\types\BoolGameRule;
@@ -138,10 +139,6 @@ class EventListener implements Listener
                 $player->teleport($posLobby);
             }
         }
-
-        if (PEConfig::checkTempBans()) {
-            $event->cancel();
-        }
     }
 
     public function onHitPlayer(EntityDamageByEntityEvent $event): void
@@ -208,6 +205,20 @@ class EventListener implements Listener
         if (PowerEssentials::getInstance()->getUserManager()->isMuted($name)) {
             $event->cancel();
             $player->sendMessage($prefix . $lang->translateString('mute.notify'));
+        }
+    }
+
+    public function onPreLogin(PlayerPreLoginEvent $event): void
+    {
+        $player = $event->getPlayerInfo();
+        $mgr = $this->plugin->getUserManager($player->getUsername());
+
+        if ($mgr->isTempBanned()) {
+            $banInfo = $mgr->getTempBanInfo();
+            $remainingTime = $banInfo->getRemainingTime();
+
+            $event->setKickReason("You are temporarily banned!\nReason: {$banInfo->getReason()}\nTime left: {$remainingTime}");
+            $event->setLoginResult(PlayerPreLoginEvent::RESULT_KICK_BANNED);
         }
     }
 }
