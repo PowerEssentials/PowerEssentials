@@ -18,16 +18,14 @@
 
 namespace angga7togk\poweressentials\manager\data;
 
-use angga7togk\poweressentials\manager\DataManager;
-
 trait TempBanTrait
 {
+    /**
+     * @return array<string, array{expire: int, reason: string}>
+     */
     public function getTempBans(): array
     {
-        /** @var DataManager $manager */
-        $manager = $this;
-
-        return $manager->getData()->get('tempbans', []);
+        return $this->getData()->get('tempbans', []);
     }
 
     public function isTempBanned(string $playerName): bool
@@ -48,21 +46,19 @@ trait TempBanTrait
 
     public function setTempBan(string $playerName, int $duration, string $reason): void
     {
-        $expireTime        = time() + $duration;
         $bans              = $this->getTempBans();
-        $bans[$playerName] = ['expire' => $expireTime, 'reason' => $reason];
+        $bans[$playerName] = [
+            'expire' => time() + $duration,
+            'reason' => $reason,
+        ];
 
-        /** @var DataManager $manager */
-        $manager = $this;
-        $manager->getData()->set('tempbans', $bans);
-        $manager->getData()->save();
+        $this->getData()->set('tempbans', $bans);
+        $this->getData()->save();
     }
 
     public function getTempBanReason(string $playerName): string
     {
-        $bans = $this->getTempBans();
-
-        return $bans[$playerName]['reason'] ?? 'No reason provided';
+        return $this->getTempBans()[$playerName]['reason'] ? strval($this->getTempBans()[$playerName]['reason']) : 'No reason provided';
     }
 
     public function removeTempBan(string $playerName): void
@@ -73,10 +69,7 @@ trait TempBanTrait
         }
 
         unset($bans[$playerName]);
-
-        /** @var DataManager $manager */
-        $manager = $this;
-        $manager->getData()->set('tempbans', $bans);
-        $manager->getData()->save();
+        $this->getData()->set('tempbans', $bans);
+        $this->getData()->save();
     }
 }

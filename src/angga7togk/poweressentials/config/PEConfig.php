@@ -20,13 +20,15 @@ namespace angga7togk\poweressentials\config;
 
 use angga7togk\poweressentials\PowerEssentials;
 use pocketmine\player\GameMode;
+use pocketmine\player\Player;
 use pocketmine\utils\Config;
+use pocketmine\utils\TextFormat;
 use pocketmine\world\World;
 
 class PEConfig
 {
     private static Config $config;
-    private const CONFIG_NEW_VERSION = 1.0;
+    private const float CONFIG_NEW_VERSION = 1.0;
 
     public static function init()
     {
@@ -72,7 +74,7 @@ class PEConfig
     public static function isBlacklistNickname(string $nick): bool
     {
         foreach (self::$config->get('blacklist-nicknames') as $nickBL) {
-            if (strpos($nick, $nickBL)) {
+            if (strpos($nick, (string) $nickBL)) {
                 return true;
             }
         }
@@ -130,7 +132,7 @@ class PEConfig
      */
     public static function getRandomTeleportRange(string $coordType): array
     {
-        return isset(self::$config->get('random-teleport-range')[$coordType]) ? self::$config->get('random-teleport-range')[$coordType] : [];
+        return self::$config->get('random-teleport-range')[$coordType] ?? [];
     }
 
     public static function isRandomTeleportWorldBlocked(World $world): bool

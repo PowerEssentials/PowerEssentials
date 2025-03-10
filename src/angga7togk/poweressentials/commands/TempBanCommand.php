@@ -40,7 +40,7 @@ class TempBanCommand extends PECommand
     public function run(CommandSender $sender, string $prefix, PELang $lang, array $args): void
     {
         if (count($args) < 2) {
-            $sender->sendMessage($prefix . $this->getUsage());
+            $sender->sendMessage($prefix . strval($this->getUsage()));
 
             return;
         }
@@ -50,7 +50,7 @@ class TempBanCommand extends PECommand
         $reason     = isset($args[2]) ? implode(' ', array_slice($args, 2)) : 'No reason provided';
 
         $target      = Server::getInstance()->getPlayerExact($targetName);
-        $userManager = PowerEssentials::getInstance()->getUserManager();
+        $userManager = PowerEssentials::getInstance()->getUserManager($player);
 
         if ($target instanceof Player && $target->hasPermission('tempban.exempt')) {
             $sender->sendMessage($prefix . TextFormat::RED . 'You cannot tempban this player.');

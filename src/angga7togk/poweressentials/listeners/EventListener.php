@@ -37,7 +37,7 @@ use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerLoginEvent;
 use pocketmine\event\player\PlayerMoveEvent;
-use pocketmine\event\player\PlayerPreLogin;
+use pocketmine\event\player\PlayerPreLoginEvent;
 use pocketmine\event\player\PlayerQuitEvent;
 use pocketmine\network\mcpe\protocol\GameRulesChangedPacket;
 use pocketmine\network\mcpe\protocol\types\BoolGameRule;
@@ -46,9 +46,9 @@ use pocketmine\utils\TextFormat;
 
 class EventListener implements Listener
 {
-    private DataManager $dataManager;
-    private PELang $lang;
-    public function __construct(private PowerEssentials $plugin)
+    private readonly DataManager $dataManager;
+    private readonly PELang $lang;
+    public function __construct(private readonly PowerEssentials $plugin)
     {
         $this->dataManager = $this->plugin->getDataManager();
         $this->lang        = PELang::fromConsole();
@@ -62,7 +62,7 @@ class EventListener implements Listener
         // Anti namespace
         if (!$player->hasPermission('poweressentials.antinamespace.bypass')) {
             if (PEConfig::isAntiNamespace()) {
-                if (strpos($player->getName(), ' ')) {
+                if (strpos((string) $player->getName(), ' ')) {
                     $player->kick(TextFormat::RED . PELang::fromConsole()->translateString('error.namespace'));
                 }
             }
@@ -112,7 +112,6 @@ class EventListener implements Listener
     {
         $player      = $event->getPlayer();
         $mgr         = $this->plugin->getUserManager($player);
-        $userManager = PowerEssentials::getInstance()->getUserManager();
 
         // Coordinates
         if ($mgr->getCoordinatesShow()) {
@@ -207,18 +206,22 @@ class EventListener implements Listener
             $player->sendMessage($prefix . $lang->translateString('mute.notify'));
         }
     }
+public function onPreLogin(PlayerPreLoginEvent $event): void
+{
+    $player = $event->getPlayer();
+    $playerInfo = $event->getPlayerInfo();
+    $username = $playerInfo->getUsername();
+    $mgr = $this->plugin->getDataManager();
 
-    public function onPreLogin(PlayerPreLoginEvent $event): void
-    {
-        $player = $event->getPlayerInfo();
-        $mgr = $this->plugin->getUserManager($player->getUsername());
+    if ($mgr !== null && $mgr->isTempBanned()) {
+        $banInfo = $mgr->getTempBanInfo();
+        $remainingTime = $banInfo->getRemainingTime();
 
-        if ($mgr->isTempBanned()) {
-            $banInfo = $mgr->getTempBanInfo();
-            $remainingTime = $banInfo->getRemainingTime();
-
-            $event->setKickReason("You are temporarily banned!\nReason: {$banInfo->getReason()}\nTime left: {$remainingTime}");
-            $event->setLoginResult(PlayerPreLoginEvent::RESULT_KICK_BANNED);
-        }
+        $event->setKickFlag(
+            PlayerPreLoginEvent::KICK_FLAG_BANNED,
+            "You are temporarily banned!",
+            "Reason: {$banInfo->getReason()}\nTime left: {$remainingTime}"
+        );
     }
+}
 }

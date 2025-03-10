@@ -22,6 +22,6 @@ class ValidationUtils
 {
     public static function isValidString($string): bool
     {
-        return preg_match('/^[a-zA-Z0-9_]+$/', $string) === 1;
+        return preg_match('/^[a-zA-Z0-9_]+$/', (string) $string) === 1;
     }
 }

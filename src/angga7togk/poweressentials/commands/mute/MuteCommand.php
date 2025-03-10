@@ -52,7 +52,7 @@ class MuteCommand extends PECommand
             return;
         }
 
-        $playerName = (string) array_shift($args);
+        $playerName = array_shift($args);
         if ($playerName === '') {
             $sender->sendMessage($prefix . $lang->translateString('mute.usage'));
 
@@ -60,17 +60,17 @@ class MuteCommand extends PECommand
         }
 
         $reason = empty($args) ? $lang->translateString('mute.default_reason') : implode(' ', $args);
-        $reason = (string) $reason;
+        $reason = $reason;
 
         $userManager = PowerEssentials::getInstance()->getUserManager();
 
         if ($userManager->isMuted($playerName)) {
-            $sender->sendMessage($prefix . $lang->translateString('mute.already_muted', [(string) $playerName]));
+            $sender->sendMessage($prefix . $lang->translateString('mute.already_muted', [$playerName]));
 
             return;
         }
 
-        $userManager->mutePlayer((string) $playerName, (string) $reason);
-        $sender->sendMessage($prefix . $lang->translateString('mute.success', [(string) $playerName, (string) $reason]));
+        $userManager->mutePlayer($playerName, $reason);
+        $sender->sendMessage($prefix . $lang->translateString('mute.success', [$playerName, $reason]));
     }
 }

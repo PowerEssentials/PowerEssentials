@@ -18,21 +18,18 @@
 
 namespace angga7togk\poweressentials\manager\data;
 
-use angga7togk\poweressentials\manager\DataManager;
 use pocketmine\item\Item;
 use pocketmine\world\World;
 
 trait BanItemTrait
 {
-    /** @return String[] */
+    /** @return array<string> */
     public function getBannedItems(World $world): array
     {
-        /** @var DataManager $manager */
-        $manager = $this;
-        if (!$manager->getData()->exists('banitems')) {
+        if (!$this->getData()->exists('banitems')) {
             return [];
         }
-        $bans = $manager->getData()->get('banitems');
+        $bans = $this->getData()->get('banitems');
         if (!isset($bans[$world->getFolderName()])) {
             return [];
         }
@@ -45,12 +42,10 @@ trait BanItemTrait
         $worldName       = $world->getFolderName();
         $itemVanillaName = $item->getVanillaName();
 
-        /** @var DataManager $manager */
-        $manager = $this;
-        if (!$manager->getData()->exists('banitems')) {
+        if (!$this->getData()->exists('banitems')) {
             return false;
         }
-        $bans = $manager->getData()->get('banitems');
+        $bans = $this->getData()->get('banitems');
         if (!isset($bans[$worldName])) {
             return false;
         }
@@ -69,10 +64,8 @@ trait BanItemTrait
         }
         $banItems[] = $itemVanillaName;
 
-        /** @var DataManager $manager */
-        $manager = $this;
-        $manager->getData()->setNested("banitems.$worldName", $banItems);
-        $manager->getData()->save();
+        $this->getData()->setNested("banitems.$worldName", $banItems);
+        $this->getData()->save();
     }
 
     public function unbanItem(Item $item, World $world): void
@@ -86,9 +79,7 @@ trait BanItemTrait
         }
         $banItems = array_filter($banItems, fn($banItem) => $banItem !== $itemVanillaName);
 
-        /** @var DataManager $manager */
-        $manager = $this;
-        $manager->getData()->setNested("banitems.$worldName", $banItems);
-        $manager->getData()->save();
+        $this->getData()->setNested("banitems.$worldName", $banItems);
+        $this->getData()->save();
     }
 }

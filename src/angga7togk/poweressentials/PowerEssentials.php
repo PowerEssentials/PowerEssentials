@@ -115,7 +115,7 @@ class PowerEssentials extends PluginBase
         /** place this on first */
         PEConfig::init();
 
-        $oldLanguageDir = $this->getDataFolder() . 'language';
+        $oldLanguageDir = $this->getDataFolder() . strval('language');
         if (file_exists($oldLanguageDir)) {
             $this->unlinkRecursive($oldLanguageDir);
         }

@@ -38,7 +38,7 @@ trait LobbyTrait
             return null;
         }
         $lobby = $this->getData()->get('lobby');
-        $lobby = explode(':', $lobby);
+        $lobby = explode(':', (string) $lobby);
 
         $world = $this->plugin->getServer()->getWorldManager()->getWorldByName($lobby[3]);
         if ($world === null) {

@@ -1,12 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			message: '#^Binary operation "\." between non\-falsy\-string and mixed results in an error\.$#'
-			identifier: binaryOp.invalid
-			count: 1
-			path: src/angga7togk/poweressentials/PowerEssentials.php
-
-		-
 			message: '#^Parameter \#1 \$array of function array_diff expects array, list\<string\>\|false given\.$#'
 			identifier: argument.type
 			count: 1
@@ -541,12 +535,6 @@ parameters:
 			path: src/angga7togk/poweressentials/manager/DataManager.php
 
 		-
-			message: '#^PHPDoc tag @var with type angga7togk\\poweressentials\\manager\\DataManager is not subtype of native type \$this\(angga7togk\\poweressentials\\manager\\DataManager\)\.$#'
-			identifier: varTag.nativeType
-			count: 11
-			path: src/angga7togk/poweressentials/manager/DataManager.php
-
-		-
 			message: '#^Parameter \#1 \$array of function array_keys expects array, mixed given\.$#'
 			identifier: argument.type
 			count: 1
@@ -622,12 +610,6 @@ parameters:
 			message: '#^Method angga7togk\\poweressentials\\manager\\UserManager\:\:getMutedPlayers\(\) return type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
-			path: src/angga7togk/poweressentials/manager/UserManager.php
-
-		-
-			message: '#^PHPDoc tag @var with type angga7togk\\poweressentials\\manager\\UserManager is not subtype of native type \$this\(angga7togk\\poweressentials\\manager\\UserManager\)\.$#'
-			identifier: varTag.nativeType
-			count: 2
 			path: src/angga7togk/poweressentials/manager/UserManager.php
 
 		-

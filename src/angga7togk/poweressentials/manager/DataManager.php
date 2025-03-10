@@ -40,13 +40,10 @@ class DataManager
     }
     use TPATrait;
     use TempBanTrait;
-
-    private PowerEssentials $plugin;
     private Config $data;
 
-    public function __construct(PowerEssentials $plugin)
+    public function __construct(private PowerEssentials $plugin)
     {
-        $this->plugin = $plugin;
         $this->plugin->saveResource('data.yml');
         $this->data = new Config($this->plugin->getDataFolder() . 'data.yml', Config::YAML, []);
         $this->__constructOneSleep();

@@ -18,7 +18,6 @@
 
 namespace angga7togk\poweressentials\manager\data;
 
-use angga7togk\poweressentials\manager\DataManager;
 use pocketmine\Server;
 use pocketmine\world\Position;
 
@@ -26,7 +25,6 @@ trait WarpTrait
 {
     public function warpExists(string $warpName): bool
     {
-        /** @var DataManager $this */
         return isset($this->getData()->get('warps', [])[$warpName]);
     }
 
@@ -37,10 +35,8 @@ trait WarpTrait
         $z         = $pos->getZ();
         $worldName = $pos->getWorld()->getFolderName();
 
-        /** @var DataManager $manager */
-        $manager = $this;
-        $manager->getData()->setNested("warps.$warpName", "$x:$y:$z:$worldName");
-        $manager->getData()->save();
+        $this->getData()->setNested("warps.$warpName", "$x:$y:$z:$worldName");
+        $this->getData()->save();
     }
 
     public function removeWarp(string $warpName): void
@@ -48,10 +44,8 @@ trait WarpTrait
         if (!$this->warpExists($warpName)) {
             return;
         }
-        /** @var DataManager $manager */
-        $manager = $this;
-        $manager->getData()->removeNested("warps.$warpName");
-        $manager->getData()->save();
+        $this->getData()->removeNested("warps.$warpName");
+        $this->getData()->save();
     }
 
     public function getWarp(string $warpName): ?Position
@@ -59,9 +53,7 @@ trait WarpTrait
         if (!$this->warpExists($warpName)) {
             return null;
         }
-        /** @var DataManager $manager */
-        $manager  = $this;
-        $dataWarp = explode(':', $manager->getData()->getNested("warps.$warpName"));
+        $dataWarp = explode(':', $this->getData()->getNested("warps.$warpName"));
 
         $world = Server::getInstance()->getWorldManager()->getWorldByName($dataWarp[3]);
         if ($world === null) {
@@ -76,9 +68,6 @@ trait WarpTrait
 
     public function getWarpNames(): array
     {
-        /** @var DataManager $manager */
-        $manager = $this;
-
-        return array_keys($manager->getData()->get('warps', []));
+        return array_keys($this->getData()->get('warps', []));
     }
 }
