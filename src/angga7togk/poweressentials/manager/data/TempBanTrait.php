@@ -24,21 +24,26 @@ trait TempBanTrait
      * @return array<string, array{expire: int, reason: string}>
      */
     public function getTempBans(): array
-    {
-        $bans = $this->getData()->get('tempbans', []);
-        
-        if (!is_array($bans)) {
-            return [];
-        }
+{
+    $bans = $this->getData()->get('tempbans', []);
 
-        foreach ($bans as $player => $ban) {
-            if (!is_array($ban) || !isset($ban['expire'], $ban['reason']) || !is_int($ban['expire']) || !is_string($ban['reason'])) {
-                unset($bans[$player]);
-            }
-        }
-
-        return $bans;
+    if (!is_array($bans)) {
+        return [];
     }
+
+    $validBans = [];
+
+    foreach ($bans as $player => $ban) {
+        if (is_string($player) && is_array($ban) && isset($ban['expire'], $ban['reason']) && is_int($ban['expire']) && is_string($ban['reason'])) {
+            $validBans[$player] = [
+                'expire' => $ban['expire'],
+                'reason' => $ban['reason'],
+            ];
+        }
+    }
+
+    return $validBans;
+}
 
     public function isTempBanned(string $playerName): bool
     {
