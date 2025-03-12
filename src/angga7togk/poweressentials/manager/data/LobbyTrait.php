@@ -19,6 +19,7 @@
 namespace angga7togk\poweressentials\manager\data;
 
 use pocketmine\world\Position;
+use function strval;
 
 trait LobbyTrait
 {
@@ -38,7 +39,7 @@ trait LobbyTrait
             return null;
         }
         $lobby = $this->getData()->get('lobby');
-        $lobby = explode(':', (string) $lobby);
+        $lobby = explode(':', strval($lobby));
 
         $world = $this->plugin->getServer()->getWorldManager()->getWorldByName($lobby[3]);
         if ($world === null) {
