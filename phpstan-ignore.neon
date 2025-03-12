@@ -547,12 +547,6 @@ parameters:
 			path: src/angga7togk/poweressentials/manager/DataManager.php
 
 		-
-			message: '#^Parameter \#2 \$string of function explode expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 2
-			path: src/angga7togk/poweressentials/manager/DataManager.php
-
-		-
 			message: '#^Property angga7togk\\poweressentials\\manager\\DataManager\:\:\$handler with generic class pocketmine\\scheduler\\TaskHandler does not specify its types\: TTask$#'
 			identifier: missingType.generics
 			count: 1
@@ -637,12 +631,6 @@ parameters:
 			path: src/angga7togk/poweressentials/manager/UserManager.php
 
 		-
-			message: '#^Parameter \#2 \$string of function explode expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/manager/UserManager.php
-
-		-
 			message: '#^Parameter \#2 \$y of class pocketmine\\world\\Position constructor expects float\|int, mixed given\.$#'
 			identifier: argument.type
 			count: 1
@@ -653,15 +641,3 @@ parameters:
 			identifier: argument.type
 			count: 1
 			path: src/angga7togk/poweressentials/manager/UserManager.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\utils\\ValidationUtils\:\:isValidString\(\) has parameter \$string with no type specified\.$#'
-			identifier: missingType.parameter
-			count: 1
-			path: src/angga7togk/poweressentials/utils/ValidationUtils.php
-
-		-
-			message: '#^Parameter \#2 \$subject of function preg_match expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/utils/ValidationUtils.php
