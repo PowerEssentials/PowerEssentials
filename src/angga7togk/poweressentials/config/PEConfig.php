@@ -28,7 +28,7 @@ use pocketmine\world\World;
 class PEConfig
 {
     private static Config $config;
-    private const float CONFIG_NEW_VERSION = 1.0;
+    private const CONFIG_NEW_VERSION = 1.0;
 
     public static function init()
     {
@@ -74,7 +74,7 @@ class PEConfig
     public static function isBlacklistNickname(string $nick): bool
     {
         foreach (self::$config->get('blacklist-nicknames') as $nickBL) {
-            if (strpos($nick, (string) $nickBL)) {
+            if (strpos($nick, strval($nickBL))) {
                 return true;
             }
         }
@@ -170,10 +170,11 @@ class PEConfig
     public function checkTempBan(Player $player): bool
     {
         $name = $player->getName();
+        $dataManager = PowerEssentials::getInstance()->getDataManager();
 
-        if ($this->isTempBanned($name)) {
-            $reason    = $this->getTempBanReason($name);
-            $expire    = $this->getTempBans()[$name]['expire'];
+        if ($this->dataManager->isTempBanned($name)) {
+            $reason    = $this->dataManager->getTempBanReason($name);
+            $expire    = $this->dataManager->getTempBans()[$name]['expire'];
             $remaining = max(0, $expire - time());
 
             $timeMessage = gmdate('H:i:s', $remaining);
