@@ -62,13 +62,19 @@ class TempBanCommand extends PECommand
             return;
         }
 
-        $userManager = PowerEssentials::getInstance()->getUserManager();
+        $userManager = PowerEssentials::getInstance()->getUserManager($target);
         if ($userManager === null) {
             $sender->sendMessage($prefix . TextFormat::RED . 'UserManager is not initialized.');
             return;
         }
 
-        $userManager->setTempBan($targetName, $duration, $reason);
+        if (method_exists($userManager, 'setTempBan')) {
+            $userManager->setTempBan($targetName, $duration, $reason);
+        } else {
+            $sender->sendMessage($prefix . TextFormat::RED . 'TempBan functionality is not available.');
+            return;
+        }
+
         $target->kick(TextFormat::RED . 'You have been temporarily banned for ' . $timeString . ".\nReason: " . $reason);
 
         Server::getInstance()->broadcastMessage($prefix . $lang->translateString('tempban.broadcast', [$targetName, $timeString, $reason]));
@@ -94,7 +100,6 @@ class TempBanCommand extends PECommand
             'm' => $timeValue * 60,
             'h' => $timeValue * 3600,
             'd' => $timeValue * 86400,
-            default => null
         };
     }
 }
