@@ -89,4 +89,13 @@ trait TempBanTrait
         $this->getData()->set('tempbans', $bans);
         $this->getData()->save();
     }
+    
+    /**
+     * @return array{expire: int, reason: string}|null
+     */
+    public function getTempBanInfo(string $playerName): ?array
+    {
+        $bans = $this->getTempBans();
+        return $bans[$playerName] ?? null;
+    }
 }
