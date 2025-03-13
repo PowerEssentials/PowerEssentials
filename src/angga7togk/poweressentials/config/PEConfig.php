@@ -48,7 +48,7 @@ class PEConfig
 
     public static function getLang(): string
     {
-        return (string) self::$config->get('language', 'en');
+        return (string) (self::$config->get('language', 'en'));
     }
 
     public static function isGamemodeJoin(): bool
@@ -58,7 +58,7 @@ class PEConfig
 
     public static function getGamemodeJoin(): ?GameMode
     {
-        $gamemode = self::$config->get('gamemode-join');
+        $gamemode = (string) self::$config->get('gamemode-join');
         return $gamemode !== null ? GameMode::fromString((string) $gamemode) : null;
     }
 
@@ -74,7 +74,7 @@ class PEConfig
 
     public static function isBlacklistNickname(string $nick): bool
     {
-        $blacklist = self::$config->get('blacklist-nicknames', []);
+        $blacklist = (string) self::$config->get('blacklist-nicknames', []);
         foreach ($blacklist as $nickBL) {
             if (strpos($nick, (string) $nickBL) !== false) {
                 return true;
@@ -85,7 +85,7 @@ class PEConfig
 
     public static function getMaxCharNickname(): int
     {
-        return (int) self::$config->get('nickname-max-char', 16);
+        return (int) (self::$config->get('nickname-max-char', 16));
     }
 
     public static function isCommandDisabled(string $commandKey): bool
@@ -166,7 +166,7 @@ class PEConfig
 
     public static function getOneSleepCancelVoteTimeout(): int
     {
-        return (int) self::$config->get('cancel-sleep-vote-timeout', 10);
+        return (int) (self::$config->get('cancel-sleep-vote-timeout', 10));
     }
 
     public function checkTempBan(Player $player): bool
