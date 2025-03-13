@@ -68,7 +68,7 @@ trait HomeTrait
             return null;
         }
         $data = $this->getData()->getNested("homes.$homeName");
-        $data = explode(':', (string) $data);
+        $data = explode(':', strval($data));
 
         return [
           'x'     => (float) $data[0],
