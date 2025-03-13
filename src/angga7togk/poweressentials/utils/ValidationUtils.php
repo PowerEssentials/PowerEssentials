@@ -20,8 +20,8 @@ namespace angga7togk\poweressentials\utils;
 
 class ValidationUtils
 {
-    public static function isValidString($string): bool
+    public static function isValidString(string $string): bool
     {
-        return preg_match('/^[a-zA-Z0-9_]+$/', (string) $string) === 1;
+        return preg_match('/^[a-zA-Z0-9_]+$/', strval($string)) === 1;
     }
 }
