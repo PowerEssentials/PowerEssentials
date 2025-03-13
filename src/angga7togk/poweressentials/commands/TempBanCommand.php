@@ -25,9 +25,6 @@ use pocketmine\player\Player;
 use pocketmine\Server;
 use pocketmine\utils\TextFormat;
 
-/**
- * Note: This is an experimental feature, so it's likely to not work or break a lot.
- */
 class TempBanCommand extends PECommand
 {
     public function __construct()
@@ -40,40 +37,49 @@ class TempBanCommand extends PECommand
     public function run(CommandSender $sender, string $prefix, PELang $lang, array $args): void
     {
         if (count($args) < 2) {
-            $sender->sendMessage($prefix . strval($this->getUsage()));
-
+            $sender->sendMessage($prefix . $this->getUsage());
             return;
         }
 
         $targetName = $args[0];
         $timeString = $args[1];
-        $reason     = isset($args[2]) ? implode(' ', array_slice($args, 2)) : 'No reason provided';
+        $reason = isset($args[2]) ? implode(' ', array_slice($args, 2)) : 'No reason provided';
 
-        $target      = Server::getInstance()->getPlayerExact($targetName);
-        $userManager = PowerEssentials::getInstance()->getUserManager($player);
+        $target = Server::getInstance()->getPlayerExact($targetName);
+        if (!$target instanceof Player) {
+            $sender->sendMessage($prefix . TextFormat::RED . 'Player not found.');
+            return;
+        }
 
-        if ($target instanceof Player && $target->hasPermission('tempban.exempt')) {
+        if ($target->hasPermission('tempban.exempt')) {
             $sender->sendMessage($prefix . TextFormat::RED . 'You cannot tempban this player.');
-
             return;
         }
 
         $duration = $this->parseTime($timeString);
         if ($duration === null) {
             $sender->sendMessage($prefix . TextFormat::RED . 'Invalid time format. Use s/m/h/d (e.g., 10m, 1h).');
+            return;
+        }
 
+        $userManager = PowerEssentials::getInstance()->getUserManager();
+        if ($userManager === null) {
+            $sender->sendMessage($prefix . TextFormat::RED . 'UserManager is not initialized.');
             return;
         }
 
         $userManager->setTempBan($targetName, $duration, $reason);
-
-        if ($target instanceof Player) {
-            $target->kick(TextFormat::RED . 'You have been temporarily banned for ' . $timeString . ".\nReason: " . $reason);
-        }
+        $target->kick(TextFormat::RED . 'You have been temporarily banned for ' . $timeString . ".\nReason: " . $reason);
 
         Server::getInstance()->broadcastMessage($prefix . $lang->translateString('tempban.broadcast', [$targetName, $timeString, $reason]));
     }
 
+    /**
+     * Parse time string into seconds.
+     *
+     * @param string $timeString Format: <number><unit> (e.g., 10m, 1h)
+     * @return int|null Time in seconds, or null if format is invalid
+     */
     private function parseTime(string $timeString): ?int
     {
         if (!preg_match('/^(\d+)(s|m|h|d)$/', $timeString, $matches)) {
@@ -81,13 +87,13 @@ class TempBanCommand extends PECommand
         }
 
         $timeValue = (int) $matches[1];
-        $timeUnit  = $matches[2];
+        $timeUnit = $matches[2];
 
         return match ($timeUnit) {
-            's'     => $timeValue,
-            'm'     => $timeValue * 60,
-            'h'     => $timeValue * 3600,
-            'd'     => $timeValue * 86400,
+            's' => $timeValue,
+            'm' => $timeValue * 60,
+            'h' => $timeValue * 3600,
+            'd' => $timeValue * 86400,
             default => null
         };
     }
