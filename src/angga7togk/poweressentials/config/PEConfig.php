@@ -30,7 +30,7 @@ class PEConfig
     private static Config $config;
     private const CONFIG_NEW_VERSION = 1.0;
 
-    public static function init()
+    public static function init(): void
     {
         PowerEssentials::getInstance()->saveDefaultConfig();
         self::$config = PowerEssentials::getInstance()->getConfig();
@@ -43,103 +43,105 @@ class PEConfig
 
     public static function getVersion(): float
     {
-        return (float) self::$config->get('config-version');
+        return (float) (self::$config->get('config-version', 0.0));
     }
 
     public static function getLang(): string
     {
-        return self::$config->get('language', 'en');
+        return (string) self::$config->get('language', 'en');
     }
 
     public static function isGamemodeJoin(): bool
     {
-        return self::$config->get('gamemode-join-enable');
+        return (bool) self::$config->get('gamemode-join-enable', false);
     }
 
     public static function getGamemodeJoin(): ?GameMode
     {
-        return GameMode::fromString(self::$config->get('gamemode-join'));
+        $gamemode = self::$config->get('gamemode-join');
+        return $gamemode !== null ? GameMode::fromString((string) $gamemode) : null;
     }
 
     public static function isSpawnLobbyJoin(): bool
     {
-        return self::$config->get('spawn-lobby-join');
+        return (bool) self::$config->get('spawn-lobby-join', false);
     }
 
     public static function isAntiNamespace(): bool
     {
-        return self::$config->get('anti-namespace');
+        return (bool) self::$config->get('anti-namespace', false);
     }
 
     public static function isBlacklistNickname(string $nick): bool
     {
-        foreach (self::$config->get('blacklist-nicknames') as $nickBL) {
-            if (strpos($nick, strval($nickBL))) {
+        $blacklist = self::$config->get('blacklist-nicknames', []);
+        foreach ($blacklist as $nickBL) {
+            if (strpos($nick, (string) $nickBL) !== false) {
                 return true;
             }
         }
-
         return false;
     }
 
     public static function getMaxCharNickname(): int
     {
-        return (int) self::$config->get('nickname-max-char');
+        return (int) self::$config->get('nickname-max-char', 16);
     }
 
     public static function isCommandDisabled(string $commandKey): bool
     {
-        return in_array($commandKey, self::$config->get('disable-commands'));
+        $disabledCommands = self::$config->get('disable-commands', []);
+        return in_array($commandKey, $disabledCommands, true);
     }
 
     public static function isWorldBlacklistSetHome(string $world): bool
     {
-        return in_array($world, self::$config->get('home-world-blacklists'));
+        $blacklists = self::$config->get('home-world-blacklists', []);
+        return in_array($world, $blacklists, true);
     }
 
     public static function isHomePermissionLimit(): bool
     {
-        return self::$config->get('home-permission-limit');
+        return (bool) self::$config->get('home-permission-limit', false);
     }
 
     public static function getHomePermissionDefaultLimit(): int
     {
-        return (int) self::$config->get('home-permission-default-limit');
+        return (int) self::$config->get('home-permission-default-limit', 1);
     }
 
     public static function getHomePermissionLimits(): array
     {
-        return self::$config->get('home-permission-limits');
+        return (array) self::$config->get('home-permission-limits', []);
     }
 
     public static function isShowCoordinates(): bool
     {
-        return self::$config->get('show-coordinates');
+        return (bool) self::$config->get('show-coordinates', false);
     }
 
     public static function isRandomTeleportAntiWater(): bool
     {
-        return self::$config->get('random-teleport-anti-water');
+        return (bool) self::$config->get('random-teleport-anti-water', false);
     }
 
     public static function getRandomTeleportTimeOut(): int
     {
-        return self::$config->get('random-teleport-timeout');
+        return (int) self::$config->get('random-teleport-timeout', 10);
     }
 
-    /** @return int[]
-     * @param "x" | "z"  $coordType
-     */
+    /** @return int[] */
     public static function getRandomTeleportRange(string $coordType): array
     {
-        return self::$config->get('random-teleport-range')[$coordType] ?? [];
+        $range = self::$config->get('random-teleport-range', []);
+        return (array) ($range[$coordType] ?? []);
     }
 
     public static function isRandomTeleportWorldBlocked(World $world): bool
     {
         $worldName = $world->getFolderName();
-
-        return in_array($worldName, self::$config->get('random-teleport-world-blacklists'));
+        $blacklists = self::$config->get('random-teleport-world-blacklists', []);
+        return in_array($worldName, $blacklists, true);
     }
 
     public static function getSizeMax(): float
@@ -172,9 +174,9 @@ class PEConfig
         $name = $player->getName();
         $dataManager = PowerEssentials::getInstance()->getDataManager();
 
-        if ($this->dataManager->isTempBanned($name)) {
-            $reason    = $this->dataManager->getTempBanReason($name);
-            $expire    = $this->dataManager->getTempBans()[$name]['expire'];
+        if ($dataManager->isTempBanned($name)) {
+            $reason    = $dataManager->getTempBanReason($name);
+            $expire    = $dataManager->getTempBans()[$name]['expire'];
             $remaining = max(0, $expire - time());
 
             $timeMessage = gmdate('H:i:s', $remaining);
