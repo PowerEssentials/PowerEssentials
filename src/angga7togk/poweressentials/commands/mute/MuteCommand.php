@@ -22,6 +22,7 @@ use angga7togk\poweressentials\commands\PECommand;
 use angga7togk\poweressentials\i18n\PELang;
 use angga7togk\poweressentials\PowerEssentials;
 use pocketmine\command\CommandSender;
+use pocketmine\Server;
 
 class MuteCommand extends PECommand
 {
@@ -36,7 +37,7 @@ class MuteCommand extends PECommand
      * @param string[] $args
      * @phpstan-param list<string> $args
      *
-     * @return mixed
+     * @return void
      */
     public function run(CommandSender $sender, string $prefix, PELang $lang, array $args): void
     {
