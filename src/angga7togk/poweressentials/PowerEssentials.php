@@ -48,6 +48,7 @@ use angga7togk\poweressentials\commands\RTPCommand;
 use angga7togk\poweressentials\commands\SendItemCommand;
 use angga7togk\poweressentials\commands\SizeCommand;
 use angga7togk\poweressentials\commands\SudoCommand;
+use angga7togk\poweressentials\commands\TempbanCommand;
 use angga7togk\poweressentials\commands\TPACommand;
 use angga7togk\poweressentials\commands\TPAllCommand;
 use angga7togk\poweressentials\commands\vanish\VanishCommand;
@@ -205,6 +206,7 @@ class PowerEssentials extends PluginBase
             'senditem'     => [new SendItemCommand()],
             'size'         => [new SizeCommand()],
             'sudo'         => [new SudoCommand()],
+            'tempban'      => [new TempbanCommand()],
             'tpa'          => [new TPACommand()],
             'tpall'        => [new TPAllCommand()],
             'unmute'       => [new UnmuteCommand()],
