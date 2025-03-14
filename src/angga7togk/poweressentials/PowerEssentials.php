@@ -143,10 +143,12 @@ class PowerEssentials extends PluginBase
 
     private function unlinkRecursive(string $dir): bool
     {
-        $files = array_diff(scandir($dir), ['.', '..']);
-        if (!is_string($dir)) {
-            return null;
+        if (!is_dir($dir)) {
+            return false;
         }
+
+        $files = array_diff(scandir($dir) ?: [], ['.', '..']);
+
         foreach ($files as $file) {
             $path = $dir . DIRECTORY_SEPARATOR . $file;
             is_dir($path) ? $this->unlinkRecursive($path) : unlink($path);
@@ -154,6 +156,7 @@ class PowerEssentials extends PluginBase
 
         return rmdir($dir);
     }
+    
 
     private function getFileExtension(string $path): string
     {
