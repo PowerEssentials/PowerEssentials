@@ -111,3 +111,5 @@ permissions:
     default: op
   poweressentials.tempban:
     default: op
+  poweredsentials.tempban.exempt:
+    default: false
