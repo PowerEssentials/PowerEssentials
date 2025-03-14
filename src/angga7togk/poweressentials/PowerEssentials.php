@@ -69,11 +69,9 @@ use pocketmine\plugin\PluginBase;
 class PowerEssentials extends PluginBase
 {
     private static PowerEssentials $instance;
-
-    /** @var DataManager $dataManager */
     private DataManager $dataManager;
 
-    /** @var UserManager[] $userManagers */
+    /** @var UserManager[] */
     private array $userManagers = [];
 
     private PELang $lang;
@@ -105,9 +103,9 @@ class PowerEssentials extends PluginBase
     /**
      * @return UserManager
      */
-    public function getUserManager(Player $player): ?UserManager
+    public function getUserManager(Player $player): UserManager
     {
-        return $this->userManagers[$player->getName()] ?? null;
+        return $this->userManagers[$player->getName()] ?? $this->userManagers[$player->getName()] = new UserManager($player);
     }
 
     /**
