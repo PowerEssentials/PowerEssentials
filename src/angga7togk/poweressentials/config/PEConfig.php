@@ -117,7 +117,10 @@ class PEConfig
         return is_numeric($limit) ? (int) $limit : 1;
     }
 
-    /** @return array<string, int> */
+    /** 
+     * @param array<string, mixed> $config
+     * @return array<string, int>
+     */
     public static function getHomePermissionLimits(): array
     {
         $limits = self::$config->get('home-permission-limits', []);
