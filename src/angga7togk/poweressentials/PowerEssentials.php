@@ -73,7 +73,7 @@ class PowerEssentials extends PluginBase
     /** @var DataManager $dataManager */
     private DataManager $dataManager;
 
-    /** @var UserManager[]|null[] $userManagers */
+    /** @var UserManager[] $userManagers */
     private array $userManagers = [];
 
     private PELang $lang;
@@ -103,7 +103,7 @@ class PowerEssentials extends PluginBase
     }
 
     /**
-     * @return UserManager|null
+     * @return UserManager
      */
     public function getUserManager(Player $player): ?UserManager
     {
