@@ -131,7 +131,7 @@ class PEConfig
         /** @var array<string, int> $result */
         $result = [];
         foreach ($limits as $key => $value) {
-            $result[(string)$key] = (int)$value;
+            $result[(string)$key] = is_numeric($value) ? (int)$value : 0;
         }
 
         return $result;
@@ -160,7 +160,10 @@ class PEConfig
         if (!is_array($range)) {
             return [];
         }
-        return isset($range[$coordType]) && is_array($range[$coordType]) ? array_map(function($v) { return (int)$v; }, $range[$coordType]) : [];
+        return isset($range[$coordType]) && is_array($range[$coordType]) ? 
+            array_map(function($v) { 
+                return is_numeric($v) ? (int)$v : 0;
+            }, $range[$coordType]) : [];
     }
 
     public static function isRandomTeleportWorldBlocked(World $world): bool
