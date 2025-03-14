@@ -295,36 +295,6 @@ parameters:
 			path: src/angga7togk/poweressentials/i18n/PELang.php
 
 		-
-			message: '#^Binary operation "\." between mixed and mixed results in an error\.$#'
-			identifier: binaryOp.invalid
-			count: 1
-			path: src/angga7togk/poweressentials/listeners/EventListener.php
-
-		-
-			message: '#^Cannot call method translateString\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: src/angga7togk/poweressentials/listeners/EventListener.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\PowerEssentials\:\:getUserManager\(\) invoked with 0 parameters, 1 required\.$#'
-			identifier: arguments.count
-			count: 1
-			path: src/angga7togk/poweressentials/listeners/EventListener.php
-
-		-
-			message: '#^Undefined variable\: \$lang$#'
-			identifier: variable.undefined
-			count: 1
-			path: src/angga7togk/poweressentials/listeners/EventListener.php
-
-		-
-			message: '#^Undefined variable\: \$prefix$#'
-			identifier: variable.undefined
-			count: 1
-			path: src/angga7togk/poweressentials/listeners/EventListener.php
-
-		-
 			message: '#^Method angga7togk\\poweressentials\\listeners\\WorldProtectListener\:\:onBreak\(\) has no return type specified\.$#'
 			identifier: missingType.return
 			count: 1
@@ -443,12 +413,6 @@ parameters:
 			identifier: missingType.iterableValue
 			count: 1
 			path: src/angga7togk/poweressentials/manager/DataManager.php
-
-		-
-			message: '#^Binary operation "\+\=" between \(float\|int\) and mixed results in an error\.$#'
-			identifier: assignOp.invalid
-			count: 1
-			path: src/angga7togk/poweressentials/manager/UserManager.php
 
 		-
 			message: '#^Cannot access offset string on mixed\.$#'
