@@ -62,6 +62,7 @@ class TempBanCommand extends PECommand
             return;
         }
 
+        /** @var UserManager|null $userManager */
         $userManager = PowerEssentials::getInstance()->getUserManager($target);
         if ($userManager === null) {
             $sender->sendMessage($prefix . TextFormat::RED . $lang->translateString('tempban.failed'));
