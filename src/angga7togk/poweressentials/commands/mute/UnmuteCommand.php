@@ -28,8 +28,8 @@ class UnmuteCommand extends PECommand
     public function __construct()
     {
         parent::__construct('unmute', 'Unmute a player', '/unmute <player>', []);
-        $this->setPrefix('unmute.prefix');
-        $this->setPermission('unmute');
+        $this->setPrefix('mute.prefix');
+        $this->setPermission('mute');
     }
 
     public function run(CommandSender $sender, string $prefix, PELang $lang, array $args): void
