@@ -62,7 +62,7 @@ class TempBanCommand extends PECommand
         }
 
         $duration = $this->parseTime($timeString);
-        $invalidTime = 'Invalid time format. Use s/m/h/d (e.g., 10m, 1h).';
+        $invalidTime = $lang->translateString('tempban.invalid');
         if (!is_string($invalidTime)) {
             return;
         }
