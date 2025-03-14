@@ -30,3 +30,4 @@ This note is useful for disabling commands in config.yml
 | `bless`        | `/bless`                                 |
 | `kickall`      | `/kickall`                               |
 | `mute`         | `/mute`, `/unmute`                       |
+| `tempban`      | `/tempban`                               |
