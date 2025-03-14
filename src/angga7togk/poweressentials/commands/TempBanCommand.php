@@ -19,6 +19,7 @@
 namespace angga7togk\poweressentials\commands;
 
 use angga7togk\poweressentials\i18n\PELang;
+use angga7togk\poweressentials\manager\UserManager;
 use angga7togk\poweressentials\PowerEssentials;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
@@ -62,20 +63,13 @@ class TempBanCommand extends PECommand
             return;
         }
 
-        /** @var UserManager|null $userManager */
         $userManager = PowerEssentials::getInstance()->getUserManager($target);
-        if ($userManager === null) {
+        if (!$userManager instanceof UserManager) {
             $sender->sendMessage($prefix . TextFormat::RED . $lang->translateString('tempban.failed'));
             return;
         }
 
-        if (method_exists($userManager, 'setTempBan')) {
-            $userManager->setTempBan($targetName, $duration, $reason);
-        } else {
-            $sender->sendMessage($prefix . TextFormat::RED . $lang->translateString('tempban.unavailable'));
-            return;
-        }
-
+        $userManager->setTempBan($targetName, $duration, $reason);
         $target->kick(TextFormat::RED . $lang->translateString('tempban.success', [$timeString, $reason]));
 
         Server::getInstance()->broadcastMessage($prefix . $lang->translateString('tempban.broadcast', [$targetName, $timeString, $reason]));
