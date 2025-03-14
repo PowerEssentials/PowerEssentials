@@ -199,7 +199,7 @@ class EventListener implements Listener
     {
         $player = $event->getPlayer();
         $name = $player->getName();
-        $userManager = $this->plugin->getUserManager();
+        $userManager = $this->plugin->getUserManager($player);
 
         if ($userManager->isMuted($name)) {
             $event->cancel();
