@@ -100,11 +100,17 @@ class PowerEssentials extends PluginBase
         unset($this->userManagers[$player->getName()]);
     }
 
+    /**
+     * @return UserManager|null $userManager
+     */
     public function getUserManager(Player $player): UserManager
     {
         return $this->userManagers[$player->getName()] ?? $this->userManagers[$player->getName()] = new UserManager($player);
     }
 
+    /**
+     * @return DataManager|null $dataManager
+     */
     public function getDataManager(): DataManager
     {
         return $this->dataManager;
