@@ -36,55 +36,46 @@ class TempBanCommand extends PECommand
 
     public function run(CommandSender $sender, string $prefix, PELang $lang, array $args): void
     {
-        $usageMessage = $this->getUsage();
-        if (!is_string($usageMessage)) {
-            return;
-        }
-
         if (count($args) < 2) {
-            $sender->sendMessage($prefix . $usageMessage);
+            $sender->sendMessage($prefix . TextFormat::RED . '/tempban <player> <time> [reason]');
             return;
         }
 
         $targetName = $args[0];
         $timeString = $args[1];
-        $reason = isset($args[2]) ? implode(' ', array_slice($args, 2)) : 'No reason provided';
+        $reason = isset($args[2]) ? implode(' ', array_slice($args, 2)) : $lang->translateString('tempban.no_reason');
 
         $target = Server::getInstance()->getPlayerExact($targetName);
         if (!$target instanceof Player) {
-            $sender->sendMessage($prefix . TextFormat::RED . 'Player not found.');
+            $sender->sendMessage($prefix . TextFormat::RED . $lang->translateString('tempban.not_found'));
             return;
         }
 
         if ($target->hasPermission('tempban.exempt')) {
-            $sender->sendMessage($prefix . TextFormat::RED . 'You cannot tempban this player.');
+            $sender->sendMessage($prefix . TextFormat::RED . $lang->translateString('tempban.exempt'));
             return;
         }
 
         $duration = $this->parseTime($timeString);
-        $invalidTime = $lang->translateString('tempban.invalid');
-        if (!is_string($invalidTime)) {
-            return;
-        }
         if ($duration === null) {
-            $sender->sendMessage($prefix . TextFormat::RED . $invalidTime);
+            $sender->sendMessage($prefix . TextFormat::RED . $lang->translateString('tempban.invalid'));
             return;
         }
 
         $userManager = PowerEssentials::getInstance()->getUserManager($target);
         if ($userManager === null) {
-            $sender->sendMessage($prefix . TextFormat::RED . 'UserManager is not initialized.');
+            $sender->sendMessage($prefix . TextFormat::RED . $lang->translateString('tempban.failed'));
             return;
         }
 
         if (method_exists($userManager, 'setTempBan')) {
             $userManager->setTempBan($targetName, $duration, $reason);
         } else {
-            $sender->sendMessage($prefix . TextFormat::RED . 'TempBan functionality is not available.');
+            $sender->sendMessage($prefix . TextFormat::RED . $lang->translateString('tempban.unavailable'));
             return;
         }
 
-        $target->kick(TextFormat::RED . 'You have been temporarily banned for ' . $timeString . ".\nReason: " . $reason);
+        $target->kick(TextFormat::RED . $lang->translateString('tempban.success', [$timeString, $reason]));
 
         Server::getInstance()->broadcastMessage($prefix . $lang->translateString('tempban.broadcast', [$targetName, $timeString, $reason]));
     }
