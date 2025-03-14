@@ -27,7 +27,7 @@ class MuteCommand extends PECommand
 {
     public function __construct()
     {
-        parent::__construct('mute', 'Mute a player', '/mute <player> [reason]', []);
+        parent::__construct('mute', 'Mute a player', '/mute <player> <time: 10m> [reason]', []);
         $this->setPrefix('mute.prefix');
         $this->setPermission('mute');
     }
@@ -47,14 +47,14 @@ class MuteCommand extends PECommand
         }
 
         if (count($args) < 1) {
-            $sender->sendMessage($prefix . $lang->translateString('mute.usage'));
+            $sender->sendMessage($prefix . 'Usage: /mute <player> <time: 10m> [reason]');
 
             return;
         }
 
         $playerName = array_shift($args);
         if ($playerName === '') {
-            $sender->sendMessage($prefix . $lang->translateString('mute.usage'));
+            $sender->sendMessage($prefix . 'Usage: /mute <player> <time: 10m> [reason]');
 
             return;
         }
