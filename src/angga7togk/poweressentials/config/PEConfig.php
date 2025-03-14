@@ -121,7 +121,18 @@ class PEConfig
     public static function getHomePermissionLimits(): array
     {
         $limits = self::$config->get('home-permission-limits', []);
-        return is_array($limits) ? $limits : [];
+
+        if (!is_array($limits)) {
+            return [];
+        }
+
+        /** @var array<string, int> $result */
+        $result = [];
+        foreach ($limits as $key => $value) {
+            $result[(string) $key = (int) $value;
+        }
+
+        return $result;
     }
 
     public static function isShowCoordinates(): bool
