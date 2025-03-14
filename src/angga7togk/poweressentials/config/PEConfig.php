@@ -132,7 +132,7 @@ class PEConfig
         /** @var array<string, int> $result */
         $result = [];
         foreach ($limits as $key => $value) {
-            $result[(string) $key = (int) $value;
+            $result[(string) $key = (int) $value];
         }
 
         return $result;
