@@ -199,18 +199,6 @@ parameters:
 			path: src/angga7togk/poweressentials/commands/mute/MuteCommand.php
 
 		-
-			message: '#^PHPDoc tag @return with type mixed is not subtype of native type void\.$#'
-			identifier: return.phpDocType
-			count: 1
-			path: src/angga7togk/poweressentials/commands/mute/MuteCommand.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\PowerEssentials\:\:getUserManager\(\) invoked with 0 parameters, 1 required\.$#'
-			identifier: arguments.count
-			count: 1
-			path: src/angga7togk/poweressentials/commands/mute/UnmuteCommand.php
-
-		-
 			message: '#^Cannot access an offset on mixed\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
