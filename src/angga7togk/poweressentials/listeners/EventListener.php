@@ -49,10 +49,11 @@ class EventListener implements Listener
 {
     private readonly DataManager $dataManager;
     private readonly PELang $lang;
+
     public function __construct(private readonly PowerEssentials $plugin)
     {
         $this->dataManager = $this->plugin->getDataManager();
-        $this->lang        = PELang::fromConsole();
+        $this->lang = PELang::fromConsole();
     }
 
     public function onLogin(PlayerLoginEvent $event): void
@@ -83,7 +84,7 @@ class EventListener implements Listener
 
     public function onUnsleep(PlayerBedLeaveEvent $event): void
     {
-        $player  = $event->getPlayer();
+        $player = $event->getPlayer();
         $sleeper = $this->dataManager->getSlepper();
         if ($sleeper !== null && $sleeper->getName() === $player->getName()) {
             $this->dataManager->unsetSlepper();
@@ -111,12 +112,12 @@ class EventListener implements Listener
 
     public function onJoin(PlayerJoinEvent $event): void
     {
-        $player      = $event->getPlayer();
-        $mgr         = $this->plugin->getUserManager($player);
+        $player = $event->getPlayer();
+        $mgr = $this->plugin->getUserManager($player);
 
         // Coordinates
         if ($mgr->getCoordinatesShow()) {
-            $pk            = new GameRulesChangedPacket();
+            $pk = new GameRulesChangedPacket();
             $pk->gameRules = ['showcoordinates' => new BoolGameRule(true, false)];
             $player->getNetworkSession()->sendDataPacket($pk);
         }
@@ -144,7 +145,7 @@ class EventListener implements Listener
 
     public function onHitPlayer(EntityDamageByEntityEvent $event): void
     {
-        $target  = $event->getEntity();
+        $target = $event->getEntity();
         $damager = $event->getDamager();
         if ($target instanceof Player && $damager instanceof Player) {
             // AFK
@@ -181,8 +182,8 @@ class EventListener implements Listener
     private function banItemEvent(Event $event): void
     {
         if ($event instanceof BlockBreakEvent || $event instanceof BlockPlaceEvent || $event instanceof PlayerInteractEvent) {
-            $player      = $event->getPlayer();
-            $itemInHand  = $player->getInventory()->getItemInHand();
+            $player = $event->getPlayer();
+            $itemInHand = $player->getInventory()->getItemInHand();
             $playerWorld = $player->getWorld();
 
             // Ban Item
@@ -197,7 +198,7 @@ class EventListener implements Listener
     public function onChat(PlayerChatEvent $event): void
     {
         $player = $event->getPlayer();
-        $name   = $player->getName();
+        $name = $player->getName();
         $userManager = $this->plugin->getUserManager();
 
         if ($userManager->isMuted($name)) {
@@ -211,7 +212,7 @@ class EventListener implements Listener
     {
         $playerInfo = $event->getPlayerInfo();
         $username = $playerInfo->getUsername();
-        
+
         if ($this->dataManager->isTempBanned($username)) {
             $banInfo = $this->dataManager->getTempBanInfo($username);
             if ($banInfo !== null) {
@@ -224,7 +225,7 @@ class EventListener implements Listener
                     . "Reason: $reason\n"
                     . "Time left: $remainingTime";
 
-                $event->setKickMessage($message);
+                $event->setKickFlag(PlayerPreLoginEvent::KICK_FLAG_BANNED, $message);
             }
         }
     }
