@@ -23,11 +23,23 @@ use pocketmine\world\Position;
 
 trait WarpTrait
 {
+    /**
+     * Checks if a warp exists.
+     *
+     * @param string $warpName
+     * @return bool
+     */
     public function warpExists(string $warpName): bool
     {
         return isset($this->getData()->get('warps', [])[$warpName]);
     }
 
+    /**
+     * Adds a new warp.
+     *
+     * @param string $warpName
+     * @param Position $pos
+     */
     public function addWarp(string $warpName, Position $pos): void
     {
         $x         = $pos->getX();
@@ -39,6 +51,11 @@ trait WarpTrait
         $this->getData()->save();
     }
 
+    /**
+     * Removes an existing warp.
+     *
+     * @param string $warpName
+     */
     public function removeWarp(string $warpName): void
     {
         if (!$this->warpExists($warpName)) {
@@ -48,6 +65,12 @@ trait WarpTrait
         $this->getData()->save();
     }
 
+    /**
+     * Retrieves a warp position by name.
+     *
+     * @param string $warpName
+     * @return Position|null
+     */
     public function getWarp(string $warpName): ?Position
     {
         if (!$this->warpExists($warpName)) {
@@ -62,21 +85,23 @@ trait WarpTrait
 
         $dataWarp = explode(':', $warpData);
 
-        if (count($warpData) !== 4) {
+        if (count($dataWarp) !== 4) {
             return null;
         }
 
         $world = Server::getInstance()->getWorldManager()->getWorldByName($dataWarp[3]);
-        if ($world === null) {
-            return null;
-        }
-        if (!$world->isLoaded()) {
+        if ($world === null || !$world->isLoaded()) {
             return null;
         }
 
         return new Position((float) $dataWarp[0], (float) $dataWarp[1], (float) $dataWarp[2], $world);
     }
 
+    /**
+     * Retrieves all warp names.
+     *
+     * @return array
+     */
     public function getWarpNames(): array
     {
         return array_keys($this->getData()->get('warps', []));
