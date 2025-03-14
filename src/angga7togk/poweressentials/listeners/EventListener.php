@@ -62,8 +62,8 @@ class EventListener implements Listener
         // Anti namespace
         if (!$player->hasPermission('poweressentials.antinamespace.bypass')) {
             if (PEConfig::isAntiNamespace()) {
-                if (strpos((string) $player->getName(), ' ')) {
-                    $player->kick(TextFormat::RED . PELang::fromConsole()->translateString('error.namespace'));
+                if (str_contains($player->getName(), ' ')) {
+                    $player->kick(TextFormat::RED . $this->lang->translateString('error.namespace'));
                 }
             }
         }
@@ -117,24 +117,22 @@ class EventListener implements Listener
         if ($mgr->getCoordinatesShow()) {
             $pk            = new GameRulesChangedPacket();
             $pk->gameRules = ['showcoordinates' => new BoolGameRule(true, false)];
-            $event->getPlayer()->getNetworkSession()->sendDataPacket($pk);
+            $player->getNetworkSession()->sendDataPacket($pk);
         }
 
         // Custom Nickname
-        if (($nick = $mgr->getCustomNick()) != null) {
+        if (($nick = $mgr->getCustomNick()) !== null) {
             $player->setDisplayName($nick);
         }
 
         // Force Gamemode
         if (PEConfig::isGamemodeJoin()) {
-            if (($gamemode = PEConfig::getGamemodeJoin()) != null) {
-                $player->setGamemode($gamemode);
-            }
+            $player->setGamemode(PEConfig::getGamemodeJoin());
         }
 
         // Spawn Lobby
         if (PEConfig::isSpawnLobbyJoin()) {
-            if (($posLobby = $this->dataManager->getLobby()) != null) {
+            if (($posLobby = $this->dataManager->getLobby()) !== null) {
                 $player->teleport($posLobby);
             }
         }
@@ -147,8 +145,7 @@ class EventListener implements Listener
         if ($target instanceof Player && $damager instanceof Player) {
             // AFK
             if (AFKCommand::isAfk($target) && !$damager->hasPermission('poweressentials.afk.bypass')) {
-                $lang = PELang::fromConsole();
-                $damager->sendMessage(TextFormat::GOLD . $lang->translateString('afk.prefix') . ' ' . $lang->translateString('afk.error.target.is.afk', [$target->getName()]));
+                $damager->sendMessage(TextFormat::GOLD . $this->lang->translateString('afk.prefix') . ' ' . $this->lang->translateString('afk.error.target.is.afk', [$target->getName()]));
             }
         }
     }
@@ -157,8 +154,7 @@ class EventListener implements Listener
     {
         $player = $event->getPlayer();
         if (AFKCommand::isAfk($player)) {
-            $lang = PELang::fromConsole();
-            $player->sendMessage(TextFormat::GOLD . $lang->translateString('afk.prefix') . ' ' . $lang->translateString('afk.disabled'));
+            $player->sendMessage(TextFormat::GOLD . $this->lang->translateString('afk.prefix') . ' ' . $this->lang->translateString('afk.disabled'));
             AFKCommand::disabledAfk($player);
         }
     }
@@ -187,10 +183,8 @@ class EventListener implements Listener
 
             // Ban Item
             if ($this->dataManager->isBannedItem($itemInHand, $playerWorld) && !$player->hasPermission('poweressentials.banitem.bypass')) {
-                $lang   = PELang::fromConsole();
-                $prefix = TextFormat::GOLD . $lang->translateString('banitem.prefix') . ' ';
-
-                $player->sendMessage($prefix . $lang->translateString('banitem.error.item.is.banned'));
+                $prefix = TextFormat::GOLD . $this->lang->translateString('banitem.prefix') . ' ';
+                $player->sendMessage($prefix . $this->lang->translateString('banitem.error.item.is.banned'));
                 $event->cancel();
             }
         }
@@ -200,28 +194,33 @@ class EventListener implements Listener
     {
         $player = $event->getPlayer();
         $name   = $player->getName();
+        $userManager = $this->plugin->getUserManager();
 
-        if (PowerEssentials::getInstance()->getUserManager()->isMuted($name)) {
+        if ($userManager->isMuted($name)) {
             $event->cancel();
-            $player->sendMessage($prefix . $lang->translateString('mute.notify'));
+            $prefix = TextFormat::GOLD . $this->lang->translateString('mute.prefix') . ' ';
+            $player->sendMessage($prefix . $this->lang->translateString('mute.notify'));
         }
     }
-public function onPreLogin(PlayerPreLoginEvent $event): void
-{
-    $player = $event->getPlayer();
-    $playerInfo = $event->getPlayerInfo();
-    $username = $playerInfo->getUsername();
-    $mgr = $this->plugin->getDataManager();
 
-    if ($mgr !== null && $mgr->isTempBanned()) {
-        $banInfo = $mgr->getTempBanInfo();
-        $remainingTime = $banInfo->getRemainingTime();
-
-        $event->setKickFlag(
-            PlayerPreLoginEvent::KICK_FLAG_BANNED,
-            "You are temporarily banned!",
-            "Reason: {$banInfo->getReason()}\nTime left: {$remainingTime}"
-        );
+    public function onPreLogin(PlayerPreLoginEvent $event): void
+    {
+        $playerInfo = $event->getPlayerInfo();
+        $username = $playerInfo->getUsername();
+        
+        if ($this->dataManager->isTempBanned($username)) {
+            $banInfo = $this->dataManager->getTempBanInfo($username);
+            if ($banInfo !== null) {
+                $reason = $banInfo['reason'] ?? 'No reason provided';
+                $remaining = $banInfo['remaining'] ?? 0;
+                
+                $remainingTime = gmdate("H:i:s", $remaining);
+                $message = TextFormat::RED . "You are temporarily banned!\n"
+                    . "Reason: $reason\n"
+                    . "Time left: $remainingTime";
+                
+                $event->setKickReason(PlayerPreLoginEvent::KICK_REASON_BANNED, $message);
+            }
+        }
     }
-}
 }
