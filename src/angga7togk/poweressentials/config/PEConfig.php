@@ -118,7 +118,6 @@ class PEConfig
     }
 
     /** 
-     * @param array<string, mixed> $config
      * @return array<string, int>
      */
     public static function getHomePermissionLimits(): array
@@ -132,7 +131,7 @@ class PEConfig
         /** @var array<string, int> $result */
         $result = [];
         foreach ($limits as $key => $value) {
-            $result[(string) $key = (int) $value];
+            $result[(string)$key] = (int)$value;
         }
 
         return $result;
@@ -161,7 +160,7 @@ class PEConfig
         if (!is_array($range)) {
             return [];
         }
-        return isset($range[$coordType]) && is_array($range[$coordType]) ? array_map('intval', $range[$coordType]) : [];
+        return isset($range[$coordType]) && is_array($range[$coordType]) ? array_map(function($v) { return (int)$v; }, $range[$coordType]) : [];
     }
 
     public static function isRandomTeleportWorldBlocked(World $world): bool
