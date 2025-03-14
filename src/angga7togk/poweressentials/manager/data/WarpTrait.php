@@ -53,7 +53,18 @@ trait WarpTrait
         if (!$this->warpExists($warpName)) {
             return null;
         }
-        $dataWarp = explode(':', $this->getData()->getNested("warps.$warpName"));
+
+        $warpData = $this->getData()->getNested("warps.$warpName");
+
+        if (!is_string($warpData)) {
+            return null;
+        }
+
+        $dataWarp = explode(':', $warpData);
+
+        if (count($warpData) !== 4) {
+            return null;
+        }
 
         $world = Server::getInstance()->getWorldManager()->getWorldByName($dataWarp[3]);
         if ($world === null) {
