@@ -36,8 +36,10 @@ class TempBanCommand extends PECommand
 
     public function run(CommandSender $sender, string $prefix, PELang $lang, array $args): void
     {
+        $usageMessage = $this->getUsage();
+
         if (count($args) < 2) {
-            $sender->sendMessage($prefix . $this->getUsage());
+            $sender->sendMessage($prefix . $usageMessage);
             return;
         }
 
@@ -57,8 +59,9 @@ class TempBanCommand extends PECommand
         }
 
         $duration = $this->parseTime($timeString);
+        $invalidTime = 'Invalid time format. Use s/m/h/d (e.g., 10m, 1h).';
         if ($duration === null) {
-            $sender->sendMessage($prefix . TextFormat::RED . 'Invalid time format. Use s/m/h/d (e.g., 10m, 1h).');
+            $sender->sendMessage($prefix . TextFormat::RED . $invalidTime);
             return;
         }
 
