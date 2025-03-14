@@ -193,12 +193,6 @@ parameters:
 			path: src/angga7togk/poweressentials/commands/home/SetHomeCommand.php
 
 		-
-			message: '#^Method angga7togk\\poweressentials\\PowerEssentials\:\:getUserManager\(\) invoked with 0 parameters, 1 required\.$#'
-			identifier: arguments.count
-			count: 1
-			path: src/angga7togk/poweressentials/commands/mute/MuteCommand.php
-
-		-
 			message: '#^Cannot access an offset on mixed\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
