@@ -20,6 +20,47 @@ namespace angga7togk\poweressentials\manager\user;
 
 trait TempBanTrait
 {
+    /**
+     * @return array<string, array{expire: int, reason: string}>
+     */
+    public function getTempBans(): array
+{
+    $bans = $this->getData()->get('tempbans', []);
+
+    if (!is_array($bans)) {
+        return [];
+    }
+
+    $validBans = [];
+
+    foreach ($bans as $player => $ban) {
+        if (is_string($player) && is_array($ban) && isset($ban['expire'], $ban['reason']) && is_int($ban['expire']) && is_string($ban['reason'])) {
+            $validBans[$player] = [
+                'expire' => $ban['expire'],
+                'reason' => $ban['reason'],
+            ];
+        }
+    }
+
+    return $validBans;
+}
+
+    public function isTempBanned(string $playerName): bool
+    {
+        $bans = $this->getTempBans();
+        if (!isset($bans[$playerName])) {
+            return false;
+        }
+
+        if (time() > $bans[$playerName]['expire']) {
+            $this->removeTempBan($playerName);
+
+            return false;
+        }
+
+        return true;
+    }
+
     public function setTempBan(string $playerName, int $duration, string $reason): void
     {
         $bans              = $this->getTempBans();
@@ -30,5 +71,31 @@ trait TempBanTrait
 
         $this->getData()->set('tempbans', $bans);
         $this->getData()->save();
+    }
+
+    public function getTempBanReason(string $playerName): string
+    {
+        return $this->getTempBans()[$playerName]['reason'] ? strval($this->getTempBans()[$playerName]['reason']) : 'No reason provided';
+    }
+
+    public function removeTempBan(string $playerName): void
+    {
+        $bans = $this->getTempBans();
+        if (!isset($bans[$playerName])) {
+            return;
+        }
+
+        unset($bans[$playerName]);
+        $this->getData()->set('tempbans', $bans);
+        $this->getData()->save();
+    }
+    
+    /**
+     * @return array{expire: int, reason: string}|null
+     */
+    public function getTempBanInfo(string $playerName): ?array
+    {
+        $bans = $this->getTempBans();
+        return $bans[$playerName] ?? null;
     }
 }
