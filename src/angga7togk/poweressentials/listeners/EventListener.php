@@ -41,6 +41,7 @@ use pocketmine\event\player\PlayerPreLoginEvent;
 use pocketmine\event\player\PlayerQuitEvent;
 use pocketmine\network\mcpe\protocol\GameRulesChangedPacket;
 use pocketmine\network\mcpe\protocol\types\BoolGameRule;
+use pocketmine\player\GameMode;
 use pocketmine\player\Player;
 use pocketmine\utils\TextFormat;
 
@@ -127,7 +128,10 @@ class EventListener implements Listener
 
         // Force Gamemode
         if (PEConfig::isGamemodeJoin()) {
-            $player->setGamemode(PEConfig::getGamemodeJoin());
+            $gamemode = PEConfig::getGamemodeJoin();
+            if ($gamemode instanceof GameMode) {
+                $player->setGamemode($gamemode);
+            }
         }
 
         // Spawn Lobby
@@ -211,15 +215,16 @@ class EventListener implements Listener
         if ($this->dataManager->isTempBanned($username)) {
             $banInfo = $this->dataManager->getTempBanInfo($username);
             if ($banInfo !== null) {
-                $reason = $banInfo['reason'] ?? 'No reason provided';
-                $remaining = $banInfo['remaining'] ?? 0;
-                
+                $reason = $banInfo['reason'];
+                $expire = $banInfo['expire'];
+                $remaining = $expire - time();
+
                 $remainingTime = gmdate("H:i:s", $remaining);
                 $message = TextFormat::RED . "You are temporarily banned!\n"
                     . "Reason: $reason\n"
                     . "Time left: $remainingTime";
-                
-                $event->setKickReason(PlayerPreLoginEvent::KICK_REASON_BANNED, $message);
+
+                $event->setKickMessage($message);
             }
         }
     }
