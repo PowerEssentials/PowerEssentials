@@ -144,8 +144,9 @@ class PowerEssentials extends PluginBase
     private function unlinkRecursive(string $dir): bool
     {
         $files = array_diff(scandir($dir), ['.', '..']);
-        $dir = (string) $dir;
-        if (!is_string($dir));
+        if (!is_string($dir)) {
+            return null;
+        }
         foreach ($files as $file) {
             $path = $dir . DIRECTORY_SEPARATOR . $file;
             is_dir($path) ? $this->unlinkRecursive($path) : unlink($path);
