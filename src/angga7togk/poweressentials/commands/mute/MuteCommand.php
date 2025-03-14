@@ -53,6 +53,12 @@ class MuteCommand extends PECommand
         }
 
         $playerName = array_shift($args);
+        $target = isset($args[1]) ? Server::getInstance()->getPlayerExact($args[1]) : null;
+        if ($target === null) {
+            $sender->sendMessage($prefix . $lang->translateString('error.player.null'));
+
+            return;
+        }
         if ($playerName === '') {
             $sender->sendMessage($prefix . 'Usage: /mute <player> <time: 10m> [reason]');
 
@@ -62,7 +68,7 @@ class MuteCommand extends PECommand
         $reason = empty($args) ? $lang->translateString('mute.default_reason') : implode(' ', $args);
         $reason = $reason;
 
-        $userManager = PowerEssentials::getInstance()->getUserManager();
+        $userManager = PowerEssentials::getInstance()->getUserManager($target);
 
         if ($userManager->isMuted($playerName)) {
             $sender->sendMessage($prefix . $lang->translateString('mute.already_muted', [$playerName]));
