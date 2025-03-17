@@ -54,6 +54,7 @@ class MuteCommand extends PECommand
         }
 
         $playerName = array_shift($args);
+        $targetName = $args[0];
         $target = Server::getInstance()->getPlayerByPrefix($targetName);
 
         if ($target === null) {
