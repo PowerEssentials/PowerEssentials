@@ -35,6 +35,7 @@ class UnmuteCommand extends PECommand
 
     public function run(CommandSender $sender, string $prefix, PELang $lang, array $args): void
     {
+        $targetName = $args[0];
         $target = Server::getInstance()->getPlayerByPrefix($targetName);
         if ($target === null) {
             $sender->sendMessage($prefix . $lang->translateString('error.player.null'));
