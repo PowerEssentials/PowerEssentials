@@ -74,9 +74,7 @@
 2. Place the `PowerEssentials.phar` file into your server's `plugins` folder.
 3. Restart your server.
 
-<br>
-
-**For Nukkit** <br>
+### For Nukkit
 If you use Nukkit, you can download it from the following link: [releases page](https://github.com/PowerEssentials/PowerEssentials-Nukkit/releases).
 
 ### Download For Bukkit/Spigot/Paper
