@@ -79,6 +79,9 @@
 **For Nukkit** <br>
 If you use Nukkit, you can download it from the following link: [releases page](https://github.com/PowerEssentials/PowerEssentials-Nukkit/releases).
 
+### Download For Bukkit/Spigot/Paper
+If you use Bukkit/Spigot/Paper, you can download it from the following link: [releases page](https://github.com/PowerEssentials/PowerEssentials-Bukkit/releases).
+
 ---
 
 ## 🌐 Localization
