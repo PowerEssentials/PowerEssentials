@@ -54,8 +54,7 @@ class MuteCommand extends PECommand
         }
 
         $playerName = array_shift($args);
-        $targetName = $args[0];
-        $target = Server::getInstance()->getPlayerByPrefix($targetName);
+        $target = isset($args[1]) ? Server::getInstance()->getPlayerExact($args[1]) : null;
 
         if ($target === null) {
             $sender->sendMessage($prefix . $lang->translateString('error.player.null'));
