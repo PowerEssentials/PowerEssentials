@@ -34,10 +34,10 @@ use pocketmine\utils\TextFormat;
 
 class WorldProtectListener implements Listener
 {
-    private string $prefix;
-    private PELang $lang;
-    private DataManager $dataManager;
-    public function __construct(private PowerEssentials $plugin)
+    private readonly string $prefix;
+    private readonly PELang $lang;
+    private readonly DataManager $dataManager;
+    public function __construct(private readonly PowerEssentials $plugin)
     {
         $this->dataManager = $this->plugin->getDataManager();
         $this->lang        = PELang::fromConsole();

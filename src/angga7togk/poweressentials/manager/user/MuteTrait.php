@@ -18,13 +18,10 @@
 
 namespace angga7togk\poweressentials\manager\user;
 
-use angga7togk\poweressentials\manager\UserManager;
-
 trait MuteTrait
 {
     public function isMuted(string $playerName): bool
     {
-        /** @var UserManager $this */
         return isset($this->getData()->get('mutes')[$playerName]);
     }
 

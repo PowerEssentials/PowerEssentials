@@ -53,7 +53,7 @@
 | `/tpall [player]`                                                    | Teleport all players to a target player.                                           | ✅     |
 | `/worldprotect <type> <value> [world]`                               | Protect worlds with various settings (place, PvP, hunger, etc.).                   | ✅     |
 | `/mute <player> <time: 10m> [reason]`, `/unmute [player]`                                         | Mute Player.                                                                       | ✅     |
-| `/tempban <player> <time: 10m> [reason]`                             | Banned players with time.                                                          | ⌛     |
+| `/tempban <player> <time: 10m> [reason]`                             | Banned players with time.                                                          | ✅     |
 | `/bancommand <command> [world]`                                      | Banned command on specific world.                                                  | ⌛     |
 | `/lightning [player]`                                                | Send lightning.                                                                    | ⌛     |
 | `/staffchat`                                                         | Entering staff chat mode.                                                          | ⌛     |

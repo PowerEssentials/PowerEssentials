@@ -83,7 +83,7 @@ class RTPCommand extends PECommand
                 $y       = $world->getHighestBlockAt($x, $z) + 1;
                 $blockAt = $world->getBlockAt($x, $y - 2, $z);
 
-                if (($blockAt instanceof Water || strtolower($blockAt->getName()) === 'water') && PEConfig::isRandomTeleportAntiWater()) {
+                if (($blockAt instanceof Water || strtolower((string) $blockAt->getName()) === 'water') && PEConfig::isRandomTeleportAntiWater()) {
                     $timeOut--;
                     $this->attemptTeleport($sender, $prefix, $lang, $world, PEConfig::getRandomTeleportRange('x'), PEConfig::getRandomTeleportRange('z'), $timeOut);
                 } else {

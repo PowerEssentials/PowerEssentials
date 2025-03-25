@@ -1,18 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			message: '#^Binary operation "\." between non\-falsy\-string and mixed results in an error\.$#'
-			identifier: binaryOp.invalid
-			count: 1
-			path: src/angga7togk/poweressentials/PowerEssentials.php
-
-		-
-			message: '#^Parameter \#1 \$array of function array_diff expects array, list\<string\>\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/PowerEssentials.php
-
-		-
 			message: '#^Property angga7togk\\poweressentials\\commands\\FlyCommand\:\:\$flying type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
@@ -205,24 +193,6 @@ parameters:
 			path: src/angga7togk/poweressentials/commands/home/SetHomeCommand.php
 
 		-
-			message: '#^Method angga7togk\\poweressentials\\PowerEssentials\:\:getUserManager\(\) invoked with 0 parameters, 1 required\.$#'
-			identifier: arguments.count
-			count: 1
-			path: src/angga7togk/poweressentials/commands/mute/MuteCommand.php
-
-		-
-			message: '#^PHPDoc tag @return with type mixed is not subtype of native type void\.$#'
-			identifier: return.phpDocType
-			count: 1
-			path: src/angga7togk/poweressentials/commands/mute/MuteCommand.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\PowerEssentials\:\:getUserManager\(\) invoked with 0 parameters, 1 required\.$#'
-			identifier: arguments.count
-			count: 1
-			path: src/angga7togk/poweressentials/commands/mute/UnmuteCommand.php
-
-		-
 			message: '#^Cannot access an offset on mixed\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
@@ -295,154 +265,10 @@ parameters:
 			path: src/angga7togk/poweressentials/commands/warp/DelWarpCommand.php
 
 		-
-			message: '#^Argument of an invalid type mixed supplied for foreach, only iterables are supported\.$#'
-			identifier: foreach.nonIterable
-			count: 1
-			path: src/angga7togk/poweressentials/config/PEConfig.php
-
-		-
-			message: '#^Cannot access offset ''x''\|''z'' on mixed\.$#'
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 1
-			path: src/angga7togk/poweressentials/config/PEConfig.php
-
-		-
-			message: '#^Cannot cast mixed to float\.$#'
-			identifier: cast.double
-			count: 2
-			path: src/angga7togk/poweressentials/config/PEConfig.php
-
-		-
-			message: '#^Cannot cast mixed to int\.$#'
-			identifier: cast.int
-			count: 4
-			path: src/angga7togk/poweressentials/config/PEConfig.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\config\\PEConfig\:\:getHomePermissionLimits\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/angga7togk/poweressentials/config/PEConfig.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\config\\PEConfig\:\:getHomePermissionLimits\(\) should return array but returns mixed\.$#'
-			identifier: return.type
-			count: 1
-			path: src/angga7togk/poweressentials/config/PEConfig.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\config\\PEConfig\:\:getLang\(\) should return string but returns mixed\.$#'
-			identifier: return.type
-			count: 1
-			path: src/angga7togk/poweressentials/config/PEConfig.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\config\\PEConfig\:\:getRandomTeleportRange\(\) should return array\<int\> but returns mixed\.$#'
-			identifier: return.type
-			count: 1
-			path: src/angga7togk/poweressentials/config/PEConfig.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\config\\PEConfig\:\:getRandomTeleportTimeOut\(\) should return int but returns mixed\.$#'
-			identifier: return.type
-			count: 1
-			path: src/angga7togk/poweressentials/config/PEConfig.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\config\\PEConfig\:\:init\(\) has no return type specified\.$#'
-			identifier: missingType.return
-			count: 1
-			path: src/angga7togk/poweressentials/config/PEConfig.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\config\\PEConfig\:\:isAntiNamespace\(\) should return bool but returns mixed\.$#'
-			identifier: return.type
-			count: 1
-			path: src/angga7togk/poweressentials/config/PEConfig.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\config\\PEConfig\:\:isGamemodeJoin\(\) should return bool but returns mixed\.$#'
-			identifier: return.type
-			count: 1
-			path: src/angga7togk/poweressentials/config/PEConfig.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\config\\PEConfig\:\:isHomePermissionLimit\(\) should return bool but returns mixed\.$#'
-			identifier: return.type
-			count: 1
-			path: src/angga7togk/poweressentials/config/PEConfig.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\config\\PEConfig\:\:isRandomTeleportAntiWater\(\) should return bool but returns mixed\.$#'
-			identifier: return.type
-			count: 1
-			path: src/angga7togk/poweressentials/config/PEConfig.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\config\\PEConfig\:\:isShowCoordinates\(\) should return bool but returns mixed\.$#'
-			identifier: return.type
-			count: 1
-			path: src/angga7togk/poweressentials/config/PEConfig.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\config\\PEConfig\:\:isSpawnLobbyJoin\(\) should return bool but returns mixed\.$#'
-			identifier: return.type
-			count: 1
-			path: src/angga7togk/poweressentials/config/PEConfig.php
-
-		-
-			message: '#^Parameter \#1 \$str of static method pocketmine\\player\\GameMode\:\:fromString\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/config/PEConfig.php
-
-		-
-			message: '#^Parameter \#2 \$haystack of function in_array expects array, mixed given\.$#'
-			identifier: argument.type
-			count: 3
-			path: src/angga7togk/poweressentials/config/PEConfig.php
-
-		-
-			message: '#^Parameter \#2 \$needle of function strpos expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/config/PEConfig.php
-
-		-
 			message: '#^Method angga7togk\\poweressentials\\i18n\\PELang\:\:setConsoleLocale\(\) has no return type specified\.$#'
 			identifier: missingType.return
 			count: 1
 			path: src/angga7togk/poweressentials/i18n/PELang.php
-
-		-
-			message: '#^Binary operation "\." between mixed and mixed results in an error\.$#'
-			identifier: binaryOp.invalid
-			count: 1
-			path: src/angga7togk/poweressentials/listeners/EventListener.php
-
-		-
-			message: '#^Cannot call method translateString\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: src/angga7togk/poweressentials/listeners/EventListener.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\PowerEssentials\:\:getUserManager\(\) invoked with 0 parameters, 1 required\.$#'
-			identifier: arguments.count
-			count: 1
-			path: src/angga7togk/poweressentials/listeners/EventListener.php
-
-		-
-			message: '#^Undefined variable\: \$lang$#'
-			identifier: variable.undefined
-			count: 1
-			path: src/angga7togk/poweressentials/listeners/EventListener.php
-
-		-
-			message: '#^Undefined variable\: \$prefix$#'
-			identifier: variable.undefined
-			count: 1
-			path: src/angga7togk/poweressentials/listeners/EventListener.php
 
 		-
 			message: '#^Method angga7togk\\poweressentials\\listeners\\WorldProtectListener\:\:onBreak\(\) has no return type specified\.$#'
@@ -541,12 +367,6 @@ parameters:
 			path: src/angga7togk/poweressentials/manager/DataManager.php
 
 		-
-			message: '#^PHPDoc tag @var with type angga7togk\\poweressentials\\manager\\DataManager is not subtype of native type \$this\(angga7togk\\poweressentials\\manager\\DataManager\)\.$#'
-			identifier: varTag.nativeType
-			count: 11
-			path: src/angga7togk/poweressentials/manager/DataManager.php
-
-		-
 			message: '#^Parameter \#1 \$array of function array_keys expects array, mixed given\.$#'
 			identifier: argument.type
 			count: 1
@@ -556,12 +376,6 @@ parameters:
 			message: '#^Parameter \#2 \$haystack of function in_array expects array, mixed given\.$#'
 			identifier: argument.type
 			count: 1
-			path: src/angga7togk/poweressentials/manager/DataManager.php
-
-		-
-			message: '#^Parameter \#2 \$string of function explode expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 2
 			path: src/angga7togk/poweressentials/manager/DataManager.php
 
 		-
@@ -575,12 +389,6 @@ parameters:
 			identifier: missingType.iterableValue
 			count: 1
 			path: src/angga7togk/poweressentials/manager/DataManager.php
-
-		-
-			message: '#^Binary operation "\+\=" between \(float\|int\) and mixed results in an error\.$#'
-			identifier: assignOp.invalid
-			count: 1
-			path: src/angga7togk/poweressentials/manager/UserManager.php
 
 		-
 			message: '#^Cannot access offset string on mixed\.$#'
@@ -625,12 +433,6 @@ parameters:
 			path: src/angga7togk/poweressentials/manager/UserManager.php
 
 		-
-			message: '#^PHPDoc tag @var with type angga7togk\\poweressentials\\manager\\UserManager is not subtype of native type \$this\(angga7togk\\poweressentials\\manager\\UserManager\)\.$#'
-			identifier: varTag.nativeType
-			count: 2
-			path: src/angga7togk/poweressentials/manager/UserManager.php
-
-		-
 			message: '#^Parameter \#1 \$array of function array_keys expects array, mixed given\.$#'
 			identifier: argument.type
 			count: 2
@@ -655,12 +457,6 @@ parameters:
 			path: src/angga7togk/poweressentials/manager/UserManager.php
 
 		-
-			message: '#^Parameter \#2 \$string of function explode expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/manager/UserManager.php
-
-		-
 			message: '#^Parameter \#2 \$y of class pocketmine\\world\\Position constructor expects float\|int, mixed given\.$#'
 			identifier: argument.type
 			count: 1
@@ -671,15 +467,3 @@ parameters:
 			identifier: argument.type
 			count: 1
 			path: src/angga7togk/poweressentials/manager/UserManager.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\utils\\ValidationUtils\:\:isValidString\(\) has parameter \$string with no type specified\.$#'
-			identifier: missingType.parameter
-			count: 1
-			path: src/angga7togk/poweressentials/utils/ValidationUtils.php
-
-		-
-			message: '#^Parameter \#2 \$subject of function preg_match expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/utils/ValidationUtils.php

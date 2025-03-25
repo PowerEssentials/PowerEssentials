@@ -19,7 +19,6 @@
 namespace angga7togk\poweressentials\manager\user;
 
 use angga7togk\poweressentials\config\PEConfig;
-use angga7togk\poweressentials\manager\UserManager;
 use pocketmine\world\Position;
 
 trait HomeTrait
@@ -38,7 +37,6 @@ trait HomeTrait
 
     public function getHomeCount(): int
     {
-        /** @var UserManager $this */
         return count($this->getData()->get('homes'));
     }
 
@@ -70,7 +68,14 @@ trait HomeTrait
             return null;
         }
         $data = $this->getData()->getNested("homes.$homeName");
+        if (!is_string($data)) {
+            return null;
+        }
         $data = explode(':', $data);
+
+        if (count($data) !== 4) {
+            return null;
+        }
 
         return [
           'x'     => (float) $data[0],

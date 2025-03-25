@@ -68,7 +68,7 @@ class NicknameCommand extends PECommand
 
             return;
         }
-        $targetIsSelf = strtolower($target->getName()) == strtolower($sender->getName());
+        $targetIsSelf = strtolower((string) $target->getName()) == strtolower($sender->getName());
         if (!$targetIsSelf && !$sender->hasPermission(self::PREFIX_PERMISSION . 'nickname.other')) {
             $sender->sendMessage($prefix . $lang->translateString('error.permission'));
 

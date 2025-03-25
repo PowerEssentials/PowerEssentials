@@ -48,6 +48,7 @@ use angga7togk\poweressentials\commands\RTPCommand;
 use angga7togk\poweressentials\commands\SendItemCommand;
 use angga7togk\poweressentials\commands\SizeCommand;
 use angga7togk\poweressentials\commands\SudoCommand;
+use angga7togk\poweressentials\commands\TempBanCommand;
 use angga7togk\poweressentials\commands\TPACommand;
 use angga7togk\poweressentials\commands\TPAllCommand;
 use angga7togk\poweressentials\commands\vanish\VanishCommand;
@@ -100,11 +101,17 @@ class PowerEssentials extends PluginBase
         unset($this->userManagers[$player->getName()]);
     }
 
+    /**
+     * @return UserManager
+     */
     public function getUserManager(Player $player): UserManager
     {
         return $this->userManagers[$player->getName()] ?? $this->userManagers[$player->getName()] = new UserManager($player);
     }
 
+    /**
+     * @return DataManager
+     */
     public function getDataManager(): DataManager
     {
         return $this->dataManager;
@@ -115,7 +122,7 @@ class PowerEssentials extends PluginBase
         /** place this on first */
         PEConfig::init();
 
-        $oldLanguageDir = $this->getDataFolder() . 'language';
+        $oldLanguageDir = $this->getDataFolder() . strval('language');
         if (file_exists($oldLanguageDir)) {
             $this->unlinkRecursive($oldLanguageDir);
         }
@@ -143,7 +150,12 @@ class PowerEssentials extends PluginBase
 
     private function unlinkRecursive(string $dir): bool
     {
-        $files = array_diff(scandir($dir), ['.', '..']);
+        if (!is_dir($dir)) {
+            return false;
+        }
+
+        $files = array_diff(scandir($dir) ?: [], ['.', '..']);
+
         foreach ($files as $file) {
             $path = $dir . DIRECTORY_SEPARATOR . $file;
             is_dir($path) ? $this->unlinkRecursive($path) : unlink($path);
@@ -173,33 +185,34 @@ class PowerEssentials extends PluginBase
     private function loadCommands(): void
     {
         $commands = [
-            'lobby'        => [new LobbyCommand(), new SetLobbyCommand()],
+            'afk'          => [new AFKCommand()],
+            'banitem'      => [new BanItemCommand(), new UnbanItemCommand(), new BanItemListCommand()],
+            'bless'        => [new BlessCommand()],
+            'coordinates'  => [new CoordinatesCommand()],
+            'feed'         => [new FeedCommand()],
             'fly'          => [new FlyCommand()],
             'gamemode'     => [new AdvantureCommand(), new CreativeCommand(), new SpectatorCommand(), new SurvivalCommand()],
-            'nickname'     => [new NicknameCommand()],
-            'home'         => [new HomeCommand(), new DelHomeCommand(), new SetHomeCommand()],
-            'coordinates'  => [new CoordinatesCommand()],
-            'warp'         => [new WarpCommand(), new AddWarpCommand(), new DelWarpCommand()],
+            'getpos'       => [new GetPositionCommand()],
             'heal'         => [new HealCommand()],
-            'feed'         => [new FeedCommand()],
-            'sudo'         => [new SudoCommand()],
-            'banitem'      => [new BanItemCommand(), new UnbanItemCommand(), new BanItemListCommand()],
-            'worldprotect' => [new WorldProtectCommand()],
-            'vanish'       => [new VanishCommand(), new VanishListCommand()],
-            'rtp'          => [new RTPCommand()],
-            'size'         => [new SizeCommand()],
-            'afk'          => [new AFKCommand()],
+            'home'         => [new HomeCommand(), new DelHomeCommand(), new SetHomeCommand()],
+            'itemid'       => [new ItemIDCommand()],
+            'kickall'      => [new KickAllCommand()],
+            'lobby'        => [new LobbyCommand(), new SetLobbyCommand()],
+            'mute'         => [new MuteCommand()],
+            'nickname'     => [new NicknameCommand()],
             'onesleep'     => [new OneSleepCancelCommand()],
+            'repair'       => [new RepairCommand()],
+            'rtp'          => [new RTPCommand()],
+            'senditem'     => [new SendItemCommand()],
+            'size'         => [new SizeCommand()],
+            'sudo'         => [new SudoCommand()],
+            'tempban'      => [new TempBanCommand()],
             'tpa'          => [new TPACommand()],
             'tpall'        => [new TPAllCommand()],
-            'itemid'       => [new ItemIDCommand()],
-            'repair'       => [new RepairCommand()],
-            'senditem'     => [new SendItemCommand()],
-            'getpos'       => [new GetPositionCommand()],
-            'bless'        => [new BlessCommand()],
-            'kickall'      => [new KickAllCommand()],
-            'mute'         => [new MuteCommand()],
-            'unmute'       => [new UnmuteCommand()]
+            'unmute'       => [new UnmuteCommand()],
+            'vanish'       => [new VanishCommand(), new VanishListCommand()],
+            'warp'         => [new WarpCommand(), new AddWarpCommand(), new DelWarpCommand()],
+            'worldprotect' => [new WorldProtectCommand()],
         ];
 
         foreach ($commands as $keyCmd => $valueCmd) {

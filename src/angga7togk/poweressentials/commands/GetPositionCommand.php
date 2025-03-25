@@ -41,7 +41,7 @@ class GetPositionCommand extends PECommand
 
         $player = Server::getInstance()->getPlayerExact($args[0]);
         if ($player === null) {
-            $sender->sendMessage($prefix . $lang->translateString('error.player.null'));
+            $sender->sendMessage($prefix . strval($lang->translateString('error.player.null')));
 
             return;
         }
