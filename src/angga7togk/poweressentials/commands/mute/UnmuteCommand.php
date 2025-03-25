@@ -22,6 +22,7 @@ use angga7togk\poweressentials\commands\PECommand;
 use angga7togk\poweressentials\i18n\PELang;
 use angga7togk\poweressentials\PowerEssentials;
 use pocketmine\command\CommandSender;
+use pocketmine\Server;
 
 class UnmuteCommand extends PECommand
 {
@@ -29,11 +30,17 @@ class UnmuteCommand extends PECommand
     {
         parent::__construct('unmute', 'Unmute a player', '/unmute <player>', []);
         $this->setPrefix('unmute.prefix');
-        $this->setPermission('unmute');
+        $this->setPermission('mute');
     }
 
     public function run(CommandSender $sender, string $prefix, PELang $lang, array $args): void
     {
+        $target = isset($args[1]) ? Server::getInstance()->getPlayerExact($args[1]) : null;
+        if ($target === null) {
+            $sender->sendMessage($prefix . $lang->translateString('error.player.null'));
+
+            return;
+        }
         if (!$this->testPermission($sender)) {
             $sender->sendMessage($prefix . $lang->translateString('error.permission'));
 
@@ -48,7 +55,7 @@ class UnmuteCommand extends PECommand
 
         $playerName = array_shift($args);
 
-        $userManager = PowerEssentials::getInstance()->getUserManager();
+        $userManager = PowerEssentials::getInstance()->getUserManager($target);
 
         if (!$userManager->isMuted($playerName)) {
             $sender->sendMessage($prefix . $lang->translateString('unmute.not_muted', [$playerName]));

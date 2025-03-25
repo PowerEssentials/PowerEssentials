@@ -21,6 +21,7 @@ namespace angga7togk\poweressentials\manager;
 use angga7togk\poweressentials\manager\data\BanItemTrait;
 use angga7togk\poweressentials\manager\data\LobbyTrait;
 use angga7togk\poweressentials\manager\data\OneSleep;
+use angga7togk\poweressentials\manager\data\TempBanTrait;
 use angga7togk\poweressentials\manager\data\TPATrait;
 use angga7togk\poweressentials\manager\data\WarpTrait;
 use angga7togk\poweressentials\manager\data\WorldProtectTrait;
@@ -38,13 +39,11 @@ class DataManager
         OneSleep::__construct as private __constructOneSleep;
     }
     use TPATrait;
-
-    private PowerEssentials $plugin;
+    use TempBanTrait;
     private Config $data;
 
-    public function __construct(PowerEssentials $plugin)
+    public function __construct(private PowerEssentials $plugin)
     {
-        $this->plugin = $plugin;
         $this->plugin->saveResource('data.yml');
         $this->data = new Config($this->plugin->getDataFolder() . 'data.yml', Config::YAML, []);
         $this->__constructOneSleep();

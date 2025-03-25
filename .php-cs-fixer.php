@@ -63,5 +63,6 @@ return (new PhpCsFixer\Config())
         'trim_array_spaces' => true,
         'whitespace_after_comma_in_array' => true,
         'function_declaration' => ['closure_fn_spacing' => 'none'],
+        'indentation_type' => true,
     ])
     ->setFinder($finder);

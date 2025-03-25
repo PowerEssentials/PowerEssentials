@@ -9,7 +9,7 @@
 </p>
 
 <h1 align="center">PowerEssentials</h1>
-<p align="center"><strong>The ultimate Pocketmine-MP plugin to streamline server management and enhance gameplay.</strong></p>
+<p align="center"><strong>The ultimate PocketMine-MP plugin to streamline server management and enhance gameplay.</strong></p>
 
 ---
 
@@ -53,7 +53,7 @@
 | `/tpall [player]`                                                    | Teleport all players to a target player.                                           | ✅     |
 | `/worldprotect <type> <value> [world]`                               | Protect worlds with various settings (place, PvP, hunger, etc.).                   | ✅     |
 | `/mute <player> <time: 10m> [reason]`, `/unmute [player]`                                         | Mute Player.                                                                       | ✅     |
-| `/tempban <player> <time: 10m> [reason]`                             | Banned players with time.                                                          | ⌛     |
+| `/tempban <player> <time: 10m> [reason]`                             | Banned players with time.                                                          | ✅     |
 | `/bancommand <command> [world]`                                      | Banned command on specific world.                                                  | ⌛     |
 | `/lightning [player]`                                                | Send lightning.                                                                    | ⌛     |
 | `/staffchat`                                                         | Entering staff chat mode.                                                          | ⌛     |

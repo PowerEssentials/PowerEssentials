@@ -22,12 +22,13 @@ use angga7togk\poweressentials\commands\PECommand;
 use angga7togk\poweressentials\i18n\PELang;
 use angga7togk\poweressentials\PowerEssentials;
 use pocketmine\command\CommandSender;
+use pocketmine\Server;
 
 class MuteCommand extends PECommand
 {
     public function __construct()
     {
-        parent::__construct('mute', 'Mute a player', '/mute <player> [reason]', []);
+        parent::__construct('mute', 'Mute a player', '/mute <player> <time: 10m> [reason]', []);
         $this->setPrefix('mute.prefix');
         $this->setPermission('mute');
     }
@@ -36,7 +37,7 @@ class MuteCommand extends PECommand
      * @param string[] $args
      * @phpstan-param list<string> $args
      *
-     * @return mixed
+     * @return void
      */
     public function run(CommandSender $sender, string $prefix, PELang $lang, array $args): void
     {
@@ -47,30 +48,37 @@ class MuteCommand extends PECommand
         }
 
         if (count($args) < 1) {
-            $sender->sendMessage($prefix . $lang->translateString('mute.usage'));
+            $sender->sendMessage($prefix . 'Usage: /mute <player> <time: 10m> [reason]');
 
             return;
         }
 
-        $playerName = (string) array_shift($args);
+        $playerName = array_shift($args);
+        $target     = isset($args[1]) ? Server::getInstance()->getPlayerExact($args[1]) : null;
+
+        if ($target === null) {
+            $sender->sendMessage($prefix . $lang->translateString('error.player.null'));
+
+            return;
+        }
         if ($playerName === '') {
-            $sender->sendMessage($prefix . $lang->translateString('mute.usage'));
+            $sender->sendMessage($prefix . 'Usage: /mute <player> <time: 10m> [reason]');
 
             return;
         }
 
         $reason = empty($args) ? $lang->translateString('mute.default_reason') : implode(' ', $args);
-        $reason = (string) $reason;
+        $reason = $reason;
 
-        $userManager = PowerEssentials::getInstance()->getUserManager();
+        $userManager = PowerEssentials::getInstance()->getUserManager($target);
 
         if ($userManager->isMuted($playerName)) {
-            $sender->sendMessage($prefix . $lang->translateString('mute.already_muted', [(string) $playerName]));
+            $sender->sendMessage($prefix . $lang->translateString('mute.already_muted', [$playerName]));
 
             return;
         }
 
-        $userManager->mutePlayer((string) $playerName, (string) $reason);
-        $sender->sendMessage($prefix . $lang->translateString('mute.success', [(string) $playerName, (string) $reason]));
+        $userManager->mutePlayer($playerName, $reason);
+        $sender->sendMessage($prefix . $lang->translateString('mute.success', [$playerName, $reason]));
     }
 }
