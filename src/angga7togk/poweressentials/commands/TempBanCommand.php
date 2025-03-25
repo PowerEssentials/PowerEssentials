@@ -19,8 +19,6 @@
 namespace angga7togk\poweressentials\commands;
 
 use angga7togk\poweressentials\i18n\PELang;
-use angga7togk\poweressentials\manager\UserManager;
-use angga7togk\poweressentials\manager\DataManager;
 use angga7togk\poweressentials\PowerEssentials;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
@@ -40,27 +38,31 @@ class TempBanCommand extends PECommand
     {
         if (count($args) < 2) {
             $sender->sendMessage($prefix . TextFormat::RED . '/tempban <player> <time> [reason]');
+
             return;
         }
 
         $targetName = $args[0];
         $timeString = $args[1];
-        $reason = isset($args[2]) ? implode(' ', array_slice($args, 2)) : $lang->translateString('tempban.no_reason');
+        $reason     = isset($args[2]) ? implode(' ', array_slice($args, 2)) : $lang->translateString('tempban.no_reason');
 
         $target = Server::getInstance()->getPlayerByPrefix($targetName);
         if (!$target instanceof Player) {
             $sender->sendMessage($prefix . TextFormat::RED . $lang->translateString('tempban.not_found'));
+
             return;
         }
 
         if ($target->hasPermission('tempban.exempt')) {
             $sender->sendMessage($prefix . TextFormat::RED . $lang->translateString('tempban.exempt'));
+
             return;
         }
 
         $duration = $this->parseTime($timeString);
         if ($duration === null) {
             $sender->sendMessage($prefix . TextFormat::RED . $lang->translateString('tempban.invalid'));
+
             return;
         }
 
@@ -85,7 +87,7 @@ class TempBanCommand extends PECommand
         }
 
         $timeValue = (int) $matches[1];
-        $timeUnit = $matches[2];
+        $timeUnit  = $matches[2];
 
         return match ($timeUnit) {
             's' => $timeValue,

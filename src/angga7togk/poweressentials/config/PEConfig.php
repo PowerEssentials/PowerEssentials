@@ -44,12 +44,14 @@ class PEConfig
     public static function getVersion(): float
     {
         $version = self::$config->get('config-version');
+
         return is_numeric($version) ? (float) $version : 0.0;
     }
 
     public static function getLang(): string
     {
         $lang = self::$config->get('language');
+
         return is_string($lang) ? $lang : 'en';
     }
 
@@ -61,6 +63,7 @@ class PEConfig
     public static function getGamemodeJoin(): ?GameMode
     {
         $gamemode = self::$config->get('gamemode-join');
+
         return is_string($gamemode) ? GameMode::fromString($gamemode) : null;
     }
 
@@ -85,24 +88,28 @@ class PEConfig
                 return true;
             }
         }
+
         return false;
     }
 
     public static function getMaxCharNickname(): int
     {
         $maxChar = self::$config->get('nickname-max-char');
+
         return is_numeric($maxChar) ? (int) $maxChar : 16;
     }
 
     public static function isCommandDisabled(string $commandKey): bool
     {
         $disabledCommands = self::$config->get('disable-commands', []);
+
         return is_array($disabledCommands) && in_array($commandKey, $disabledCommands, true);
     }
 
     public static function isWorldBlacklistSetHome(string $world): bool
     {
         $blacklists = self::$config->get('home-world-blacklists', []);
+
         return is_array($blacklists) && in_array($world, $blacklists, true);
     }
 
@@ -114,10 +121,11 @@ class PEConfig
     public static function getHomePermissionDefaultLimit(): int
     {
         $limit = self::$config->get('home-permission-default-limit');
+
         return is_numeric($limit) ? (int) $limit : 1;
     }
 
-    /** 
+    /**
      * @return array<string, int>
      */
     public static function getHomePermissionLimits(): array
@@ -150,6 +158,7 @@ class PEConfig
     public static function getRandomTeleportTimeOut(): int
     {
         $timeout = self::$config->get('random-teleport-timeout');
+
         return is_numeric($timeout) ? (int) $timeout : 10;
     }
 
@@ -160,22 +169,25 @@ class PEConfig
         if (!is_array($range)) {
             return [];
         }
-        return isset($range[$coordType]) && is_array($range[$coordType]) ? 
-            array_map(function($v) { 
+
+        return isset($range[$coordType]) && is_array($range[$coordType]) ?
+            array_map(function ($v) {
                 return is_numeric($v) ? (int)$v : 0;
             }, $range[$coordType]) : [];
     }
 
     public static function isRandomTeleportWorldBlocked(World $world): bool
     {
-        $worldName = $world->getFolderName();
+        $worldName  = $world->getFolderName();
         $blacklists = self::$config->get('random-teleport-world-blacklists', []);
+
         return is_array($blacklists) && in_array($worldName, $blacklists, true);
     }
 
     public static function getSizeMax(): float
     {
         $size = self::$config->get('size-max');
+
         return is_numeric($size) ? (float) $size : 5.0;
     }
 
@@ -192,23 +204,25 @@ class PEConfig
     public static function getOneSleepCancelVoteCount(): int
     {
         $count = self::$config->get('cancel-sleep-vote-count');
+
         return is_numeric($count) ? (int) $count : 3;
     }
 
     public static function getOneSleepCancelVoteTimeout(): int
     {
         $timeout = self::$config->get('cancel-sleep-vote-timeout');
+
         return is_numeric($timeout) ? (int) $timeout : 10;
     }
 
     public function checkTempBan(Player $player): bool
     {
-        $name = $player->getName();
+        $name        = $player->getName();
         $dataManager = PowerEssentials::getInstance()->getDataManager();
 
         if ($dataManager->isTempBanned($name)) {
-            $reason = $dataManager->getTempBanReason($name);
-            $expire = $dataManager->getTempBans()[$name]['expire'];
+            $reason    = $dataManager->getTempBanReason($name);
+            $expire    = $dataManager->getTempBans()[$name]['expire'];
             $remaining = max(0, $expire - time());
 
             $timeMessage = gmdate('H:i:s', $remaining);
