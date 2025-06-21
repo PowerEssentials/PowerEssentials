@@ -25,7 +25,7 @@ use pocketmine\Server;
 
 class FlyCommand extends PECommand
 {
-    /** @var array<string, bool> */
+    /** @var array<int|string, bool|string> */
     private array $flying = [];
 
     public function __construct()
