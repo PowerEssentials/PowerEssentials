@@ -75,8 +75,8 @@ class RTPCommand extends PECommand
             return;
         }
 
-        $x = random_int($rangeX[0], $rangeX[1]);
-        $z = random_int($rangeZ[0], $rangeZ[1]);
+        $x = random_int((int) $rangeX[0], (int) $rangeX[1]);
+        $z = random_int((int) $rangeZ[0], (int) $rangeZ[1]);
 
         $world->orderChunkPopulation($x >> 4, $z >> 4, null)->onCompletion(
             function () use ($sender, $world, $x, $z, &$timeOut, $prefix, $lang): void {
