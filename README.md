@@ -9,7 +9,7 @@
 </p>
 
 <h1 align="center">PowerEssentials</h1>
-<p align="center"><strong>The ultimate Pocketmine-MP plugin to streamline server management and enhance gameplay.</strong></p>
+<p align="center"><strong>The ultimate PocketMine-MP plugin to streamline server management and enhance gameplay.</strong></p>
 
 ---
 
