@@ -41,7 +41,7 @@ class PELang extends Language
         $this->stringArrayMultitonConstruct($locale);
     }
 
-    public function translateString(string $str, array $params = [], ?string $onlyPrefix = null): string
+    public function translateString(string $str, array $params = [], ?string $onlyPrefix = null, int &$untranslatedParameterCount = 0): string
     {
         $result = parent::translateString($str, $params, $onlyPrefix);
         if (stripos(trim($str), 'error') !== false) {
