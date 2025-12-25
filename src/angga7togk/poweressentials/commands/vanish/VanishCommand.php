@@ -26,7 +26,8 @@ use pocketmine\Server;
 
 class VanishCommand extends PECommand
 {
-    private static $vanishedPlayers = [];
+	/** @var array<int, string> */
+    private static array $vanishedPlayers = [];
 
     public function __construct()
     {
@@ -74,6 +75,7 @@ class VanishCommand extends PECommand
         $this->setVanish($target, !$isVanish, $lang);
     }
 
+	/** @return array<int, string> */
     public static function getVanishedPlayers(): array
     {
         return self::$vanishedPlayers;
@@ -81,7 +83,10 @@ class VanishCommand extends PECommand
 
     public static function unsetDataVanish(Player $player): void
     {
-        unset(self::$vanishedPlayers[array_search($player->getName(), self::$vanishedPlayers)]);
+        $key = array_search($player->getName(), self::$vanishedPlayers, true);
+		if ($key !== false) {
+		    unset(self::$vanishedPlayers[$key]);
+		}
     }
 
     public static function isVanished(Player $player): bool
@@ -89,13 +94,16 @@ class VanishCommand extends PECommand
         return in_array($player->getName(), self::$vanishedPlayers);
     }
 
-    public function setVanish(Player $player, bool $vanish, PELang $lang)
+    public function setVanish(Player $player, bool $vanish, PELang $lang): void
     {
         if ($vanish) {
-            self::$vanishedPlayers[] = $player->getName();
-        } else {
-            unset(self::$vanishedPlayers[array_search($player->getName(), self::$vanishedPlayers)]);
-        }
+		    self::$vanishedPlayers[] = $player->getName();
+		} else {
+		    $key = array_search($player->getName(), self::$vanishedPlayers, true);
+		    if ($key !== false) {
+		        unset(self::$vanishedPlayers[$key]);
+		    }
+		}
 
         foreach (Server::getInstance()->getOnlinePlayers() as $other) {
             if (!$other->hasPermission('poweressentials.vanish.see')) {
