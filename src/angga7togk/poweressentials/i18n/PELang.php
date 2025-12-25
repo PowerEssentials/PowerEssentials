@@ -43,7 +43,7 @@ class PELang extends Language
 
     public function translateString(string $str, array $params = [], ?string $onlyPrefix = null, int &$untranslatedParameterCount = 0): string
     {
-        $result = parent::translateString($str, $params, $onlyPrefix);
+        $result = parent::translateString($str, $params, $onlyPrefix, int &$untranslatedParameterCount = 0);
         if (stripos(trim($str), 'error') !== false) {
             return TextFormat::RED . $result;
         }
