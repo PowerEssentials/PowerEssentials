@@ -187,54 +187,6 @@ parameters:
 			path: src/angga7togk/poweressentials/commands/home/SetHomeCommand.php
 
 		-
-			message: '#^Cannot access an offset on mixed\.$#'
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 1
-			path: src/angga7togk/poweressentials/commands/vanish/VanishCommand.php
-
-		-
-			message: '#^Cannot access offset mixed on mixed\.$#'
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 2
-			path: src/angga7togk/poweressentials/commands/vanish/VanishCommand.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\commands\\vanish\\VanishCommand\:\:getVanishedPlayers\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/angga7togk/poweressentials/commands/vanish/VanishCommand.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\commands\\vanish\\VanishCommand\:\:getVanishedPlayers\(\) should return array but returns mixed\.$#'
-			identifier: return.type
-			count: 1
-			path: src/angga7togk/poweressentials/commands/vanish/VanishCommand.php
-
-		-
-			message: '#^Method angga7togk\\poweressentials\\commands\\vanish\\VanishCommand\:\:setVanish\(\) has no return type specified\.$#'
-			identifier: missingType.return
-			count: 1
-			path: src/angga7togk/poweressentials/commands/vanish/VanishCommand.php
-
-		-
-			message: '#^Parameter \#2 \$haystack of function array_search expects array, mixed given\.$#'
-			identifier: argument.type
-			count: 2
-			path: src/angga7togk/poweressentials/commands/vanish/VanishCommand.php
-
-		-
-			message: '#^Parameter \#2 \$haystack of function in_array expects array, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/angga7togk/poweressentials/commands/vanish/VanishCommand.php
-
-		-
-			message: '#^Property angga7togk\\poweressentials\\commands\\vanish\\VanishCommand\:\:\$vanishedPlayers has no type specified\.$#'
-			identifier: missingType.property
-			count: 1
-			path: src/angga7togk/poweressentials/commands/vanish/VanishCommand.php
-
-		-
 			message: '#^Binary operation "\." between string and pocketmine\\lang\\Translatable\|string results in an error\.$#'
 			identifier: binaryOp.invalid
 			count: 1
