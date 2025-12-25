@@ -3,6 +3,6 @@
         "nunomaduro/larastan": "^3.0",
         "phpstan/phpstan": "^2.1.4",
         "phpstan/phpstan-phpunit": "^2.0",
-        "pocketmine/pocketmine-mp": "^5"
+        "pocketmine/pocketmine-mp": "~5.39.1"
     }
 }
