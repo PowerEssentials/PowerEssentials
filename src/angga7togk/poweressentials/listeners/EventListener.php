@@ -208,31 +208,36 @@ class EventListener implements Listener
         }
     }
 
-    public function onPreLogin(PlayerPreLoginEvent $event): void  
-	{  
-		$playerInfo = $event->getPlayerInfo();  
-    $username   = $playerInfo->getUsername();  
+    public function onPreLogin(PlayerPreLoginEvent $event): void
+	{
+		$username = strtolower($event->getPlayerInfo()->getUsername());
 
-		if ($this->dataManager->isTempBanned($username)) {  
-		$banInfo = $this->dataManager->getTempBanInfo($username);  
-			if ($banInfo !== null) {  
-				$expire = $banInfo['expire'];  
-				$reason = $banInfo['reason'];  
-
-				if (time() > $expire) {  
-					$this->dataManager->removeTempBan($username);  
-					
-					return;      
-				}  
-
-				$remaining = max(0, $expire - time());  
-				$remainingTime = gmdate('H:i:s', $remaining);  
-            $message = TextFormat::RED . "You are temporarily banned!\n"  
-				. "Reason: $reason\n"  
-				. "Time left: $remainingTime";  
-
-				$event->setKickFlag(PlayerPreLoginEvent::KICK_FLAG_BANNED, $message);  
-			}
+		$banInfo = $this->dataManager->getTempBanInfo($username);
+		if ($banInfo === null) {
+			return;
 		}
+
+		$expire = $banInfo['expire'];
+		$reason = $banInfo['reason'];
+		
+		if (time() >= $expire) {
+			$this->dataManager->removeTempBan($username);
+			return;
+		}
+		
+		$remaining = max(0, $expire - time());
+		
+		$days = intdiv($remaining, 86400);
+		$hours = intdiv($remaining % 86400, 3600);
+		$minutes = intdiv($remaining % 3600, 60);
+		$seconds = $remaining % 60;
+
+		$remainingTime = "{$days}d {$hours}h {$minutes}m {$seconds}s";
+
+		$message = TextFormat::RED .
+			"You are temporarily banned!\n" .
+			"Reason: $reason\n" .
+			"Time left: $remainingTime";
+		$event->setKickFlag(PlayerPreLoginEvent::KICK_FLAG_BANNED, $message);
 	}
 }
