@@ -66,8 +66,8 @@ class TempBanCommand extends PECommand
             return;
         }
 
-        $userManager = PowerEssentials::getInstance()->getUserManager($target);
-        $userManager->setTempBan($targetName, $duration, $reason);
+        $dataManager = PowerEssentials::getInstance()->getDataManager();
+        $dataManager->setTempBan($targetName, $duration, $reason);
 
         $target->kick(TextFormat::RED . $lang->translateString('tempban.success', [$timeString, $reason]));
 
