@@ -46,7 +46,7 @@ class TempBanCommand extends PECommand
         $reason     = isset($args[2]) ? implode(' ', array_slice($args, 2)) : $lang->translateString('tempban.no_reason');
 
         $target = Server::getInstance()->getPlayerExact($targetName);
-        if (!$target instanceof Player && !Server::getInstance()->hasOfflinePlayerData($targetName)) {
+        if ($target === null && !Server::getInstance()->hasOfflinePlayerData($targetName)) {
             $sender->sendMessage($prefix . TextFormat::RED . $lang->translateString('tempban.not_found'));
             return;
         }
