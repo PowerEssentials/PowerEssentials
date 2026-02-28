@@ -32,7 +32,7 @@ class UserManager extends PEConfig
     use HomeTrait;
     use MuteTrait;
     use NicknameTrait;
-    use TempBanTrait;
+
     private PowerEssentials $plugin;
     private Player $player;
     private Config $data;

@@ -38,7 +38,6 @@ class TempBanCommand extends PECommand
     {
         if (count($args) < 2) {
             $sender->sendMessage($prefix . TextFormat::RED . '/tempban <player> <time> [reason]');
-
             return;
         }
 
@@ -46,32 +45,38 @@ class TempBanCommand extends PECommand
         $timeString = $args[1];
         $reason     = isset($args[2]) ? implode(' ', array_slice($args, 2)) : $lang->translateString('tempban.no_reason');
 
-        $target = Server::getInstance()->getPlayerByPrefix($targetName);
-        if (!$target instanceof Player) {
-            $sender->sendMessage($prefix . TextFormat::RED . $lang->translateString('tempban.not_found'));
+        $server = Server::getInstance();
+		$target = $server->getPlayerExact($targetName);
+		$isOffline = false;
 
-            return;
-        }
+		if ($target === null) {
+			if (!$server->hasOfflinePlayerData($targetName)) {
+				$sender->sendMessage($prefix . TextFormat::RED . $lang->translateString('tempban.not_found'));
+				return;
+			}
+
+			$isOffline = true;
+		}
 
         if ($target->hasPermission('tempban.exempt')) {
             $sender->sendMessage($prefix . TextFormat::RED . $lang->translateString('tempban.exempt'));
-
             return;
         }
 
         $duration = $this->parseTime($timeString);
         if ($duration === null) {
             $sender->sendMessage($prefix . TextFormat::RED . $lang->translateString('tempban.invalid'));
-
             return;
         }
 
-        $userManager = PowerEssentials::getInstance()->getUserManager($target);
-        $userManager->setTempBan($targetName, $duration, $reason);
+        $dataManager = PowerEssentials::getInstance()->getDataManager();
+        $dataManager->setTempBan($targetName, $duration, $reason);
 
-        $target->kick(TextFormat::RED . $lang->translateString('tempban.success', [$timeString, $reason]));
+        if ($target instanceof Player) {
+			$target->kick(TextFormat::RED . $lang->translateString('tempban.success', [$timeString, $reason]));
+		}
 
-        Server::getInstance()->broadcastMessage($prefix . $lang->translateString('tempban.broadcast', [$targetName, $timeString, $reason]));
+        $server->broadcastMessage($prefix . $lang->translateString('tempban.broadcast', [$targetName, $timeString, $reason]));
     }
 
     /**

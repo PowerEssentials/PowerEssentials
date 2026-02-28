@@ -214,23 +214,4 @@ class PEConfig
 
         return is_numeric($timeout) ? (int) $timeout : 10;
     }
-
-    public function checkTempBan(Player $player): bool
-    {
-        $name        = $player->getName();
-        $dataManager = PowerEssentials::getInstance()->getDataManager();
-
-        if ($dataManager->isTempBanned($name)) {
-            $reason    = $dataManager->getTempBanReason($name);
-            $expire    = $dataManager->getTempBans()[$name]['expire'];
-            $remaining = max(0, $expire - time());
-
-            $timeMessage = gmdate('H:i:s', $remaining);
-            $player->kick(TextFormat::RED . "You are temporarily banned for $timeMessage.\nReason: $reason");
-
-            return true;
-        }
-
-        return false;
-    }
 }
