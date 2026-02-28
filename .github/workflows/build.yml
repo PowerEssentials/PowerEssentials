@@ -20,7 +20,7 @@ jobs:
         run: php -d phar.readonly=0 build.php
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: plugin-phar
           path: builds/*.phar
