@@ -45,11 +45,18 @@ class TempBanCommand extends PECommand
         $timeString = $args[1];
         $reason     = isset($args[2]) ? implode(' ', array_slice($args, 2)) : $lang->translateString('tempban.no_reason');
 
-        $target = Server::getInstance()->getPlayerExact($targetName);
-        if ($target === null && !Server::getInstance()->hasOfflinePlayerData($targetName)) {
-            $sender->sendMessage($prefix . TextFormat::RED . $lang->translateString('tempban.not_found'));
-            return;
-        }
+        $server = Server::getInstance();
+		$target = $server->getPlayerExact($targetName);
+		$isOffline = false;
+
+		if ($target === null) {
+			if (!$server->hasOfflinePlayerData($targetName)) {
+				$sender->sendMessage($prefix . TextFormat::RED . $lang->translateString('tempban.not_found'));
+				return;
+			}
+
+			$isOffline = true;
+		}
 
         if ($target->hasPermission('tempban.exempt')) {
             $sender->sendMessage($prefix . TextFormat::RED . $lang->translateString('tempban.exempt'));
@@ -69,7 +76,7 @@ class TempBanCommand extends PECommand
 			$target->kick(TextFormat::RED . $lang->translateString('tempban.success', [$timeString, $reason]));
 		}
 
-        Server::getInstance()->broadcastMessage($prefix . $lang->translateString('tempban.broadcast', [$targetName, $timeString, $reason]));
+        $server->broadcastMessage($prefix . $lang->translateString('tempban.broadcast', [$targetName, $timeString, $reason]));
     }
 
     /**
