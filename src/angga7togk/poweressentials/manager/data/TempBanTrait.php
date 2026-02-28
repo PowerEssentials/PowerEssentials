@@ -75,7 +75,8 @@ trait TempBanTrait
 
     public function getTempBanReason(string $playerName): string
     {
-        return $this->getTempBans()[$playerName]['reason'] ? strval($this->getTempBans()[$playerName]['reason']) : 'No reason provided';
+		$bans = $this->getTempBans();
+        return $bans[$playerName]['reason'] ?? 'No reason provided';
     }
 
     public function removeTempBan(string $playerName): void
